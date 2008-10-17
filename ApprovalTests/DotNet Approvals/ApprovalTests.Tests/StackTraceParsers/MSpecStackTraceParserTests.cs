@@ -1,0 +1,3 @@
+﻿namespace ApprovalTests.Tests.StackTraceParsers
+{
+}

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests", "ApprovalTests.csproj", "{F70C9A76-F797-4167-8178-14821F8634BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.Tests", "..\ApprovalTests.Tests\ApprovalTests.Tests.csproj", "{7B8D265D-35BB-4817-B074-F5056E5A9B4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F70C9A76-F797-4167-8178-14821F8634BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70C9A76-F797-4167-8178-14821F8634BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70C9A76-F797-4167-8178-14821F8634BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70C9A76-F797-4167-8178-14821F8634BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8D265D-35BB-4817-B074-F5056E5A9B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8D265D-35BB-4817-B074-F5056E5A9B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8D265D-35BB-4817-B074-F5056E5A9B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8D265D-35BB-4817-B074-F5056E5A9B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
