@@ -53,7 +53,6 @@
     <Compile Include="Writers\ApprovalTextWriter.cs" />
     <Compile Include="Namers\IApprovalNamer.cs" />
     <Compile Include="Approvers\IApprover.cs" />
-    <Compile Include="Approvers\ControlApprover.cs" />
     <Compile Include="Approvers\FileApprover.cs" />
     <Compile Include="Reporters\IApprovalReporter.cs" />
     <Compile Include="Reporters\QuietReporter.cs" />
