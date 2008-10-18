@@ -32,6 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -43,6 +46,7 @@
     <Compile Include="Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Reporters\OpenFailedReceivedFileReporter.cs" />
+    <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Writers\ApprovalControlWriter.cs" />
     <Compile Include="Writers\EnumerableWriter.cs" />
     <Compile Include="Writers\IApprovalWriter.cs" />

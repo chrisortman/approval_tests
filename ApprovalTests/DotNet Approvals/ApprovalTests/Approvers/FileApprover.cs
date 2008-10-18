@@ -44,12 +44,12 @@ namespace ApprovalTests.Approvers
 			throw failure;
 		}
 
-		public bool Report(IApprovalReporter reporter)
+		public void ReportFailure(IApprovalFailureReporter reporter)
 		{
-			return reporter.Report(approved, received);
+			 reporter.Report(approved, received);
 		}
 
-		public void CleanUpReceived()
+		public void CleanUpAfterSucess()
 		{
 			File.Delete(received);
 		}

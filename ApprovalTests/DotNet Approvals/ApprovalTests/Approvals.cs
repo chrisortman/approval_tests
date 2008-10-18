@@ -1,67 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using ApprovalTests.Approvers;
 using ApprovalTests.StackTraceParsers;
+using ApprovalTests.Utils;
 using ApprovalTests.Writers;
 
 namespace ApprovalTests
 {
 	public class Approvals
 	{
+		private static readonly List<IApprovalFailureReporter> reporters = new List<IApprovalFailureReporter>();
+
 		public static void Approve(string data)
 		{
-			Approve(new ApprovalTextWriter(data), new NunitStackTraceNamer(), FindDefaultReporter());
+			Approve(new ApprovalTextWriter(data), new NunitStackTraceNamer(), GetDefaultReporter());
 		}
 
-		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalReporter reporter)
+		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
 		{
 			Approve(new FileApprover(writer, namer), reporter);
 		}
 
-		public static void Approve(IApprovalApprover approver, IApprovalReporter reporter)
+		public static void Approve(IApprovalApprover approver, IApprovalFailureReporter reporter)
 		{
-			bool approved = approver.Approve();
-			if (!approved)
-				approved = approver.Report(reporter);
-			if (!approved)
-				approver.Fail();
+			if (approver.Approve())
+				approver.CleanUpAfterSucess();
 			else
-				approver.CleanUpReceived();
+			{
+				approver.ReportFailure(reporter);
+
+				if (reporter.ApprovedWhenReported())
+				{
+					approver.CleanUpAfterSucess();
+
+				}
+				else
+				{
+					approver.Fail();
+				}
+
+				
+			}
+
+			
 		}
 
-		public static void Approve(string label, IEnumerable enumerable)
+	
+
+		public static void Approve(IEnumerable enumerable, string label)
 		{
 			Approve(EnumerableWriter.write(label, enumerable));
 		}
 
-		public static void Approve(Control form)
+		public static void Approve(Control control)
 		{
-			Approve(new ApprovalControlWriter(form), new NunitStackTraceNamer(), FindDefaultReporter());
+			Approve(new ApprovalControlWriter(control), new NunitStackTraceNamer(), GetDefaultReporter());
 		}
 
-		private static readonly List<IApprovalReporter> reporters = new List<IApprovalReporter>();
-
-		public static IApprovalReporter FindDefaultReporter()
+		public static IApprovalFailureReporter GetDefaultReporter()
 		{
-			if (reporters.Count == 0)
-				return QuietReporter.Instance;
-			return reporters[0];
+			return reporters.IsEmpty() ? QuietReporter.Instance : reporters.First();
 		}
 
-		public static void RegisterReporter(IApprovalReporter reporter)
+		public static void RegisterReporter(IApprovalFailureReporter reporter)
 		{
-			reporters.Insert(0, reporter);
+			reporters.Push(reporter);
 		}
 
-		public static void UnregisterReporter(IApprovalReporter reporter)
+		public static void UnregisterReporter(IApprovalFailureReporter reporter)
 		{
 			reporters.Remove(reporter);
 		}
 
 		public static void UnregisterLastReporter()
 		{
-			reporters.RemoveAt(0);
+			reporters.Pop();
 		}
 	}
 }

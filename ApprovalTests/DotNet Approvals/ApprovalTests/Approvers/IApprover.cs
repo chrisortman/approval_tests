@@ -4,7 +4,7 @@
 	{
 		bool Approve();
 		void Fail();
-		bool Report(IApprovalReporter reporter);
-		void CleanUpReceived();
+		void ReportFailure(IApprovalFailureReporter reporter);
+		void CleanUpAfterSucess();
 	}
 }

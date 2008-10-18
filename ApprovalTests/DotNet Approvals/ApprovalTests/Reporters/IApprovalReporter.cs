@@ -1,7 +1,8 @@
 namespace ApprovalTests
 {
-	public interface IApprovalReporter
+	public interface IApprovalFailureReporter
 	{
-		bool Report(string approved, string received);
+		void Report(string approved, string received);
+		bool ApprovedWhenReported();
 	}
 }

@@ -2,11 +2,15 @@ using System.Diagnostics;
 
 namespace ApprovalTests.Reporters
 {
-	public class OpenFailedReceivedFileReporter : IApprovalReporter
+	public class OpenReceivedFileReporter : IApprovalFailureReporter
 	{
-		public bool Report(string approved, string received)
+		public void Report(string approved, string received)
 		{
 			Process.Start(received);
+		}
+
+		public bool ApprovedWhenReported()
+		{
 			return false;
 		}
 	}
