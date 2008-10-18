@@ -6,8 +6,8 @@ namespace ApprovalTests.Tests
 	[TestFixture]
 	public class ApprovalsTest
 	{
-		[SetUp]
-		public void SetUp()
+		
+		public void CleanUpAfter()
 		{
 			Approvals.RegisterReporter(new CleanupReporter());
 		}
@@ -18,60 +18,55 @@ namespace ApprovalTests.Tests
 			Approvals.Approve("should be approved");
 		}
 
-		[Test]
-		[ExpectedException(typeof (ApprovalMismatchException))]
-		public void TextDoesNotMatchApproval()
-		{
-			Approvals.Approve("should fail with mismatch");
-		}
-
-		[Test]
-		[ExpectedException(typeof (ApprovalMissingException))]
-		public void TextNotApprovedYet()
-		{
-			Approvals.Approve("should fail with a missing exception");
-		}
 
 		[Test]
 		public void EnumerableMatchesApproval()
 		{
-			var a = new[]
+			
+			Approvals.Approve(new[] { "abc", "123", "!@#" }, "collection");
+		}
+
+		[Test]
+		public void TestControlApproved()
+		{
+			var l = new Label
 			{
-				"abc", "123", "!@#"
+				Text = "approve this"
 			};
-			Approvals.Approve("a", a);
+			Approvals.Approve(l);
+		}
+
+		[Test]
+		[ExpectedException(typeof(ApprovalMismatchException))]
+		public void TextDoesNotMatchApproval()
+		{
+			CleanUpAfter();
+			Approvals.Approve("should fail with mismatch");
+		}
+
+		[Test]
+		[ExpectedException(typeof(ApprovalMissingException))]
+		public void TextNotApprovedYet()
+		{
+			CleanUpAfter();
+			Approvals.Approve("should fail with a missing exception");
 		}
 
 		[Test]
 		[ExpectedException(typeof (ApprovalMismatchException))]
 		public void EnumerableDoesNotMatchApproval()
 		{
-			var a = new[]
-			{
-				"Does not match"
-			};
-
-			Approvals.Approve("a", a);
+			CleanUpAfter();
+			Approvals.Approve(new[] { "Does not match" }, "collection");
 		}
 
 		[Test]
 		[ExpectedException(typeof (ApprovalMissingException))]
 		public void EnumerableNotApprovedYet()
 		{
-			var a = new[]
-			{
-				"Not approved"
-			};
-
-			Approvals.Approve("a", a);
+			CleanUpAfter();
+			Approvals.Approve(new[] { "Not approved" }, "collection");
 		}
 
-		[Test]
-		public void TestControlApproved()
-		{
-			Label l = new Label();
-			l.Text = "approve this";
-			Approvals.Approve(l);
-		}
 	}
 }

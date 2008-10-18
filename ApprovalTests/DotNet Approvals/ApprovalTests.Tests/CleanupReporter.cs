@@ -2,11 +2,15 @@
 
 namespace ApprovalTests.Tests
 {
-	public class CleanupReporter : IApprovalReporter
+	public class CleanupReporter : IApprovalFailureReporter
 	{
-		public bool Report(string approved, string received)
+		public void Report(string approved, string received)
 		{
 			File.Delete(received);
+		}
+
+		public bool ApprovedWhenReported()
+		{
 			return false;
 		}
 	}
