@@ -47,7 +47,7 @@ namespace ApprovalTests.StackTraceParsers
 
 		public string TypeName
 		{
-			get { return Method.DeclaringType.FullName.Substring(0, Method.DeclaringType.FullName.IndexOf(".")); }
+			get { return Method.DeclaringType.Name; }
 		}
 
 		public string BasePath

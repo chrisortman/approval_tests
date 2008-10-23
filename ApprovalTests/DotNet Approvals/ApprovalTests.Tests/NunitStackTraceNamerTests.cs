@@ -13,7 +13,7 @@ namespace ApprovalTests.Tests
 		public void TestGetApprovalName()
 		{
 			string name = new NunitStackTraceNamer().GetApprovalName();
-			Assert.AreEqual("ApprovalTests.TestGetApprovalName", name);
+			Assert.AreEqual("NunitStackTraceNamerTests.TestGetApprovalName", name);
 		}
 
 
