@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ApprovalTests.Approvers;
+using ApprovalTests.Extensions;
 using ApprovalTests.StackTraceParsers;
-using ApprovalTests.Utils;
 using ApprovalTests.Writers;
 
 namespace ApprovalTests

@@ -6,6 +6,7 @@ namespace ApprovalTests.Reporters
 	{
 		public void Report(string approved, string received)
 		{
+			QuietReporter.Instance.Report(approved, received);
 			Process.Start(received);
 		}
 
