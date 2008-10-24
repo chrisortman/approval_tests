@@ -12,7 +12,7 @@ namespace ApprovalTests.StackTraceParsers
 		public string ParseLabel(StackTrace stackTrace)
 		{
 			this.stackTrace = stackTrace;
-			if (this.stackTrace.ToString().Contains("NUnit"))
+			if (this.stackTrace.ToString().Contains("NUnit") || this.stackTrace.ToString().Contains("TestDriven"))
 				return String.Format("{0}{1}.{2}", BasePath, TypeName, Method.Name);
 			return null;
 		}
@@ -20,7 +20,7 @@ namespace ApprovalTests.StackTraceParsers
 		public string ParseApprovalName(StackTrace stackTrace)
 		{
 			this.stackTrace = stackTrace;
-			if (this.stackTrace.ToString().Contains("NUnit"))
+			if (this.stackTrace.ToString().Contains("NUnit") || this.stackTrace.ToString().Contains("TestDriven"))
 				return String.Format("{0}.{1}", TypeName, Method.Name);
 			return null;
 		}

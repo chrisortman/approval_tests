@@ -32,22 +32,12 @@ namespace ApprovalTests
 				approver.ReportFailure(reporter);
 
 				if (reporter.ApprovedWhenReported())
-				{
 					approver.CleanUpAfterSucess();
-
-				}
 				else
-				{
 					approver.Fail();
-				}
-
-				
 			}
-
-			
 		}
 
-	
 
 		public static void Approve(IEnumerable enumerable, string label)
 		{

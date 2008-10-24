@@ -6,7 +6,6 @@ namespace ApprovalTests.Tests
 	[TestFixture]
 	public class ApprovalsTest
 	{
-		
 		public void CleanUpAfter()
 		{
 			Approvals.RegisterReporter(new CleanupReporter());
@@ -22,8 +21,7 @@ namespace ApprovalTests.Tests
 		[Test]
 		public void EnumerableMatchesApproval()
 		{
-			
-			Approvals.Approve(new[] { "abc", "123", "!@#" }, "collection");
+			Approvals.Approve(new[] {"abc", "123", "!@#"}, "collection");
 		}
 
 		[Test]
@@ -37,7 +35,7 @@ namespace ApprovalTests.Tests
 		}
 
 		[Test]
-		[ExpectedException(typeof(ApprovalMismatchException))]
+		[ExpectedException(typeof (ApprovalMismatchException))]
 		public void TextDoesNotMatchApproval()
 		{
 			CleanUpAfter();
@@ -45,7 +43,7 @@ namespace ApprovalTests.Tests
 		}
 
 		[Test]
-		[ExpectedException(typeof(ApprovalMissingException))]
+		[ExpectedException(typeof (ApprovalMissingException))]
 		public void TextNotApprovedYet()
 		{
 			CleanUpAfter();
@@ -57,7 +55,7 @@ namespace ApprovalTests.Tests
 		public void EnumerableDoesNotMatchApproval()
 		{
 			CleanUpAfter();
-			Approvals.Approve(new[] { "Does not match" }, "collection");
+			Approvals.Approve(new[] {"Does not match"}, "collection");
 		}
 
 		[Test]
@@ -65,8 +63,7 @@ namespace ApprovalTests.Tests
 		public void EnumerableNotApprovedYet()
 		{
 			CleanUpAfter();
-			Approvals.Approve(new[] { "Not approved" }, "collection");
+			Approvals.Approve(new[]{"Not approved"}, "collection");
 		}
-
 	}
 }

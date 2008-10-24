@@ -1,4 +1,6 @@
+using System;
 using System.IO;
+using System.Linq;
 using ApprovalTests.Writers;
 
 namespace ApprovalTests.Approvers
@@ -30,7 +32,7 @@ namespace ApprovalTests.Approvers
 				return false;
 			}
 
-			if (File.ReadAllText(received) != File.ReadAllText(approved))
+			if (!File.ReadAllBytes(received).SequenceEqual(File.ReadAllBytes(approved)))
 			{
 				failure = new ApprovalMismatchException(received, approved);
 				return false;
