@@ -44,11 +44,6 @@ namespace ApprovalTests
 			Approve(EnumerableWriter.write(label, enumerable));
 		}
 
-		public static void Approve(Control control)
-		{
-			Approve(new ApprovalControlWriter(control), new NunitStackTraceNamer(), GetDefaultReporter());
-		}
-
 		public static IApprovalFailureReporter GetDefaultReporter()
 		{
 			return reporters.IsEmpty() ? QuietReporter.Instance : reporters.First();

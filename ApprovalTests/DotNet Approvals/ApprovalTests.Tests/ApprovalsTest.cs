@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace ApprovalTests.Tests
 {
@@ -21,18 +20,12 @@ namespace ApprovalTests.Tests
 		[Test]
 		public void EnumerableMatchesApproval()
 		{
-			Approvals.Approve(new[] {"abc", "123", "!@#"}, "collection");
+			Approvals.Approve(new[]
+			{
+				"abc", "123", "!@#"
+			}, "collection");
 		}
 
-		[Test]
-		public void TestControlApproved()
-		{
-			var l = new Label
-			{
-				Text = "approve this"
-			};
-			Approvals.Approve(l);
-		}
 
 		[Test]
 		[ExpectedException(typeof (ApprovalMismatchException))]
@@ -55,7 +48,10 @@ namespace ApprovalTests.Tests
 		public void EnumerableDoesNotMatchApproval()
 		{
 			CleanUpAfter();
-			Approvals.Approve(new[] {"Does not match"}, "collection");
+			Approvals.Approve(new[]
+			{
+				"Does not match"
+			}, "collection");
 		}
 
 		[Test]
@@ -63,7 +59,10 @@ namespace ApprovalTests.Tests
 		public void EnumerableNotApprovedYet()
 		{
 			CleanUpAfter();
-			Approvals.Approve(new[]{"Not approved"}, "collection");
+			Approvals.Approve(new[]
+			{
+				"Not approved"
+			}, "collection");
 		}
 	}
 }
