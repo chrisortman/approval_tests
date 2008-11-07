@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="ApprovalTests" default="nightlyBuild">
-	<property name="base" value="." />
+	<property name="base" value="${directory::get-current-directory()}" />
 	<property name="properites" value="ApprovalTests.properties" />
 	<if test="${file::exists(properites)}">
 		<include buildfile="${properites}"/>
