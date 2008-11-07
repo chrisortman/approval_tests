@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <project name="ApprovalTests" default="nightlyBuild">
 	<property name="base" value="." />
-	<include buildfile="ApprovalTests.properties"/>
+	<property name="properites" value="ApprovalTests.properties" />
+	<if test="${file::exists(properites)}">
+		<include buildfile="${properites}"/>
+	</if>
+	
 	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
 	
 	<target name="nightlyBuild" depends="build,test,package, sourceforge">
