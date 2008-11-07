@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="ApprovalTests" default="nightlyBuild">
+	<property name="base" value="." />
+	<include buildfile="ApprovalTests.properties"/>
+	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
+	
+	<target name="nightlyBuild" depends="build,test,package, sourceforge">
+	</target>
+	
+	<target name="build">
+		<msbuild project="${base}/ApprovalTests.sln"/>
+	</target>
+
+	<target name="test">
+		<nunit2>
+			<formatter type="Xml" usefile="true" extension=".xml" outputdir="${base}/results" />
+			<test assemblyname ="${base}/ApprovalTests.Tests/bin/debug/ApprovalTests.Tests.dll" />
+		</nunit2>
+	</target>
+
+	<target name="package">
+		<zip zipfile="${base}/results/ApprovalTests.zip">
+			<fileset basedir="${base}/ApprovalTests/bin/debug/">
+				<include name="ApprovalTests.dll" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="sourceforge">
+		<scp program="${base}/build/pscp.exe" file="${base}/results/ApprovalTests.zip" server="frs.sourceforge.net" path="${uploadPath}" user="${username}" options="-pw ${password}"/>
+	</target>
+</project>
+
