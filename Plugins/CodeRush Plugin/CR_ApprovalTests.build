@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="ApprovalTests" default="nightlyBuild">
+	<property name="base" value="${directory::get-current-directory()}" />
+	<property name="properites" value="CR_ApprovalTests.properties" />
+	<include buildfile="${properites}" if="${file::exists(properites)}"/>
+		
+	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
+	
+	<target name="nightlyBuild" depends="build,test,package, sourceforge">
+	</target>
+	
+	<target name="build">
+		<msbuild project="${base}/CR_ApprovalTests.sln"/>
+	</target>
+
+	<target name="test">
+		<nunit2>
+			<formatter type="Xml" usefile="true" extension=".xml" outputdir="${base}/results" />
+			<test assemblyname ="${base}/CR_ApprovalTests.Tests/bin/debug/CR_ApprovalTests.Tests.dll" />
+		</nunit2>
+	</target>
+
+	<target name="package">
+		<mkdir dir="${base}/results"/>
+		<zip zipfile="${base}/results/CR_ApprovalTests.zip">
+			<fileset basedir="${base}/CR_ApprovalTests/bin/debug/">
+				<include name="CR_ApprovalTests.dll" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="sourceforge">
+		<scp program="${base}/build/pscp.exe" file="${base}/results/CR_ApprovalTests.zip" server="frs.sourceforge.net" path="${uploadPath}" user="${username}" options="-pw ${password}"/>
+	</target>
+</project>
+
