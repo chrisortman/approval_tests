@@ -45,6 +45,8 @@
     <Compile Include="Approvals.cs" />
     <Compile Include="Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Exceptions\ApprovalMissingException.cs" />
+    <Compile Include="Extensions\WinForms\ApprovalExtensions.cs" />
+    <Compile Include="Extensions\ApprovalExtensions.cs" />
     <Compile Include="Reporters\OpenFailedReceivedFileReporter.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="WinForms\Approvals.cs" />

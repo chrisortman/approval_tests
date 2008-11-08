@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using ApprovalTests.Extensions;
+using NUnit.Framework;
 
 namespace ApprovalTests.Tests
 {
@@ -16,6 +17,11 @@ namespace ApprovalTests.Tests
 			Approvals.Approve("should be approved");
 		}
 
+		[Test]
+		public void TextMatchesApprovalExtension()
+		{
+			"should be approved".ShouldBeApproved();
+		}
 
 		[Test]
 		public void EnumerableMatchesApproval()
@@ -26,6 +32,11 @@ namespace ApprovalTests.Tests
 			}, "collection");
 		}
 
+		[Test]
+		public void EnumerableMatchesApprovalExtension()
+		{
+			new[] { "abc", "123", "!@#" }.ShouldBeApproved("collection");
+		}
 
 		[Test]
 		[ExpectedException(typeof (ApprovalMismatchException))]
