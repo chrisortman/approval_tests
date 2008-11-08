@@ -5,11 +5,11 @@ using ApprovalTests.Approvers;
 
 namespace ApprovalTests.StackTraceParsers
 {
-	public class NunitStackTraceNamer : IApprovalNamer
+	public class StackTraceNamer : IApprovalNamer
 	{
 		public string GetApprovalName()
 		{
-			return new NUnitStackTraceParser().ParseApprovalName(new StackTrace());
+			return new StackTraceParser().ParseApprovalName(new StackTrace(true));
 		}
 
 		public string GetSourceFilePath()

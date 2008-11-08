@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace ApprovalTests.StackTraceParsers
@@ -8,17 +9,17 @@ namespace ApprovalTests.StackTraceParsers
 	{
 		private StackTrace stackTrace;
 
-		public string ParseLabel(StackTrace trace)
+		public string ParseApprovalName(StackTrace trace)
 		{
 			stackTrace = trace;
 			if (stackTrace.ToString().Contains("Machine.Specifications"))
-				return String.Format("{0}{1}.{2}", BasePath, TypeName, DeclaringType.Name);
+				return String.Format("{1}.{2}", BasePath, TypeName, DeclaringType.Name);
 			return null;
 		}
 
 		public virtual Type DeclaringType
 		{
-			get { return FindApprovalMethodFrame().GetMethod().DeclaringType; }
+			get { return FindApprovalFrame().GetMethod().DeclaringType; }
 		}
 
 		public virtual string TypeName
@@ -26,7 +27,7 @@ namespace ApprovalTests.StackTraceParsers
 			get { return DeclaringType.FullName.Substring(0, DeclaringType.FullName.IndexOf(".")); }
 		}
 
-		private StackFrame FindApprovalMethodFrame()
+		private StackFrame FindApprovalFrame()
 		{
 			StackFrame[] frames = stackTrace.GetFrames();
 			if (frames == null)
@@ -45,14 +46,7 @@ namespace ApprovalTests.StackTraceParsers
 		{
 			get
 			{
-				if (DeclaringType.Assembly.Location == null)
-					return null;
-
-				string[] parts = DeclaringType.Assembly.Location.Split('\\');
-				var s = new StringBuilder();
-				for (int i = 0; i < parts.Length - 3; i++)
-					s.Append(parts[i] + "\\");
-				return s.ToString();
+				return Path.GetDirectoryName(FindApprovalFrame().GetFileName());
 			}
 		}
 	}

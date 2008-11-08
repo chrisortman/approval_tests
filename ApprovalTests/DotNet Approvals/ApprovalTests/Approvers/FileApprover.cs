@@ -21,7 +21,7 @@ namespace ApprovalTests.Approvers
 
 		public bool Approve()
 		{
-			string basename = namer.GetSourceFilePath() + namer.GetApprovalName();
+			string basename = namer.GetApprovalName();
 			approved = writer.GetApprovalFilename(basename);
 			received = writer.GetReceivedFilename(basename);
 			received = writer.WriteReceivedFile(received);

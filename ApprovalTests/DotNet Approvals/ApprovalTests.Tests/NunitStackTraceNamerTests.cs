@@ -12,7 +12,7 @@ namespace ApprovalTests.Tests
 		[Test]
 		public void TestGetApprovalName()
 		{
-			string name = new NunitStackTraceNamer().GetApprovalName();
+			string name = new StackTraceNamer().GetApprovalName();
 			Assert.AreEqual("NunitStackTraceNamerTests.TestGetApprovalName", name);
 		}
 
@@ -20,7 +20,7 @@ namespace ApprovalTests.Tests
 		[Test]
 		public void TestGetSourceFilePath()
 		{
-			string name = new NunitStackTraceNamer().GetSourceFilePath();
+			string name = new StackTraceNamer().GetSourceFilePath();
 			Debug.Write(name);
 			var basePath = Environment.CurrentDirectory + @"\..\..\";
 			Assert.AreEqual(Path.GetFullPath(basePath), name);

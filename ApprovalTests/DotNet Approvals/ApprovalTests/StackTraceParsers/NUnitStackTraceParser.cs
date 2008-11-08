@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Text;
 
@@ -9,28 +10,20 @@ namespace ApprovalTests.StackTraceParsers
 	{
 		private StackTrace stackTrace;
 
-		public string ParseLabel(StackTrace stackTrace)
-		{
-			this.stackTrace = stackTrace;
-			if (this.stackTrace.ToString().Contains("NUnit") || this.stackTrace.ToString().Contains("TestDriven"))
-				return String.Format("{0}{1}.{2}", BasePath, TypeName, Method.Name);
-			return null;
-		}
-
 		public string ParseApprovalName(StackTrace stackTrace)
 		{
 			this.stackTrace = stackTrace;
 			if (this.stackTrace.ToString().Contains("NUnit") || this.stackTrace.ToString().Contains("TestDriven"))
-				return String.Format("{0}.{1}", TypeName, Method.Name);
+				return String.Format(@"{0}\{1}.{2}", BasePath, TypeName, Method.Name);
 			return null;
 		}
 
 		public MethodBase Method
 		{
-			get { return FindApprovalMethodFrame().GetMethod(); }
+			get { return FindApprovalFrame().GetMethod(); }
 		}
 
-		private StackFrame FindApprovalMethodFrame()
+		private StackFrame FindApprovalFrame()
 		{
 			StackFrame[] frames = stackTrace.GetFrames();
 			if (frames == null)
@@ -54,12 +47,7 @@ namespace ApprovalTests.StackTraceParsers
 		{
 			get
 			{
-				var s = new StringBuilder();
-				string[] parts = Method.DeclaringType.Assembly.Location.Split('\\');
-				for (int i = 0; i < parts.Length - 3; i++)
-					s.Append(parts[i] + "\\");
-				return s.ToString();
-				;
+				return Path.GetDirectoryName(FindApprovalFrame().GetFileName());
 			}
 		}
 	}

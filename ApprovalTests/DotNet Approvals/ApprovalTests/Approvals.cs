@@ -15,7 +15,7 @@ namespace ApprovalTests
 
 		public static void Approve(string data)
 		{
-			Approve(new ApprovalTextWriter(data), new NunitStackTraceNamer(), GetDefaultReporter());
+			Approve(new ApprovalTextWriter(data), new StackTraceNamer(), GetDefaultReporter());
 		}
 
 		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)

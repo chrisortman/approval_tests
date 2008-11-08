@@ -11,7 +11,7 @@ namespace ApprovalTests.WinForms
 	{
 		public static void Approve(Control control)
 		{
-			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new NunitStackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
+			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
 		}
 	}
 }

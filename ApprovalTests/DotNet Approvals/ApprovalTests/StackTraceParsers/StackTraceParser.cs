@@ -10,17 +10,17 @@ namespace ApprovalTests.StackTraceParsers
 		                                                      };
 
 
-		public static string GetLabel(StackTrace stackTrace)
+		public string ParseApprovalName(StackTrace stackTrace)
 		{
 			foreach (IStackTraceParser p in parsers)
 			{
-				string parser = p.ParseLabel(stackTrace);
+				string parser = p.ParseApprovalName(stackTrace);
 
 				if (parser != null)
 					return parser;
 			}
 
-			throw new Exception(string.Format("Could not determin name from {0}", stackTrace));
+			throw new Exception(string.Format("Could not determine name from {0}", stackTrace));
 		}
 	}
 }
