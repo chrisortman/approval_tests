@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApprovalMSpecTests.cs" />
+    <Compile Include="ApprovalMSpecSpecs.cs" />
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="CleanupReporter.cs" />
     <Compile Include="FileApproverTests.cs" />
