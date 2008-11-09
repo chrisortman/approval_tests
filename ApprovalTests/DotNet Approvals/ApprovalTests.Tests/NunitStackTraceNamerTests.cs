@@ -10,19 +10,18 @@ namespace ApprovalTests.Tests
 	public class NunitStackTraceNamerTests
 	{
 		[Test]
-		public void TestGetApprovalName()
+		public void TestApprovalName()
 		{
-			string name = new StackTraceNamer().GetApprovalName();
-			Assert.AreEqual("NunitStackTraceNamerTests.TestGetApprovalName", name);
+			string name = new StackTraceNamer().Name;
+			Assert.AreEqual("NunitStackTraceNamerTests.TestApprovalName", name);
 		}
 
 
 		[Test]
-		public void TestGetSourceFilePath()
+		public void TestSourcePath()
 		{
-			string name = new StackTraceNamer().GetSourceFilePath();
-			Debug.Write(name);
-			var basePath = Environment.CurrentDirectory + @"\..\..\";
+			string name = new StackTraceNamer().SourcePath;
+			var basePath = Environment.CurrentDirectory + @"\..\..";
 			Assert.AreEqual(Path.GetFullPath(basePath), name);
 		}
 	}

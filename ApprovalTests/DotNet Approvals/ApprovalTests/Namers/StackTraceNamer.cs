@@ -1,22 +1,26 @@
-using System;
 using System.Diagnostics;
-using System.IO;
 using ApprovalTests.Approvers;
 
 namespace ApprovalTests.StackTraceParsers
 {
 	public class StackTraceNamer : IApprovalNamer
 	{
-		public string GetApprovalName()
+		private readonly StackTraceParser stackTraceParser;
+
+		public StackTraceNamer()
 		{
-			return new StackTraceParser().ParseApprovalName(new StackTrace(true));
+			stackTraceParser = new StackTraceParser();
+			stackTraceParser.Parse(new StackTrace(true));
 		}
 
-		public string GetSourceFilePath()
+		public string Name
 		{
-			var basePath = Environment.CurrentDirectory + @"\..\..\";
-			// totally cheating!!!!
-			return Path.GetFullPath(basePath);
+			get { return stackTraceParser.ApprovalName; }
+		}
+
+		public string SourcePath
+		{
+			get { return stackTraceParser.SourcePath; }
 		}
 	}
 }

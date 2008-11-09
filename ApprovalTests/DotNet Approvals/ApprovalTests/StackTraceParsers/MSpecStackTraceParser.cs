@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 
 namespace ApprovalTests.StackTraceParsers
 {
@@ -9,12 +8,22 @@ namespace ApprovalTests.StackTraceParsers
 	{
 		private StackTrace stackTrace;
 
-		public string ParseApprovalName(StackTrace trace)
+		public bool Parse(StackTrace trace)
 		{
 			stackTrace = trace;
 			if (stackTrace.ToString().Contains("Machine.Specifications"))
-				return String.Format("{1}.{2}", BasePath, TypeName, DeclaringType.Name);
-			return null;
+				return true;
+			return false;
+		}
+
+		public string ApprovalName
+		{
+			get { return String.Format("{0}.{1}", TypeName, DeclaringType.Name); }
+		}
+
+		public string SourcePath
+		{
+			get { return Path.GetDirectoryName(FindApprovalFrame().GetFileName()); }
 		}
 
 		public virtual Type DeclaringType
@@ -40,14 +49,6 @@ namespace ApprovalTests.StackTraceParsers
 			}
 
 			return null;
-		}
-
-		public string BasePath
-		{
-			get
-			{
-				return Path.GetDirectoryName(FindApprovalFrame().GetFileName());
-			}
 		}
 	}
 }

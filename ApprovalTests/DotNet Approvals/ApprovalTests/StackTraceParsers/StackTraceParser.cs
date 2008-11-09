@@ -3,24 +3,37 @@ using System.Diagnostics;
 
 namespace ApprovalTests.StackTraceParsers
 {
-	public class StackTraceParser
+	public class StackTraceParser : IStackTraceParser
 	{
+		private IStackTraceParser parser;
+
 		private static readonly IStackTraceParser[] parsers = {
 		                                                      	new NUnitStackTraceParser(), new MSpecStackTraceParser()
 		                                                      };
 
 
-		public string ParseApprovalName(StackTrace stackTrace)
+		public bool Parse(StackTrace stackTrace)
 		{
 			foreach (IStackTraceParser p in parsers)
 			{
-				string parser = p.ParseApprovalName(stackTrace);
-
-				if (parser != null)
-					return parser;
+				if (p.Parse(stackTrace))
+				{
+					parser = p;
+					return true;
+				}
 			}
 
 			throw new Exception(string.Format("Could not determine name from {0}", stackTrace));
+		}
+
+		public string ApprovalName
+		{
+			get { return parser.ApprovalName; }
+		}
+
+		public string SourcePath
+		{
+			get { return parser.SourcePath; }
 		}
 	}
 }

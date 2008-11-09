@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace ApprovalTests.StackTraceParsers
 {
@@ -10,13 +9,25 @@ namespace ApprovalTests.StackTraceParsers
 	{
 		private StackTrace stackTrace;
 
-		public string ParseApprovalName(StackTrace stackTrace)
+		public bool Parse(StackTrace trace)
 		{
-			this.stackTrace = stackTrace;
-			if (this.stackTrace.ToString().Contains("NUnit") || this.stackTrace.ToString().Contains("TestDriven"))
-				return String.Format(@"{0}\{1}.{2}", BasePath, TypeName, Method.Name);
-			return null;
+			stackTrace = trace;
+
+			if (stackTrace.ToString().Contains("NUnit") || stackTrace.ToString().Contains("TestDriven"))
+				return true;
+			return false;
 		}
+
+		public string ApprovalName
+		{
+			get { return String.Format(@"{0}.{1}", TypeName, Method.Name); }
+		}
+
+		public string SourcePath
+		{
+			get { return Path.GetDirectoryName(FindApprovalFrame().GetFileName()); }
+		}
+
 
 		public MethodBase Method
 		{
@@ -41,14 +52,6 @@ namespace ApprovalTests.StackTraceParsers
 		public string TypeName
 		{
 			get { return Method.DeclaringType.Name; }
-		}
-
-		public string BasePath
-		{
-			get
-			{
-				return Path.GetDirectoryName(FindApprovalFrame().GetFileName());
-			}
 		}
 	}
 }

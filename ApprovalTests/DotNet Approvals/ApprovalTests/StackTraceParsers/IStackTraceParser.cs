@@ -4,6 +4,8 @@ namespace ApprovalTests.StackTraceParsers
 {
 	public interface IStackTraceParser
 	{
-		string ParseApprovalName(StackTrace stackTrace);
+		bool Parse(StackTrace stackTrace);
+		string ApprovalName { get; }
+		string SourcePath { get; }
 	}
 }
