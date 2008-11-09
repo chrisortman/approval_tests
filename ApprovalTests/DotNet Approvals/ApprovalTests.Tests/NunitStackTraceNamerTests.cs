@@ -22,7 +22,7 @@ namespace ApprovalTests.Tests
 		{
 			string name = new StackTraceNamer().SourcePath;
 			var basePath = Environment.CurrentDirectory + @"\..\..";
-			Assert.AreEqual(Path.GetFullPath(basePath), name);
+			Assert.AreEqual(Path.GetFullPath(basePath).ToLower(), name.ToLower());
 		}
 	}
 }
