@@ -27,7 +27,7 @@ namespace ApprovalTests
 		public string WriteReceivedFile(string received)
 		{
 			Bitmap b = new Bitmap(control.Width, control.Height, PixelFormat.Format32bppArgb);
-			control.DrawToBitmap(b, control.DisplayRectangle);
+			control.DrawToBitmap(b, new Rectangle(0, 0, control.Width, control.Height));
 			b.Save(received, ImageFormat.Png);
 			return received;
 		}

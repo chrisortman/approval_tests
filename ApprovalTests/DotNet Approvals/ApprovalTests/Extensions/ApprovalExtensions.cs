@@ -4,9 +4,9 @@ namespace ApprovalTests.Extensions
 {
 	public static class ApprovalExtensions
 	{
-		public static void ShouldBeApproved(this string s)
+		public static void ShouldBeApproved<T>(this T o)
 		{
-			Approvals.Approve(s);
+			Approvals.Approve(o.ToString());
 		}
 
 		public static void ShouldBeApproved(this IEnumerable e, string label)

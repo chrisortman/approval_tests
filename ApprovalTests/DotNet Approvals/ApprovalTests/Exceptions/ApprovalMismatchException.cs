@@ -1,4 +1,4 @@
-namespace ApprovalTests
+namespace ApprovalTests.Exceptions
 {
 	public class ApprovalMismatchException : ApprovalException
 	{

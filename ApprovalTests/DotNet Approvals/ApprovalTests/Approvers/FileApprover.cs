@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using ApprovalTests.Exceptions;
 using ApprovalTests.Writers;
 
 namespace ApprovalTests.Approvers
@@ -22,8 +23,8 @@ namespace ApprovalTests.Approvers
 		public bool Approve()
 		{
 			string basename = string.Format(@"{0}\{1}", namer.SourcePath, namer.Name);
-			approved = writer.GetApprovalFilename(basename);
-			received = writer.GetReceivedFilename(basename);
+			approved = Path.GetFullPath(writer.GetApprovalFilename(basename));
+			received = Path.GetFullPath(writer.GetReceivedFilename(basename));
 			received = writer.WriteReceivedFile(received);
 
 			if (!File.Exists(approved))
