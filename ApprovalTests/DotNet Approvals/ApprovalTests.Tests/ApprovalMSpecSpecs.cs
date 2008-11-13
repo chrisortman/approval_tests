@@ -1,4 +1,5 @@
 ﻿using System;
+using ApprovalTests.Exceptions;
 using Machine.Specifications;
 
 namespace ApprovalTests.Tests

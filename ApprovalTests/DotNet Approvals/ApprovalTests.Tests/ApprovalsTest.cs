@@ -1,4 +1,5 @@
-﻿using ApprovalTests.Extensions;
+﻿using ApprovalTests.Exceptions;
+using ApprovalTests.Extensions;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests
