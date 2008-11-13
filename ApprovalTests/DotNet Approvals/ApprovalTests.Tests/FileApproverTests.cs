@@ -32,10 +32,13 @@ namespace ApprovalTests.Tests
 			var writer = new Mock<IApprovalWriter>();
 			var namer = new Mock<IApprovalNamer>();
 			var basePath = Environment.CurrentDirectory + @"\..\..\";
+			namer.Expect(n => n.Name).Returns("a");
+			namer.Expect(n => n.SourcePath).Returns(basePath);
 			writer.Expect(w => w.WriteReceivedFile(It.IsAny<string>())).Returns(basePath + receivedFile);
 			writer.Expect(w => w.GetApprovalFilename(It.IsAny<string>())).Returns(basePath + approvedFile);
-
-			FileApprover approver = new FileApprover(writer.Object, namer.Object);
+			writer.Expect(w => w.GetReceivedFilename(It.IsAny<string>())).Returns(basePath + receivedFile);
+			
+            FileApprover approver = new FileApprover(writer.Object, namer.Object);
 
 			Assert.AreEqual(expected, approver.Approve());
 		}
