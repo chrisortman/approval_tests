@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("ApprovalTests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Approval Tests")]
+[assembly: AssemblyDescription("Approval testing library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("California Regional Internet")]
-[assembly: AssemblyProduct("ApprovalTests")]
-[assembly: AssemblyCopyright("Copyright © California Regional Internet 2008")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Approval Tests")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

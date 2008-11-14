@@ -5,15 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ApiReporter.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("API Reporter Tests")]
+[assembly: AssemblyDescription("Tests for the API Reporter Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("California Regional Internet")]
-[assembly: AssemblyProduct("ApiReporter.Tests")]
-[assembly: AssemblyCopyright("Copyright © California Regional Internet 2008")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("API Reporter Tests")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
