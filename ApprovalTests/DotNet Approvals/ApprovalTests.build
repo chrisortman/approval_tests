@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <project name="ApprovalTests" default="nightlyBuild">
+	<property name="buildNumber" value="0.0.0.0" />
+	<property name="buildNumber" value="0.0.2.${environment::get-variable('BUILD_NUMBER')}" if="${environment::variable-exists('BUILD_NUMBER')}"/>
 	<property name="base" value="${directory::get-current-directory()}" />
 	<property name="properites" value="ApprovalTests.properties" />
 	<include buildfile="${properites}" if="${file::exists(properites)}"/>
@@ -10,6 +12,34 @@
 	</target>
 	
 	<target name="build">
+		<asminfo output="ApprovalTests/Properties/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+			<import namespace="System.Reflection" />
+			<import namespace="System.Runtime.InteropServices" />
+		    </imports>
+		    <attributes>
+			<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
+			<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
+			<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
+			<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
+			<attribute type="AssemblyProductAttribute" value="Approval Tests" />
+		    </attributes>
+		</asminfo>
+		
+		<asminfo output="ApprovalTests.Tests/Properties/AssemblyInfo.cs" language="CSharp">
+		    <imports>
+			<import namespace="System.Reflection" />
+			<import namespace="System.Runtime.InteropServices" />
+		    </imports>
+		    <attributes>
+			<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
+			<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
+			<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
+			<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
+			<attribute type="AssemblyProductAttribute" value="Approval Tests" />
+		    </attributes>
+		</asminfo>
+		
 		<msbuild project="${base}/ApprovalTests.sln"/>
 	</target>
 
@@ -22,7 +52,7 @@
 
 	<target name="package">
 		<mkdir dir="${base}/results"/>
-		<zip zipfile="${base}/results/ApprovalTests.zip">
+		<zip zipfile="${base}/results/ApprovalTests-${buildNumber}.zip">
 			<fileset basedir="${base}/ApprovalTests/bin/debug/">
 				<include name="ApprovalTests.dll" />
 			</fileset>
