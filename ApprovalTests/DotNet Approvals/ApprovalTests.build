@@ -49,8 +49,16 @@
 			<test assemblyname ="${base}/ApprovalTests.Tests/bin/debug/ApprovalTests.Tests.dll" />
 		</nunit2>
 	</target>
+	
+	<target name="cleanPackage">
+		<delete>
+		    <fileset>
+			<include name="${base}/results/*" />
+		    </fileset>
+		</delete>
+	</target>
 
-	<target name="package">
+	<target name="package" depends="cleanPackage">
 		<mkdir dir="${base}/results"/>
 		<zip zipfile="${base}/results/ApprovalTests-${buildNumber}.zip">
 			<fileset basedir="${base}/ApprovalTests/bin/debug/">
