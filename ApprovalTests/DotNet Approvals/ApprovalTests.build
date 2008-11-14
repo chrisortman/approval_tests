@@ -4,6 +4,7 @@
 	<property name="buildNumber" value="0.0.2.${environment::get-variable('BUILD_NUMBER')}" if="${environment::variable-exists('BUILD_NUMBER')}"/>
 	<property name="base" value="${directory::get-current-directory()}" />
 	<property name="properites" value="ApprovalTests.properties" />
+	<property name="packageName" value="ApprovalTests-${buildNumber}.zip" />
 	<include buildfile="${properites}" if="${file::exists(properites)}"/>
 		
 	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
@@ -57,10 +58,12 @@
 		    </fileset>
 		</delete>
 	</target>
+	
+	
 
 	<target name="package" depends="cleanPackage">
 		<mkdir dir="${base}/results"/>
-		<zip zipfile="${base}/results/ApprovalTests-${buildNumber}.zip">
+		<zip zipfile="${base}/results/${packageName}">
 			<fileset basedir="${base}/ApprovalTests/bin/debug/">
 				<include name="ApprovalTests.dll" />
 			</fileset>
@@ -68,7 +71,7 @@
 	</target>
 
 	<target name="sourceforge">
-		<scp program="${base}/build/pscp.exe" file="${base}/results/ApprovalTests.zip" server="frs.sourceforge.net" path="${uploadPath}" user="${username}" options="-pw ${password}"/>
+		<scp program="${base}/build/pscp.exe" file="${base}/results/${packageName}" server="frs.sourceforge.net" path="${uploadPath}" user="${username}" options="-pw ${password}"/>
 	</target>
 </project>
 
