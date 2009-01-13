@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+using System;
+using System.Collections.Generic;
 
 namespace ApprovalTests.Extensions
 {
@@ -9,9 +11,17 @@ namespace ApprovalTests.Extensions
 			Approvals.Approve(o.ToString());
 		}
 
-		public static void ShouldBeApproved(this IEnumerable e, string label)
+		public static void ShouldBeApproved<T>(this IEnumerable<T> e, string label)
 		{
 			Approvals.Approve(e, label);
+		}
+		public static void ShouldBeApproved<T>(this IEnumerable<T> e, Func<T, string> formatter, string label)
+		{
+			Approvals.Approve(e, formatter, label);
+		}
+		public static void ShouldBeApproved<T>(this IEnumerable<T> e, Func<T, string> formatter)
+		{
+			Approvals.Approve(e, formatter);
 		}
 	}
 }

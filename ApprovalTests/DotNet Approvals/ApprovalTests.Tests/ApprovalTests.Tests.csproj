@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApprovalTests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Examples\TV Shows\ApprovalTests.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.Specifications, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Common\mspec 0.3\Machine.Specifications.dll</HintPath>
@@ -61,6 +57,7 @@
     <Compile Include="ApprovalMSpecSpecs.cs" />
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="CleanupReporter.cs" />
+    <Compile Include="Extensions\ExtensionsTest.cs" />
     <Compile Include="VSTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="b.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
+      <Project>{F70C9A76-F797-4167-8178-14821F8634BC}</Project>
+      <Name>ApprovalTests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

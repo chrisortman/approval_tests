@@ -39,9 +39,9 @@ namespace ApprovalTests
 		}
 
 
-		public static void Approve(IEnumerable enumerable, string label)
+		public static void Approve<T>(IEnumerable<T> enumerable, string label)
 		{
-			Approve(EnumerableWriter.write(label, enumerable));
+			Approve(EnumerableWriter.Write(label, enumerable));
 		}
 
 		public static IApprovalFailureReporter GetDefaultReporter()
@@ -62,6 +62,15 @@ namespace ApprovalTests
 		public static void UnregisterLastReporter()
 		{
 			reporters.Pop();
+		}
+
+		public static void Approve<T>(IEnumerable<T> enumerable, System.Func<T, string> formatter, string label)
+		{
+			Approve(EnumerableWriter.Write(label,formatter, enumerable));
+		}
+		public static void Approve<T>(IEnumerable<T> enumerable, System.Func<T, string> formatter)
+		{
+			Approve(EnumerableWriter.Write(formatter, enumerable));
 		}
 	}
 }
