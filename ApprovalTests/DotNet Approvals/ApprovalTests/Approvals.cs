@@ -69,7 +69,6 @@ namespace ApprovalTests
 			Approve(EnumerableWriter.Write(label,formatter, enumerable));
 		}
 		
-		
 		public static void Approve<T>(IEnumerable<T> enumerable, System.Func<T, string> formatter)
 		{
 			Approve(EnumerableWriter.Write(formatter, enumerable));
