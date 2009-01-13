@@ -31,10 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ApprovalTests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Examples\TV Shows\ApprovalTests.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Common\mspec 0.3\Machine.Specifications.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq, Version=2.6.1014.1, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Common\moq 2.6.1014\Moq.dll</HintPath>
@@ -56,17 +61,12 @@
     <Compile Include="ApprovalMSpecSpecs.cs" />
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="CleanupReporter.cs" />
+    <Compile Include="VSTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NunitStackTraceNamerTests.cs" />
     <Compile Include="StackTraceParsers\MSpecStackTraceParserTests.cs" />
     <Compile Include="WinForms\ApprovalsTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
-      <Project>{F70C9A76-F797-4167-8178-14821F8634BC}</Project>
-      <Name>ApprovalTests</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="b.txt" />
