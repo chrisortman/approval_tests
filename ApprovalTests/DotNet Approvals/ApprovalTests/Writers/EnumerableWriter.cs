@@ -1,43 +1,41 @@
 ﻿using System;
-using System.Collections;
-using System.Text;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ApprovalTests.Writers
 {
 	public class EnumerableWriter
 	{
-		public static string Write<T>(String label, IEnumerable<T> enumerable)
+		public static string Write<T>(IEnumerable<T> enumerable, String label)
 		{
-			return Write(label, s => "" + s, enumerable);
-		}
-		public static string Write<T>(string label, Func<T, string> formatter, IEnumerable<T> enumerable)
-		{
-			return Write((i, s) => string.Format("{0}[{1}] = {2}" + Environment.NewLine, label, i, formatter(s)), enumerable, string.Format("{0} is empty", label));
-		}
-		public static string Write<T>(Func<T, string> formatter, IEnumerable<T> enumerable)
-		{
-			return Write((i, s) => formatter(s), enumerable, "Empty");
+			return Write(enumerable, label, s => s.ToString());
 		}
 
-		public static string Write<T>(Func<int, T,string> formatter, IEnumerable<T> enumerable, string emptyString)
+		public static string Write<T>(IEnumerable<T> enumerable, string label, CustomFormatter<T> formatter)
 		{
-			if (enumerable == null)
-				return emptyString; 
+			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}" + Environment.NewLine, label, i, formatter(s)), string.Format("{0} is empty", label));
+		}
 
-			StringBuilder sb = new StringBuilder();
+		public static string Write<T>(IEnumerable<T> enumerable, CustomFormatter<T> formatter)
+		{
+			return Write(enumerable, (i, s) => formatter(s), "Empty");
+		}
+
+		public static string Write<T>(IEnumerable<T> enumerable, CustomFormatterWithIndex<T> formatter, string emptyMessage)
+		{
+			var list = new List<T>(enumerable);
+
+			if (list.Count == 0)
+				return emptyMessage;
+
+			var sb = new StringBuilder();
 			int i = 0;
-
-			foreach (var item in enumerable)
-			{
-				sb.Append(formatter(i,item));
-				i++;
-			}
-
-			if (sb.Length == 0)
-				return emptyString; 
+			list.ForEach(item => sb.Append(formatter(i++, item)));
 
 			return sb.ToString();
 		}
+
+		public delegate string CustomFormatter<T>(T item);
+		public delegate string CustomFormatterWithIndex<T>(int index, T item);
 	}
 }

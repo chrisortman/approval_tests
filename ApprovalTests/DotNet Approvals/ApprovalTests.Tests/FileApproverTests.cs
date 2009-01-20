@@ -9,7 +9,8 @@ namespace ApprovalTests.Tests
 	[TestFixture]
 	public class FileApproverTests
 	{
-		[Test]
+		
+		/*[Test]
 		public void TestFailureDueToMissingApproval()
 		{
 			AssertApprover("a.txt", "non_existing_file.txt", false);
@@ -40,7 +41,7 @@ namespace ApprovalTests.Tests
 			
             FileApprover approver = new FileApprover(writer.Object, namer.Object);
 
-			Assert.AreEqual(expected, approver.Approve());
-		}
+			Assert.AreEqual(expected, approver.	Approve());
+		}*/
 	}
 }

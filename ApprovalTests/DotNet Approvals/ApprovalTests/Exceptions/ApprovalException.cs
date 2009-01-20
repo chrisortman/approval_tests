@@ -33,7 +33,7 @@ namespace ApprovalTests.Exceptions
 
 		public override void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
-            base.GetObjectData(info, context);
+			base.GetObjectData(info, context);
 
 			info.AddValue("Approved", Approved);
 			info.AddValue("Received", Received);

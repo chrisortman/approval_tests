@@ -1,6 +1,6 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using ApprovalTests.Exceptions;
 using ApprovalTests.Writers;
 
@@ -33,7 +33,7 @@ namespace ApprovalTests.Approvers
 				return false;
 			}
 
-			if (!File.ReadAllBytes(received).SequenceEqual(File.ReadAllBytes(approved)))
+			if (!Compare(File.ReadAllBytes(received), File.ReadAllBytes(approved)))
 			{
 				failure = new ApprovalMismatchException(received, approved);
 				return false;
@@ -49,12 +49,29 @@ namespace ApprovalTests.Approvers
 
 		public void ReportFailure(IApprovalFailureReporter reporter)
 		{
-			 reporter.Report(approved, received);
+			reporter.Report(approved, received);
 		}
 
 		public void CleanUpAfterSucess()
 		{
 			File.Delete(received);
+		}
+
+		private static bool Compare(ICollection<byte> bytes1, ICollection<byte> bytes2)
+		{
+			if (bytes1.Count != bytes2.Count)
+				return false;
+
+			var e1 = bytes1.GetEnumerator();
+			var e2 = bytes2.GetEnumerator();
+			
+			while (e1.MoveNext() && e2.MoveNext())
+			{
+				if (e1.Current != e2.Current)
+					return false;
+			}
+            
+			return true;
 		}
 	}
 }

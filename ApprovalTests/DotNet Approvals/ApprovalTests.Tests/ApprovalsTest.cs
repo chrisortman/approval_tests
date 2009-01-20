@@ -1,5 +1,4 @@
 ﻿using ApprovalTests.Exceptions;
-using ApprovalTests.Extensions;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests
@@ -19,24 +18,12 @@ namespace ApprovalTests.Tests
 		}
 
 		[Test]
-		public void TextMatchesApprovalExtension()
-		{
-			"should be approved".ShouldBeApproved();
-		}
-
-		[Test]
 		public void EnumerableMatchesApproval()
 		{
 			Approvals.Approve(new[]
 			{
 				"abc", "123", "!@#"
 			}, "collection");
-		}
-
-		[Test]
-		public void EnumerableMatchesApprovalExtension()
-		{
-			new[] { "abc", "123", "!@#" }.ShouldBeApproved("collection");
 		}
 
 		[Test]

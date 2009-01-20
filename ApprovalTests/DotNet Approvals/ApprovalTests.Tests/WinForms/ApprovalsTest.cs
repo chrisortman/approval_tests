@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using ApprovalTests.Extensions.WinForms;
+﻿using System.Windows.Forms;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.WinForms
@@ -20,17 +15,6 @@ namespace ApprovalTests.Tests.WinForms
 			};
 
 			ApprovalTests.WinForms.Approvals.Approve(l);
-		}
-
-		[Test]
-		public void TestControlApprovedExtension()
-		{
-			var l = new Label
-			{
-				Text = "approve this"
-			};
-
-			l.ShouldBeApproved();
 		}
 	}
 }

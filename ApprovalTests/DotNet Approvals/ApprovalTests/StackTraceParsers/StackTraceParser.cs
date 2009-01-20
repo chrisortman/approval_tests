@@ -8,7 +8,7 @@ namespace ApprovalTests.StackTraceParsers
 		private IStackTraceParser parser;
 
 		private static readonly IStackTraceParser[] parsers = {
-		                                                      	new NUnitStackTraceParser(), new MSpecStackTraceParser(), new VSStackTraceParser()
+		                                                      	new NUnitStackTraceParser(), new VSStackTraceParser()
 		                                                      };
 
 

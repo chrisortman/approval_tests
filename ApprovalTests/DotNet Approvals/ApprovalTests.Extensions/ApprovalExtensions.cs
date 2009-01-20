@@ -1,6 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ApprovalTests.Writers;
 
 namespace ApprovalTests.Extensions
 {
@@ -15,11 +15,13 @@ namespace ApprovalTests.Extensions
 		{
 			Approvals.Approve(e, label);
 		}
-		public static void ShouldBeApproved<T>(this IEnumerable<T> e, Func<T, string> formatter, string label)
+
+		public static void ShouldBeApproved<T>(this IEnumerable<T> e, string label, EnumerableWriter.CustomFormatter<T> formatter)
 		{
-			Approvals.Approve(e, formatter, label);
+			Approvals.Approve(e, label, formatter);
 		}
-		public static void ShouldBeApproved<T>(this IEnumerable<T> e, Func<T, string> formatter)
+		
+		public static void ShouldBeApproved<T>(this IEnumerable<T> e, EnumerableWriter.CustomFormatter<T> formatter)
 		{
 			Approvals.Approve(e, formatter);
 		}

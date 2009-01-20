@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using ApprovalTests.Approvers;
-using ApprovalTests.Extensions;
 using ApprovalTests.StackTraceParsers;
 using ApprovalTests.Writers;
 
@@ -38,20 +34,30 @@ namespace ApprovalTests
 			}
 		}
 
-
 		public static void Approve<T>(IEnumerable<T> enumerable, string label)
 		{
-			Approve(EnumerableWriter.Write(label, enumerable));
+			Approve(EnumerableWriter.Write(enumerable, label));
 		}
+
+		public static void Approve<T>(IEnumerable<T> enumerable, string label, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			Approve(EnumerableWriter.Write(enumerable, label, formatter));
+		}
+
+		public static void Approve<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			Approve(EnumerableWriter.Write(enumerable, formatter));
+		}
+
 
 		public static IApprovalFailureReporter GetDefaultReporter()
 		{
-			return reporters.IsEmpty() ? QuietReporter.Instance : reporters.First();
+			return reporters.Count == 0 ? QuietReporter.Instance : reporters[0];
 		}
 
 		public static void RegisterReporter(IApprovalFailureReporter reporter)
 		{
-			reporters.Push(reporter);
+			reporters.Insert(0, reporter); ;
 		}
 
 		public static void UnregisterReporter(IApprovalFailureReporter reporter)
@@ -61,17 +67,7 @@ namespace ApprovalTests
 
 		public static void UnregisterLastReporter()
 		{
-			reporters.Pop();
-		}
-
-		public static void Approve<T>(IEnumerable<T> enumerable, System.Func<T, string> formatter, string label)
-		{
-			Approve(EnumerableWriter.Write(label,formatter, enumerable));
-		}
-		
-		public static void Approve<T>(IEnumerable<T> enumerable, System.Func<T, string> formatter)
-		{
-			Approve(EnumerableWriter.Write(formatter, enumerable));
+			reporters.RemoveAt(0);
 		}
 	}
 }
