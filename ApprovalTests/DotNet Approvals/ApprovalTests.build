@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="ApprovalTests" default="nightlyBuild">
 	<property name="buildNumber" value="0.0.0.0" />
-	<property name="buildNumber" value="0.0.2.${environment::get-variable('BUILD_NUMBER')}" if="${environment::variable-exists('BUILD_NUMBER')}"/>
+	<property name="buildNumber" value="0.0.3.${environment::get-variable('BUILD_NUMBER')}" if="${environment::variable-exists('BUILD_NUMBER')}"/>
 	<property name="base" value="${directory::get-current-directory()}" />
 	<property name="properites" value="ApprovalTests.properties" />
 	<property name="packageName" value="ApprovalTests-${buildNumber}.zip" />
