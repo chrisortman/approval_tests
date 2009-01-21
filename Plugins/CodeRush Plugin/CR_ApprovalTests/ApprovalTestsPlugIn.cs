@@ -25,14 +25,25 @@ namespace CR_ApprovalTests
 			if (IsApproveCall(element) && element.ElementType == LanguageElementType.MethodCall)
 			{
 				var approvalFiles = new ApprovalArtifacts(element, CodeRush.Documents.ActiveTextDocument.FullName);
-				Color lineColor = approvalFiles.HasReceivedFile
-				                  	? approvalFiles.HasApprovedFile ? Color.Red : Color.Orange
-				                  	: approvalFiles.HasApprovedFile ? Color.Green : Color.LightBlue;
+				Color lineColor = getColorForApproval(approvalFiles.TestStatus);
 
 				SourceRange range = element.Range;
-				ea.PaintArgs.DrawLine(range.Start.Line, range.Start.Offset, range.End.Offset - range.Start.Offset, lineColor,
-				                      LineStyle.SolidUnderline);
+				ea.PaintArgs.DrawLine(range.Start.Line, range.Start.Offset, range.End.Offset - range.Start.Offset, lineColor, LineStyle.SolidUnderline);
 			}
+		}
+
+
+		public static Color getColorForApproval(TestStatus status)
+		{
+			switch (status)
+			{
+				case TestStatus.NeverRun: return Color.LightBlue;
+				case TestStatus.NeverApproved: return Color.Yellow;
+				case TestStatus.Approved: return Color.Green;
+				case TestStatus.Failed: return Color.Red;
+			}
+
+			return Color.White;
 		}
 
 		private static bool IsApproveCall(LanguageElement element)
@@ -56,7 +67,7 @@ namespace CR_ApprovalTests
 			var files = new ApprovalArtifacts(element, CodeRush.Documents.ActiveTextDocument.FullName);
 			if (files.HasReceivedFile)
 			{
-				ea.AddSubMenuItem("Approve").SetProvider(new ApproveProvider(Settings.UnitTestCommand));
+				ea.AddSubMenuItem("Approve").SetProvider(new ApproveProvider(Settings.UnitTestCommand, files));
 				if (files.HasApprovedFile)
 					ea.AddSubMenuItem("Diff").SetProvider(new DiffProvider(Settings.DiffTextTool, Settings.DiffTextToolArgs, Settings.DiffImageTool, Settings.DiffImageToolArgs));
 				ea.AddSubMenuItem("View Received").SetProvider(new ViewReceivedProvider());
@@ -68,4 +79,5 @@ namespace CR_ApprovalTests
 			ea.Available = true;
 		}
 	}
+
 }

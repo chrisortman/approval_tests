@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CR_ApprovalTests", "CR_ApprovalTests\CR_ApprovalTests.csproj", "{9B707CD2-C8BE-432D-9CC0-BE32BC5E5825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CR_ApprovalTests.Tests", "CR_ApprovalTests.Tests\CR_ApprovalTests.Tests.csproj", "{24E3BAD9-B0DD-4C61-AED8-02A3CDFD0AA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CR_ApprovalTests.Specs", "CR_ApprovalTests.Specs\CR_ApprovalTests.Specs.csproj", "{24E3BAD9-B0DD-4C61-AED8-02A3CDFD0AA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

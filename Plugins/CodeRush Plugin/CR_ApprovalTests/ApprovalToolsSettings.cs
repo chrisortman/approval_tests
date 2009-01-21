@@ -19,7 +19,7 @@ namespace CR_ApprovalTests
 			               		DiffTextToolArgs = "\"{0}\" \"{1}\"",
 			               		DiffImageTool = "TortoiseIDiff.exe",
 			               		DiffImageToolArgs = "/left:\"{0}\" /right:\"{1}\"",
-								UnitTestCommand = "TestDriven.NET.RunTests"
+								UnitTestCommand = "Test.RunTestsInCurrentContext"
 			               	};
 			return settings;
 		}

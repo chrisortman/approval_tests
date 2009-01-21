@@ -3,6 +3,13 @@ using DevExpress.CodeRush.StructuralParser;
 
 namespace CR_ApprovalTests
 {
+	public enum TestStatus
+	{
+		NeverRun,
+		NeverApproved,
+		Approved,
+		Failed
+	}
 	public class ApprovalArtifacts
 	{
 		public ApprovalArtifacts(LanguageElement element, string name)
@@ -43,6 +50,23 @@ namespace CR_ApprovalTests
 		public bool HasApprovedFile
 		{
 			get { return File.Exists(Approved); }
+		}
+
+		public TestStatus TestStatus
+		{
+			get { return GetTestStatusFor(HasReceivedFile, HasApprovedFile); }
+		}
+
+		private TestStatus GetTestStatusFor(bool received, bool approved)
+		{
+			if (approved)
+			{
+				return received ? TestStatus.Failed : TestStatus.Approved;
+			}
+			else
+			{
+				return received ? TestStatus.NeverApproved : TestStatus.NeverRun;
+			}
 		}
 
 		private static string GetDirectory(string fullName)
