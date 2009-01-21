@@ -41,6 +41,34 @@
 		    </attributes>
 		</asminfo>
 		
+		<asminfo output="ApprovalTests.Extensions/Properties/AssemblyInfo.cs" language="CSharp">
+				    <imports>
+					<import namespace="System.Reflection" />
+					<import namespace="System.Runtime.InteropServices" />
+				    </imports>
+				    <attributes>
+					<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
+					<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
+					<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
+					<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
+					<attribute type="AssemblyProductAttribute" value="Approval Tests" />
+				    </attributes>
+		</asminfo>
+		
+		<asminfo output="ApprovalTests.Extensions.Tests/Properties/AssemblyInfo.cs" language="CSharp">
+				    <imports>
+					<import namespace="System.Reflection" />
+					<import namespace="System.Runtime.InteropServices" />
+				    </imports>
+				    <attributes>
+					<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
+					<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
+					<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
+					<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
+					<attribute type="AssemblyProductAttribute" value="Approval Tests" />
+				    </attributes>
+		</asminfo>
+		
 		<msbuild project="${base}/ApprovalTests.sln"/>
 	</target>
 
@@ -48,6 +76,7 @@
 		<nunit2>
 			<formatter type="Xml" usefile="true" extension=".xml" outputdir="${base}/results" />
 			<test assemblyname ="${base}/ApprovalTests.Tests/bin/debug/ApprovalTests.Tests.dll" />
+			<test assemblyname ="${base}/ApprovalTests.Tests/bin/debug/ApprovalTests.Extensions.Tests.dll" />
 		</nunit2>
 	</target>
 	
@@ -66,6 +95,9 @@
 		<zip zipfile="${base}/results/${packageName}">
 			<fileset basedir="${base}/ApprovalTests/bin/debug/">
 				<include name="ApprovalTests.dll" />
+			</fileset>
+			<fileset basedir="${base}/ApprovalTests.Extensions/bin/debug/">
+				<include name="ApprovalTests.Extensions.dll" />
 			</fileset>
 		</zip>
 	</target>
