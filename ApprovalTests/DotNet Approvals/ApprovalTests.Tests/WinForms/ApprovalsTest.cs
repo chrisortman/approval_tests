@@ -16,5 +16,11 @@ namespace ApprovalTests.Tests.WinForms
 
 			ApprovalTests.WinForms.Approvals.Approve(l);
 		}
+
+		[Test]
+		public void TestFormApproval()
+		{
+			ApprovalTests.WinForms.Approvals.Approve(new Form());
+		}
 	}
 }

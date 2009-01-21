@@ -7,13 +7,23 @@ namespace ApprovalTests.WinForms
 	{
 		public static void Approve(Control control)
 		{
+			EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm(control);
+
 			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
 		}
 
-		public static void Approve(Form form)
+		private static void EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm(Control control)
 		{
-			form.Show();
-			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(form), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
+			// This is a hack
+			var f = new Form
+			{
+				Height = 0,
+				Width = 0,
+				ShowInTaskbar = false
+			};
+
+			f.Controls.Add(control);
+			f.Show();
 		}
 	}
 }
