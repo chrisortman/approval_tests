@@ -20,11 +20,19 @@ namespace CR_ApprovalTests
 		private void UpdateData()
 		{
 			settings.RunTestAfterApproval = checkBoxRunTestAfterApproval.Checked;
+			settings.UnitTestCommand = textBoxUnitTestCommand.Text;
+			settings.DiffTextTool = textBoxDiffTool.Text;
+			settings.DiffImageTool = textBoxImageTool.Text;
 		}
 
 		public void UpdateScreen(ApprovalToolsSettings settings)
 		{
+			if (settings == null) return;
+
 			checkBoxRunTestAfterApproval.Checked = settings.RunTestAfterApproval;
+            textBoxUnitTestCommand.Text = settings.UnitTestCommand;
+			textBoxDiffTool.Text = settings.DiffTextTool;
+			textBoxImageTool.Text = settings.DiffImageTool;
 		}
 
 		private void UpdateScreen()
@@ -36,6 +44,17 @@ namespace CR_ApprovalTests
 		{
 			UpdateData();
 			ApprovalTestsPlugIn.Settings = settings;
+		}
+
+		protected override void Initialize()
+		{
+			base.Initialize();
+            UpdateScreen();
+		}
+
+		private void Options_Load(object sender, System.EventArgs e)
+		{
+
 		}
 	}
 }

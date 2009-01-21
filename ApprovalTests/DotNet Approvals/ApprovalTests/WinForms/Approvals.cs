@@ -7,8 +7,6 @@ namespace ApprovalTests.WinForms
 	{
 		public static void Approve(Control control)
 		{
-			if (control is Form)
-				control.Show();
 			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
 		}
 

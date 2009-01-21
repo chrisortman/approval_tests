@@ -14,7 +14,7 @@ namespace ApprovalTests.Tests
 		[Test]
 		public void TextMatchesApproval()
 		{
-			Approvals.Approve("should be approved");
+			Approvals.Approve("should be a approved");
 		}
 
 		[Test]
