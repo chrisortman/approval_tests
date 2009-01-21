@@ -20,9 +20,9 @@ namespace CR_ApprovalTests
 		private void UpdateData()
 		{
 			settings.RunTestAfterApproval = checkBoxRunTestAfterApproval.Checked;
-			settings.UnitTestCommand = textBoxUnitTestCommand.Text;
-			settings.DiffTextTool = textBoxDiffTool.Text;
-			settings.DiffImageTool = textBoxImageTool.Text;
+			settings.UnitTestCommand = textBoxUnitTestCommand.Text.Trim();
+			settings.DiffTextTool = textBoxDiffTool.Text.Trim();
+			settings.DiffImageTool = textBoxImageTool.Text.Trim();
 		}
 
 		public void UpdateScreen(ApprovalToolsSettings settings)
