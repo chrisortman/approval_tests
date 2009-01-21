@@ -14,5 +14,28 @@ namespace CR_ApprovalTests
 		{
 			return @"Tools";
 		}
+
+		private ApprovalToolsSettings settings = ApprovalTestsPlugIn.Settings;
+
+		private void UpdateData()
+		{
+			settings.RunTestAfterApproval = checkBoxRunTestAfterApproval.Checked;
+		}
+
+		public void UpdateScreen(ApprovalToolsSettings settings)
+		{
+			checkBoxRunTestAfterApproval.Checked = settings.RunTestAfterApproval;
+		}
+
+		private void UpdateScreen()
+		{
+			UpdateScreen(settings);
+		}
+
+		private void buttonApply_Click(object sender, System.EventArgs e)
+		{
+			UpdateData();
+			ApprovalTestsPlugIn.Settings = settings;
+		}
 	}
 }

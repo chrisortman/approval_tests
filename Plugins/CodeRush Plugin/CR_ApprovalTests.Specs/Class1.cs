@@ -25,6 +25,7 @@ namespace CR_ApprovalTests.Specs
 			File.Delete(file1);
 			File.Delete(file2);
 		}
+
 		[Test]
 		public void Testdelete()
 		{

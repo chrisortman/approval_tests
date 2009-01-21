@@ -32,12 +32,15 @@ namespace CR_ApprovalTests.CodeProviders
 		{
 			try
 			{
-				if (CodeRush.Command.Exists(unitTestCommand))
-					CodeRush.Command.Execute(unitTestCommand);	
+				if(ApprovalTestsPlugIn.Settings.RunTestAfterApproval)
+				{
+					if (CodeRush.Command.Exists(unitTestCommand))
+						CodeRush.Command.Execute(unitTestCommand);
+				}
 			}
 			catch (Exception ex)
 			{
-				Log.Send(ex.Message);
+				Log.Send("Error excuting unit test commeand", ex.Message);
 			}
 			
 		}

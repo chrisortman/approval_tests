@@ -42,7 +42,8 @@ namespace CR_ApprovalTests
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.checkBoxRunTestAfterApproval = new System.Windows.Forms.CheckBox();
+			this.buttonApply = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -71,16 +72,30 @@ namespace CR_ApprovalTests
 			this.button1.Text = "&Browse";
 			this.button1.UseVisualStyleBackColor = true;
 			// 
-			// textBox2
+			// checkBoxRunTestAfterApproval
 			// 
-			this.textBox2.Location = new System.Drawing.Point(188, 218);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(100, 20);
-			this.textBox2.TabIndex = 3;
+			this.checkBoxRunTestAfterApproval.AutoSize = true;
+			this.checkBoxRunTestAfterApproval.Location = new System.Drawing.Point(18, 54);
+			this.checkBoxRunTestAfterApproval.Name = "checkBoxRunTestAfterApproval";
+			this.checkBoxRunTestAfterApproval.Size = new System.Drawing.Size(134, 17);
+			this.checkBoxRunTestAfterApproval.TabIndex = 3;
+			this.checkBoxRunTestAfterApproval.Text = "Run test after approval";
+			this.checkBoxRunTestAfterApproval.UseVisualStyleBackColor = true;
+			// 
+			// buttonApply
+			// 
+			this.buttonApply.Location = new System.Drawing.Point(310, 343);
+			this.buttonApply.Name = "buttonApply";
+			this.buttonApply.Size = new System.Drawing.Size(75, 23);
+			this.buttonApply.TabIndex = 4;
+			this.buttonApply.Text = "Apply";
+			this.buttonApply.UseVisualStyleBackColor = true;
+			this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
 			// 
 			// Options
 			// 
-			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.buttonApply);
+			this.Controls.Add(this.checkBoxRunTestAfterApproval);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label1);
@@ -145,6 +160,7 @@ namespace CR_ApprovalTests
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.CheckBox checkBoxRunTestAfterApproval;
+		private System.Windows.Forms.Button buttonApply;
 	}
 }

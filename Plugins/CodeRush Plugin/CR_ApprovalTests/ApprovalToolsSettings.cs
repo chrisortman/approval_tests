@@ -5,6 +5,7 @@ namespace CR_ApprovalTests
 {
 	public class ApprovalToolsSettings
 	{
+		public bool RunTestAfterApproval { get; set; }
 		public string DiffTextTool { get; set; }
 		public string DiffTextToolArgs { get; set; }
 		public string DiffImageTool { get; set; }

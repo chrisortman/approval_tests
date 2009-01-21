@@ -8,7 +8,7 @@ namespace CR_ApprovalTests
 {
 	public partial class ApprovalTestsPlugIn : StandardPlugIn
 	{
-		public ApprovalToolsSettings Settings { get; set; }
+		public static ApprovalToolsSettings Settings { get; set; }
 
 		public override void InitializePlugIn()
 		{
