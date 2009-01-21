@@ -1,6 +1,8 @@
+using System;
 using System.Drawing;
 using System.IO;
 using DevExpress.CodeRush.Core;
+using DevExpress.CodeRush.Diagnostics.Commands;
 
 namespace CR_ApprovalTests.CodeProviders
 {
@@ -28,8 +30,16 @@ namespace CR_ApprovalTests.CodeProviders
 
 		private void RerunTests()
 		{
-			if (CodeRush.Command.Exists(unitTestCommand))
-				CodeRush.Command.Execute(unitTestCommand);
+			try
+			{
+				if (CodeRush.Command.Exists(unitTestCommand))
+					CodeRush.Command.Execute(unitTestCommand);	
+			}
+			catch (Exception ex)
+			{
+				Log.Send(ex.Message);
+			}
+			
 		}
 	}
 }
