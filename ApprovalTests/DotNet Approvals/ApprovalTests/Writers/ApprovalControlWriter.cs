@@ -39,20 +39,6 @@ namespace ApprovalTests
 
 		private void EnsureControlDisplaysCorrectly()
 		{
-			using (Graphics g = control.CreateGraphics())
-			{
-				g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
-				g.SmoothingMode = SmoothingMode.HighQuality;
-				
-				var points = new Point[2];
-                points[0].X = 0;
-                points[0].Y = 0;
-				points[1].X = control.Width;
-                points[1].Y = control.Height;
-				g.DrawLines(Pens.Red,points );
-			}
-
-
 			AddToHiddenForm();
 		}
 
@@ -61,11 +47,13 @@ namespace ApprovalTests
 			var tempForm = new Form
 			{
 				ShowInTaskbar = false,
-				WindowState = FormWindowState.Minimized
+				AllowTransparency = true,
+				Opacity = 0
 			};
 
 			tempForm.Controls.Add(control);
 			tempForm.Show();
+			control.Show();
 		}
 	}
 }

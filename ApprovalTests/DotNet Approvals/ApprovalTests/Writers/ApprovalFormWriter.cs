@@ -28,13 +28,29 @@ namespace ApprovalTests
 
 		public string WriteReceivedFile(string received)
 		{
-			form.Show();
-
+			EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm();
+			
 			var b = new Bitmap(form.Width, form.Height, PixelFormat.Format32bppArgb);
 			form.DrawToBitmap(b, new Rectangle(0, 0, form.Width, form.Height));
 			b.Save(received, ImageFormat.Png);
 
 			return received;
+		}
+
+		private void EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm()
+		{
+			var tempForm = new Form
+			{
+				IsMdiContainer = true,
+				ShowInTaskbar = false,
+				AllowTransparency = true,
+				Opacity = 0
+			};
+
+			form.MdiParent = tempForm;
+			tempForm.Show();
+			form.Show();
+			
 		}
 	}
 }
