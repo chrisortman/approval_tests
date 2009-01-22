@@ -26,10 +26,26 @@ namespace ApprovalTests
 
 		public string WriteReceivedFile(string received)
 		{
-			Bitmap b = new Bitmap(control.Width, control.Height, PixelFormat.Format32bppArgb);
-			control.DrawToBitmap(b, new Rectangle(0, 0, control.Width, control.Height));
+			EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm();
+
+			var b = new Bitmap(control.Width, control.Height, PixelFormat.Format32bppArgb);
+			ControlPainter.PaintControl(Graphics.FromImage(b), control);
 			b.Save(received, ImageFormat.Png);
+
 			return received;
+		}
+
+		private void EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm()
+		{
+			var tempForm = new Form
+			{
+				Height = 0,
+				Width = 0,
+				ShowInTaskbar = false
+			};
+
+			tempForm.Controls.Add(control);
+			tempForm.Show();
 		}
 	}
 }
