@@ -14,16 +14,26 @@ namespace ApprovalTests.WinForms
 
 		private static void EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm(Control control)
 		{
-			// This is a hack
-			var f = new Form
+			var tempForm = new Form
 			{
 				Height = 0,
 				Width = 0,
-				ShowInTaskbar = false
+				ShowInTaskbar = false,
+				IsMdiContainer = true,
 			};
 
-			f.Controls.Add(control);
-			f.Show();
+			if (control is Form)
+				AddToMdiContainerAndShow((Form) control, tempForm);
+			else
+				tempForm.Controls.Add(control);
+
+			tempForm.Show();
+		}
+
+		private static void AddToMdiContainerAndShow(Form form, Form mdiContainer)
+		{
+			form.MdiParent = mdiContainer;
+			form.Show();
 		}
 	}
 }
