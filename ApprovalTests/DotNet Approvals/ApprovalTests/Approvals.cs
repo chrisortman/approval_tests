@@ -49,8 +49,7 @@ namespace ApprovalTests
 			Approve(EnumerableWriter.Write(enumerable, formatter));
 		}
 
-
-		public static IApprovalFailureReporter GetDefaultReporter()
+        public static IApprovalFailureReporter GetDefaultReporter()
 		{
 			return reporters.Count == 0 ? QuietReporter.Instance : reporters[0];
 		}

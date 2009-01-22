@@ -9,7 +9,7 @@ namespace ApprovalTests.WinForms
 		{
 			EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm(control);
 
-			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
+			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new StackTraceNamer(), QuietReporter.Instance/*ApprovalTests.Approvals.GetDefaultReporter()*/);
 		}
 
 		private static void EnsureControlDisplaysCorrectlyByAddingItToAHiddenForm(Control control)
