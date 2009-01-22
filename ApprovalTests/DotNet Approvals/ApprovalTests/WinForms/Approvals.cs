@@ -28,12 +28,12 @@ namespace ApprovalTests.WinForms
 				tempForm.Controls.Add(control);
 
 			tempForm.Show();
+			control.Show();
 		}
 
 		private static void AddToMdiContainerAndShow(Form form, Form mdiContainer)
 		{
 			form.MdiParent = mdiContainer;
-			form.Show();
 		}
 	}
 }
