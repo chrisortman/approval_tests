@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using ApprovalTests.StackTraceParsers;
+using ApprovalTests.Writers;
 
 namespace ApprovalTests.WinForms
 {

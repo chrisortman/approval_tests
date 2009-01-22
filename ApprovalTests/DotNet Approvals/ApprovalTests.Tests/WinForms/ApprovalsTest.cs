@@ -20,6 +20,7 @@ namespace ApprovalTests.Tests.WinForms
 		[Test]
 		public void TestFormApproval()
 		{
+
 			ApprovalTests.WinForms.Approvals.Approve(new Form());
 		}
 	}
