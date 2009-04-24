@@ -51,10 +51,11 @@
   <ItemGroup>
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="CleanupReporter.cs" />
-    <Compile Include="VSTestStackTraceNamerTests.cs" />
+    <Compile Include="Namer\VSTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NunitStackTraceNamerTests.cs" />
+    <Compile Include="Namer\NunitStackTraceNamerTests.cs" />
+    <Compile Include="Reporters\ReporterFactoryTest.cs" />
     <Compile Include="StackTraceParsers\MSpecStackTraceParserTests.cs" />
     <Compile Include="WinForms\ApprovalsTest.cs" />
   </ItemGroup>

@@ -1,39 +1,59 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace ApprovalTests.StackTraceParsers
 {
-	public class StackTraceParser : IStackTraceParser
-	{
-		private IStackTraceParser parser;
+    public class StackTraceParser : IStackTraceParser
+    {
+        private static IStackTraceParser[] parsers;
+        private IStackTraceParser parser;
 
-		private static readonly IStackTraceParser[] parsers = {
-		                                                      	new NUnitStackTraceParser(), new VSStackTraceParser()
-		                                                      };
+        #region IStackTraceParser Members
 
+        public bool Parse(StackTrace stackTrace)
+        {
+            foreach (IStackTraceParser p in getParsers())
+            {
+                if (p.Parse(stackTrace))
+                {
+                    parser = p;
+                    return true;
+                }
+            }
 
-		public bool Parse(StackTrace stackTrace)
-		{
-			foreach (IStackTraceParser p in parsers)
-			{
-				if (p.Parse(stackTrace))
-				{
-					parser = p;
-					return true;
-				}
-			}
+            throw new Exception(string.Format("Could Find Namer for {0}", stackTrace));
+        }
 
-			throw new Exception(string.Format("Could not determine name from {0}", stackTrace));
-		}
+        public string ApprovalName
+        {
+            get { return parser.ApprovalName; }
+        }
 
-		public string ApprovalName
-		{
-			get { return parser.ApprovalName; }
-		}
+        public string SourcePath
+        {
+            get { return parser.SourcePath; }
+        }
 
-		public string SourcePath
-		{
-			get { return parser.SourcePath; }
-		}
-	}
+        #endregion
+
+        private static void LoadIfApplicable(List<IStackTraceParser> found, AttributeStackTraceParser p)
+        {
+            if (p.IsApplicable())
+            {
+                found.Add(p);
+            }
+        }
+        private IStackTraceParser[] getParsers()
+        {
+            if (parsers == null)
+            {
+                var found = new List<IStackTraceParser>();
+                LoadIfApplicable(found, new NUnitStackTraceParser());
+                LoadIfApplicable(found, new VSStackTraceParser());
+                parsers = found.ToArray();
+            }
+            return parsers;
+        }
+    }
 }
