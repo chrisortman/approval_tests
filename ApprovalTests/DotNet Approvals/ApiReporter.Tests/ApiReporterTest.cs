@@ -19,18 +19,18 @@ namespace ApiReporter.Tests
 		}
 
 		[Test]
+		[UseReporter(Reporter =typeof(OpenReceivedFileReporter))]
 		public void ReporterOutputTest()
 		{
-			Approvals.RegisterReporter(new OpenReceivedFileReporter());
 			ApiNamespaceReporter apiReporter = new ApiNamespaceReporter(typeof(A));
 			string output = apiReporter.GenerateReport(ExampleNamespace);
 			Approvals.Approve(output);
 		}
 
 		[Test]
+		[UseReporter(Reporter = typeof(OpenReceivedFileReporter))]
 		public void ReporterOutputAPITest()
 		{
-			Approvals.RegisterReporter(new OpenReceivedFileReporter());
 			ApiNamespaceReporter apiReporter = new ApiNamespaceReporter(typeof(Approvals));
 			string output = apiReporter.GenerateReport("ApprovalTests");
 			Approvals.Approve(output);

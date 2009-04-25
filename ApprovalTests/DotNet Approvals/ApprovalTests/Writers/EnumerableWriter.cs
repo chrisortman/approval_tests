@@ -6,6 +6,14 @@ namespace ApprovalTests.Writers
 {
 	public class EnumerableWriter
 	{
+		#region Delegates
+
+		public delegate string CustomFormatter<T>(T item);
+
+		public delegate string CustomFormatterWithIndex<T>(int index, T item);
+
+		#endregion
+
 		public static string Write<T>(IEnumerable<T> enumerable, String label)
 		{
 			return Write(enumerable, label, s => s.ToString());
@@ -13,7 +21,8 @@ namespace ApprovalTests.Writers
 
 		public static string Write<T>(IEnumerable<T> enumerable, string label, CustomFormatter<T> formatter)
 		{
-			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}" + Environment.NewLine, label, i, formatter(s)), string.Format("{0} is empty", label));
+			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}" + Environment.NewLine, label, i, formatter(s)),
+			             string.Format("{0} is empty", label));
 		}
 
 		public static string Write<T>(IEnumerable<T> enumerable, CustomFormatter<T> formatter)
@@ -34,8 +43,5 @@ namespace ApprovalTests.Writers
 
 			return sb.ToString();
 		}
-
-		public delegate string CustomFormatter<T>(T item);
-		public delegate string CustomFormatterWithIndex<T>(int index, T item);
 	}
 }

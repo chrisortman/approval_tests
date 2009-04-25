@@ -1,4 +1,4 @@
-namespace ApprovalTests
+namespace ApprovalTests.Core
 {
 	public interface IApprovalFailureReporter
 	{

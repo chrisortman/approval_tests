@@ -1,18 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using ApprovalTests.Exceptions;
-using ApprovalTests.Writers;
+using ApprovalTests.Core;
+using ApprovalTests.Core.Exceptions;
 
 namespace ApprovalTests.Approvers
 {
 	public class FileApprover : IApprovalApprover
 	{
-		private readonly IApprovalWriter writer;
 		private readonly IApprovalNamer namer;
+		private readonly IApprovalWriter writer;
 		private string approved;
-		private string received;
 		private ApprovalException failure;
+		private string received;
 
 		public FileApprover(IApprovalWriter writer, IApprovalNamer namer)
 		{
@@ -57,20 +56,20 @@ namespace ApprovalTests.Approvers
 			File.Delete(received);
 		}
 
-		private static bool Compare(ICollection<byte> bytes1, ICollection<byte> bytes2)
+		private bool Compare(ICollection<byte> bytes1, ICollection<byte> bytes2)
 		{
 			if (bytes1.Count != bytes2.Count)
 				return false;
 
-			var e1 = bytes1.GetEnumerator();
-			var e2 = bytes2.GetEnumerator();
-			
+			IEnumerator<byte> e1 = bytes1.GetEnumerator();
+			IEnumerator<byte> e2 = bytes2.GetEnumerator();
+
 			while (e1.MoveNext() && e2.MoveNext())
 			{
 				if (e1.Current != e2.Current)
 					return false;
 			}
-            
+
 			return true;
 		}
 	}

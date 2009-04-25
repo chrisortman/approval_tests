@@ -1,9 +1,7 @@
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Drawing.Text;
 using System.Windows.Forms;
-using ApprovalTests.Writers;
+using ApprovalTests.Core;
 
 namespace ApprovalTests
 {
@@ -15,6 +13,8 @@ namespace ApprovalTests
 		{
 			control = controlHandle;
 		}
+
+		#region IApprovalWriter Members
 
 		public string GetApprovalFilename(string basename)
 		{
@@ -37,6 +37,8 @@ namespace ApprovalTests
 			return received;
 		}
 
+		#endregion
+
 		private void EnsureControlDisplaysCorrectly()
 		{
 			AddToHiddenForm();
@@ -45,11 +47,11 @@ namespace ApprovalTests
 		private void AddToHiddenForm()
 		{
 			var tempForm = new Form
-			{
-				ShowInTaskbar = false,
-				AllowTransparency = true,
-				Opacity = 0
-			};
+			               	{
+			               		ShowInTaskbar = false,
+			               		AllowTransparency = true,
+			               		Opacity = 0
+			               	};
 
 			tempForm.Controls.Add(control);
 			tempForm.Show();

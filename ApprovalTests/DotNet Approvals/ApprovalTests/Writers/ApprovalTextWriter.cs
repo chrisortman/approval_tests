@@ -1,5 +1,5 @@
 using System.IO;
-using ApprovalTests.Writers;
+using ApprovalTests.Core;
 
 namespace ApprovalTests
 {
@@ -11,6 +11,8 @@ namespace ApprovalTests
 		{
 			this.data = data;
 		}
+
+		#region IApprovalWriter Members
 
 		public string GetApprovalFilename(string basename)
 		{
@@ -28,5 +30,7 @@ namespace ApprovalTests
 			File.WriteAllText(received, data);
 			return received;
 		}
+
+		#endregion
 	}
 }

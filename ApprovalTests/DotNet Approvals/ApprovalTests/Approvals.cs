@@ -2,128 +2,96 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using ApprovalTests.Approvers;
-using ApprovalTests.StackTraceParsers;
+using ApprovalTests.Core;
+using ApprovalTests.Core;
+using ApprovalTests.Namers;
+using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
 
 namespace ApprovalTests
 {
-    public class Approvals
-    {
-        private static readonly List<IApprovalFailureReporter> reporters = new List<IApprovalFailureReporter>();
+	public class Approvals
+	{
+		#region Text
 
-        public static void Approve(string data)
-        {
-            Approve(new ApprovalTextWriter(data), new StackTraceNamer(), GetDefaultReporter());
-        }
+		/// <summary>
+		/// Approves the provided text. Produces a .txt file as an artifact.
+		/// </summary>
+		/// <param name="text">Text to approve.</param>
+		public static void Approve(string text)
+		{
+			Approve(new ApprovalTextWriter(text), new UnitTestFrameworkNamer(), GetReporter());
+		}
 
-        public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
-        {
-            Approve(new FileApprover(writer, namer), reporter);
-        }
+		#endregion
 
-        public static void Approve(IApprovalApprover approver, IApprovalFailureReporter reporter)
-        {
-            if (approver.Approve())
-                approver.CleanUpAfterSucess();
-            else
-            {
-                approver.ReportFailure(reporter);
+		#region Enumerable
 
-                if (reporter.ApprovedWhenReported())
-                    approver.CleanUpAfterSucess();
-                else
-                    approver.Fail();
-            }
-        }
+		public static void Approve<T>(IEnumerable<T> enumerable, string label)
+		{
+			Approve(EnumerableWriter.Write(enumerable, label));
+		}
 
-        public static void Approve<T>(IEnumerable<T> enumerable, string label)
-        {
-            Approve(EnumerableWriter.Write(enumerable, label));
-        }
+		public static void Approve<T>(IEnumerable<T> enumerable, string label, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			Approve(EnumerableWriter.Write(enumerable, label, formatter));
+		}
 
-        public static void Approve<T>(IEnumerable<T> enumerable, string label,
-                                      EnumerableWriter.CustomFormatter<T> formatter)
-        {
-            Approve(EnumerableWriter.Write(enumerable, label, formatter));
-        }
+		public static void Approve<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			Approve(EnumerableWriter.Write(enumerable, formatter));
+		}
 
-        public static void Approve<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
-        {
-            Approve(EnumerableWriter.Write(enumerable, formatter));
-        }
+		#endregion
 
-        public static IApprovalFailureReporter GetDefaultReporter()
-        {
-            IApprovalFailureReporter rep = GetReporterFromAttribute();
-            if (rep != null)
-            {
-                return rep;
-            }
-            return reporters.Count == 0 ? QuietReporter.Instance : reporters[0];
-        }
+		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
+		{
+			ApprovalTests.Core.Approvals.Approve(new FileApprover(writer, namer), reporter);
+		}
 
-        private static IApprovalFailureReporter GetReporterFromAttribute()
-        {
-            var frame = GetFirstFrameForAttribute(new StackTrace(true).GetFrames(), typeof (UseReporterAttribute));
-            if (frame != null)
-            {
-                return (IApprovalFailureReporter) Activator.CreateInstance((frame).reporter);
-            }
-            return null;
-        }
+		public static IApprovalFailureReporter GetReporter()
+		{
+			return GetReporterFromAttribute() ?? new QuietReporter();
+		}
 
-        public static UseReporterAttribute GetFirstFrameForAttribute(StackFrame[] frames, Type attribute)
-        {
-            if (frames == null)
-                return null;
+		private static IApprovalFailureReporter GetReporterFromAttribute()
+		{
+			UseReporterAttribute frame = GetFirstFrameForAttribute(new StackTrace(true).GetFrames(),
+			                                                       typeof (UseReporterAttribute));
+			if (frame != null)
+			{
+				return (IApprovalFailureReporter) Activator.CreateInstance((frame).Reporter);
+			}
+			return null;
+		}
 
+		public static UseReporterAttribute GetFirstFrameForAttribute(StackFrame[] frames, Type attribute)
+		{
+			if (frames == null)
+				return null;
 
-            for (int i = 0; i < frames.Length; i++)
-            {
-                
-                var attributes = frames[i].GetMethod().GetCustomAttributes(attribute, true);
-                if (attributes.Length != 0)
-                {
-                    return (UseReporterAttribute) attributes[0];
-                }
+			for (int i = 0; i < frames.Length; i++)
+			{
+				object[] attributes = frames[i].GetMethod().GetCustomAttributes(attribute, true);
+				if (attributes.Length != 0)
+				{
+					return (UseReporterAttribute) attributes[0];
+				}
 
-                attributes = frames[i].GetMethod().ReflectedType.GetCustomAttributes(attribute, true);
-                if (attributes.Length != 0)
-                {
-                    return (UseReporterAttribute)attributes[0];
-                }
-            }
+				attributes = frames[i].GetMethod().DeclaringType.GetCustomAttributes(attribute, true);
+				if (attributes.Length != 0)
+				{
+					return (UseReporterAttribute) attributes[0];
+				}
+			}
 
-            return null;
-        }
+			return null;
+		}
+	}
 
-
-        public static void RegisterReporter(IApprovalFailureReporter reporter)
-        {
-            reporters.Insert(0, reporter);
-            ;
-        }
-
-        public static void UnregisterReporter(IApprovalFailureReporter reporter)
-        {
-            reporters.Remove(reporter);
-        }
-
-        public static void UnregisterLastReporter()
-        {
-            reporters.RemoveAt(0);
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.All)]
-    public class UseReporterAttribute : Attribute
-    {
-        private Type _reporter;
-
-        public Type reporter
-        {
-            set { _reporter = value; }
-            get { return _reporter; }
-        }
-    }
+	[AttributeUsage(AttributeTargets.All)]
+	public class UseReporterAttribute : Attribute
+	{
+		public Type Reporter { set; get; }
+	}
 }

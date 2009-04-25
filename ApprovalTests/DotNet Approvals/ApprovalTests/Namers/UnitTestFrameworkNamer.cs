@@ -1,17 +1,20 @@
 using System.Diagnostics;
-using ApprovalTests.Approvers;
+using ApprovalTests.Core;
+using ApprovalTests.StackTraceParsers;
 
-namespace ApprovalTests.StackTraceParsers
+namespace ApprovalTests.Namers
 {
-	public class StackTraceNamer : IApprovalNamer
+	public class UnitTestFrameworkNamer : IApprovalNamer
 	{
 		private readonly StackTraceParser stackTraceParser;
 
-		public StackTraceNamer()
+		public UnitTestFrameworkNamer()
 		{
 			stackTraceParser = new StackTraceParser();
 			stackTraceParser.Parse(new StackTrace(true));
 		}
+
+		#region IApprovalNamer Members
 
 		public string Name
 		{
@@ -22,5 +25,7 @@ namespace ApprovalTests.StackTraceParsers
 		{
 			get { return stackTraceParser.SourcePath; }
 		}
+
+		#endregion
 	}
 }

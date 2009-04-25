@@ -1,4 +1,4 @@
-namespace ApprovalTests.Writers
+namespace ApprovalTests.Core
 {
 	public interface IApprovalWriter
 	{

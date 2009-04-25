@@ -1,4 +1,4 @@
-namespace ApprovalTests.Approvers
+namespace ApprovalTests.Core
 {
 	public interface IApprovalNamer
 	{

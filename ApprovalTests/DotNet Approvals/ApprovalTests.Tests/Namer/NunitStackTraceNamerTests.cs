@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using ApprovalTests.StackTraceParsers;
+using ApprovalTests.Namers;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.Namer
 {
-    [TestFixture]
+	[TestFixture]
     public class NunitStackTraceNamerTests
     {
         public static string GetPathGetFullPathToLower()
@@ -15,17 +15,17 @@ namespace ApprovalTests.Tests.Namer
             return pathGetFullPathToLower;
         }
 
-        [Test]
-        public void TestApprovalName()
+		[Test]
+		public void TestApprovalName()
         {
-            string name = new StackTraceNamer().Name;
+            string name = new UnitTestFrameworkNamer().Name;
             Assert.AreEqual("NunitStackTraceNamerTests.TestApprovalName", name);
         }
 
-        [Test]
+		[Test]
         public void TestSourcePath()
         {
-            string name = new StackTraceNamer().SourcePath;
+            string name = new UnitTestFrameworkNamer().SourcePath;
             Assert.AreEqual(GetPathGetFullPathToLower(), name.ToLower());
         }
     }

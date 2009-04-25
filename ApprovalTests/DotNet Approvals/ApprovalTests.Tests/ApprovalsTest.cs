@@ -1,23 +1,20 @@
-﻿using ApprovalTests.Exceptions;
-using NUnit.Framework;
+﻿using ApprovalTests.Core.Exceptions;
+using MbUnit.Framework;
 
 namespace ApprovalTests.Tests
 {
 	[TestFixture]
 	public class ApprovalsTest
 	{
-		public void CleanUpAfter()
-		{
-			Approvals.RegisterReporter(new CleanupReporter());
-		}
-
 		[Test]
+		[Parallelizable]
 		public void TextMatchesApproval()
 		{
 			Approvals.Approve("should be a approved");
 		}
 
 		[Test]
+		[Parallelizable]
 		public void EnumerableMatchesApproval()
 		{
 			Approvals.Approve(new[]
@@ -27,26 +24,29 @@ namespace ApprovalTests.Tests
 		}
 
 		[Test]
+		[Parallelizable]
+		[UseReporter(Reporter = typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMismatchException))]
 		public void TextDoesNotMatchApproval()
 		{
-			CleanUpAfter();
 			Approvals.Approve("should fail with mismatch");
 		}
 
 		[Test]
+		[Parallelizable]
+		[UseReporter(Reporter = typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMissingException))]
 		public void TextNotApprovedYet()
 		{
-			CleanUpAfter();
 			Approvals.Approve("should fail with a missing exception");
 		}
 
 		[Test]
+		[Parallelizable]
+		[UseReporter(Reporter = typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMismatchException))]
 		public void EnumerableDoesNotMatchApproval()
 		{
-			CleanUpAfter();
 			Approvals.Approve(new[]
 			{
 				"Does not match"
@@ -54,10 +54,11 @@ namespace ApprovalTests.Tests
 		}
 
 		[Test]
+		[Parallelizable]
+		[UseReporter(Reporter = typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMissingException))]
 		public void EnumerableNotApprovedYet()
 		{
-			CleanUpAfter();
 			Approvals.Approve(new[]
 			{
 				"Not approved"

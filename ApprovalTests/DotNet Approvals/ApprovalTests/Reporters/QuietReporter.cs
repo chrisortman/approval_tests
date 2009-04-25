@@ -1,11 +1,11 @@
 using System.Diagnostics;
+using ApprovalTests.Core;
 
-namespace ApprovalTests
+namespace ApprovalTests.Reporters
 {
 	public class QuietReporter : IApprovalFailureReporter
 	{
-		public static QuietReporter Instance = new QuietReporter();
-
+		#region IApprovalFailureReporter Members
 
 		public void Report(string approved, string received)
 		{
@@ -16,5 +16,7 @@ namespace ApprovalTests
 		{
 			return false;
 		}
+
+		#endregion
 	}
 }

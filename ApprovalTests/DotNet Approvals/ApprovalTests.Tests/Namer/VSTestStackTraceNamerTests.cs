@@ -1,3 +1,4 @@
+using ApprovalTests.Namers;
 using ApprovalTests.StackTraceParsers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,7 +10,7 @@ namespace ApprovalTests.Tests.Namer
         [TestMethod]
         public void TestApprovalName()
         {
-            string name = new StackTraceNamer().Name;
+            string name = new UnitTestFrameworkNamer().Name;
             Assert.AreEqual("VSTestStackTraceNamerTests.TestApprovalName", name);
         }
 
@@ -17,7 +18,7 @@ namespace ApprovalTests.Tests.Namer
         [TestMethod]
         public void TestSourcePath()
         {
-            string name = new StackTraceNamer().SourcePath;
+            string name = new UnitTestFrameworkNamer().SourcePath;
             Assert.AreEqual(NunitStackTraceNamerTests.GetPathGetFullPathToLower(), name.ToLower());
         }
 

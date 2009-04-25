@@ -1,7 +1,6 @@
 ﻿using System;
-using ApprovalTests.Approvers;
+using ApprovalTests.Core;
 using ApprovalTests.Writers;
-using Moq;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests

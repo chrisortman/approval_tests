@@ -1,18 +1,19 @@
 using System;
+using ApprovalTests.Core;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.Reporters
 {
     [TestFixture]
-    [UseReporter(reporter=typeof(MyReporter2))]
+    [UseReporter(Reporter=typeof(MyReporter2))]
     public class ReporterFactoryTest
     {
         [Test]
-        [UseReporter(reporter = typeof(MyReporter))]
+        [UseReporter(Reporter = typeof(MyReporter))]
         public void TestMethodOverride()
         {
 
-            Assert.AreEqual(typeof(MyReporter), Approvals.GetDefaultReporter().GetType());
+            Assert.AreEqual(typeof(MyReporter), Approvals.GetReporter().GetType());
             
 
         }
@@ -20,7 +21,7 @@ namespace ApprovalTests.Tests.Reporters
         public void TestClassLevel()
         {
 
-            Assert.AreEqual(typeof(MyReporter2), Approvals.GetDefaultReporter().GetType());
+            Assert.AreEqual(typeof(MyReporter2), Approvals.GetReporter().GetType());
          
 
         }

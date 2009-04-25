@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
-using ApprovalTests.StackTraceParsers;
-using ApprovalTests.Writers;
+using ApprovalTests.Namers;
 
 namespace ApprovalTests.WinForms
 {
@@ -8,12 +7,14 @@ namespace ApprovalTests.WinForms
 	{
 		public static void Approve(Form form)
 		{
-			ApprovalTests.Approvals.Approve(new ApprovalFormWriter(form), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
+			ApprovalTests.Approvals.Approve(new ApprovalFormWriter(form), new UnitTestFrameworkNamer(),
+			                                ApprovalTests.Approvals.GetReporter());
 		}
 
 		public static void Approve(Control control)
 		{
-			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new StackTraceNamer(), ApprovalTests.Approvals.GetDefaultReporter());
+			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new UnitTestFrameworkNamer(),
+			                                ApprovalTests.Approvals.GetReporter());
 		}
 	}
 }

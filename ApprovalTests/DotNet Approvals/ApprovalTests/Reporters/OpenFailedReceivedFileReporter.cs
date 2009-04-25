@@ -1,12 +1,15 @@
 using System.Diagnostics;
+using ApprovalTests.Core;
 
 namespace ApprovalTests.Reporters
 {
 	public class OpenReceivedFileReporter : IApprovalFailureReporter
 	{
+		#region IApprovalFailureReporter Members
+
 		public void Report(string approved, string received)
 		{
-			QuietReporter.Instance.Report(approved, received);
+			new QuietReporter().Report(approved, received);
 			Process.Start(received);
 		}
 
@@ -14,5 +17,7 @@ namespace ApprovalTests.Reporters
 		{
 			return false;
 		}
+
+		#endregion
 	}
 }
