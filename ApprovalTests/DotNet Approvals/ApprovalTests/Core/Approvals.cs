@@ -1,5 +1,4 @@
 ﻿using ApprovalTests.Core;
-using ApprovalTests.Writers;
 
 namespace ApprovalTests.Core
 {

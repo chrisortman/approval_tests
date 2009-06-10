@@ -14,6 +14,11 @@ namespace ApprovalTests.Writers
 
 		#endregion
 
+		public static string Write<T>(IEnumerable<T> enumerable)
+		{
+			return Write(enumerable, s => s.ToString());
+		}
+
 		public static string Write<T>(IEnumerable<T> enumerable, String label)
 		{
 			return Write(enumerable, label, s => s.ToString());

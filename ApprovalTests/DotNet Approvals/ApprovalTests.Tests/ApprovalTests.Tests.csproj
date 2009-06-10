@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="CleanupReporter.cs" />
-    <Compile Include="Namer\VSTestStackTraceNamerTests.cs" />
+    <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Namer\NunitStackTraceNamerTests.cs" />

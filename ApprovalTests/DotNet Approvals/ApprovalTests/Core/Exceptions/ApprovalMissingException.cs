@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace ApprovalTests.Exceptions
+namespace ApprovalTests.Core.Exceptions
 {
 	[Serializable]
 	public class ApprovalMissingException : ApprovalException

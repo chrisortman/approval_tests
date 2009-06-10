@@ -1,1 +1,0 @@
-classes[0] = ApiReporter.Tests.Examples.A

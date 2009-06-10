@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Approvals.cs" />
-    <Compile Include="Core\Exceptions\ApprovalException.cs" />
     <Compile Include="Approvals.cs" />
+    <Compile Include="Core\Exceptions\ApprovalException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Reporters\OpenFailedReceivedFileReporter.cs" />

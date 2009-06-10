@@ -27,6 +27,11 @@ namespace ApprovalTests
 
 		#region Enumerable
 
+		public static void Approve<T>(IEnumerable<T> enumerable)
+		{
+			Approve(EnumerableWriter.Write(enumerable));
+		}
+
 		public static void Approve<T>(IEnumerable<T> enumerable, string label)
 		{
 			Approve(EnumerableWriter.Write(enumerable, label));

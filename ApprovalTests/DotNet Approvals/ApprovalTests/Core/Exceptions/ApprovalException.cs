@@ -1,18 +1,24 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace ApprovalTests.Exceptions
+namespace ApprovalTests.Core.Exceptions
 {
 	[Serializable]
 	public class ApprovalException : Exception
 	{
-		private readonly string received;
 		private readonly string approved;
+		private readonly string received;
 
 		public ApprovalException(SerializationInfo info, StreamingContext context) : base(info, context)
 		{
 			approved = info.GetString("Approved");
 			received = info.GetString("Received");
+		}
+
+		public ApprovalException(string received, string approved)
+		{
+			this.received = received;
+			this.approved = approved;
 		}
 
 		public string Received
@@ -23,12 +29,6 @@ namespace ApprovalTests.Exceptions
 		public string Approved
 		{
 			get { return approved; }
-		}
-
-		public ApprovalException(string received, string approved)
-		{
-			this.received = received;
-			this.approved = approved;
 		}
 
 		public override void GetObjectData(SerializationInfo info, StreamingContext context)
