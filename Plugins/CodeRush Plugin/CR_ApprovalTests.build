@@ -4,9 +4,7 @@
 	<property name="properites" value="CR_ApprovalTests.properties" />
 	<include buildfile="${properites}" if="${file::exists(properites)}"/>
 		
-	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
-	
-	<target name="nightlyBuild" depends="build,test,package, sourceforge">
+	<target name="nightlyBuild" depends="build,test,package,sourceforge">
 	</target>
 	
 	<target name="build">
@@ -20,17 +18,16 @@
 		</nunit2>
 	</target>
 
-	<target name="package">
-		<mkdir dir="${base}/results"/>
-		<zip zipfile="${base}/results/CR_ApprovalTests.zip">
-			<fileset basedir="${base}/CR_ApprovalTests/bin/debug/">
-				<include name="CR_ApprovalTests.dll" />
-			</fileset>
-		</zip>
-	</target>
+		<target name="cleanPackage">
+		<delete>
+		    <fileset>
+			<include name="${base}/results/*" />
+		    </fileset>
+		</delete>
+	</target>	
 
 	<target name="sourceforge">
-		<scp program="${base}/build/pscp.exe" file="${base}/results/CR_ApprovalTests.zip" server="frs.sourceforge.net" path="${uploadPath}" user="${username}" options="-pw ${password}"/>
+		<exec program="${base}/build/pscp.exe" commandline=" -pw ${password} ${base}/results/CR_ApprovalTests.dll ${username}@frs.sourceforge.net:${uploadPath}"/>
 	</target>
 </project>
 
