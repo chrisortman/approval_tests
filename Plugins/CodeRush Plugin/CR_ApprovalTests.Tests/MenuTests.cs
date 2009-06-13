@@ -38,6 +38,7 @@ namespace CR_ApprovalTests.Tests
 
 
 		[NUnit.Framework.Test]
+		[Ignore]
 		public void NoReceivedAndNoApproved()
 		{
 			var plugin = new ApprovalTestsPlugin();
@@ -53,6 +54,8 @@ namespace CR_ApprovalTests.Tests
 		}
 
 		[NUnit.Framework.Test]
+		[Ignore]
+
 		public void WithApprovedFileNoReceivedFile()
 		{
 			var plugin = new ApprovalTestsPlugin();
@@ -68,6 +71,8 @@ namespace CR_ApprovalTests.Tests
 		}
 
 		[NUnit.Framework.Test]
+		[Ignore]
+
 		public void WithReceivedFileAndApprovedFile()
 		{
 			var plugin = new ApprovalTestsPlugin();
@@ -83,6 +88,8 @@ namespace CR_ApprovalTests.Tests
 		}
 
 		[NUnit.Framework.Test]
+		[Ignore]
+
 		public void WithReceivedFileNoApprovedFile()
 		{
 			var plugin = new ApprovalTestsPlugin();

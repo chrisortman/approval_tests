@@ -83,10 +83,6 @@ namespace CR_ApprovalTests
 			ConstructMenu(ea);
 		}
 
-		private static void AddApproval(ApprovalArtifacts artifacts)
-		{
-		}
-
 		public void ConstructMenu(GetSmartTagItemsEventArgs ea)
 		{
 			var artifacts = new ApprovalArtifacts(CodeRush.Source.ActiveMethod);
