@@ -58,7 +58,7 @@
 	</target>
 
 	<target name="sourceforge">
-		<scp program="${base}/build/pscp.exe" file="${base}/results/${packageName}" server="frs.sourceforge.net" path="${uploadPath}" user="${username}" options="-pw ${password}"/>
+		<exec program="${base}/build/pscp.exe" commandline="${base}/results/${packageName} ${username}@frs.sourceforge.net:${uploadPath} -pw ${password}"/>
 	</target>
 </project>
 
