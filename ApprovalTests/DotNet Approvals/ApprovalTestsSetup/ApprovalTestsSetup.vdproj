@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_78E63EDD175D42B2A837D9720D4A70EF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_997CFEB7FA76436F8E30E3DA325655D9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,19 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D2F7CE1FDE7F62D2C5AE5FB5E855CD1E"
-        "OwnerKey" = "8:_78E63EDD175D42B2A837D9720D4A70EF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D2F7CE1FDE7F62D2C5AE5FB5E855CD1E"
         "OwnerKey" = "8:_997CFEB7FA76436F8E30E3DA325655D9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_78E63EDD175D42B2A837D9720D4A70EF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -259,7 +241,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Approval Tests"
         "ProductCode" = "8:{769F2899-A289-4F37-BA6C-B96F34BAF791}"
-        "PackageCode" = "8:{2123660D-E3AA-4510-82C6-11105AD3CACE}"
+        "PackageCode" = "8:{BEECEB00-BDF2-466A-90E9-C63C695C22EF}"
         "UpgradeCode" = "8:{094273AA-DBBF-4962-B879-9981F472DF2B}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -841,34 +823,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_78E63EDD175D42B2A837D9720D4A70EF"
-            {
-            "SourcePath" = "8:..\\ApprovalTests\\obj\\Release\\ApprovalTests.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_3746C2020EA84715A7851AF3223D4C62"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{F70C9A76-F797-4167-8178-14821F8634BC}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_997CFEB7FA76436F8E30E3DA325655D9"
             {
             "SourcePath" = "8:..\\ApprovalTests\\obj\\Release\\ApprovalTests.dll"
