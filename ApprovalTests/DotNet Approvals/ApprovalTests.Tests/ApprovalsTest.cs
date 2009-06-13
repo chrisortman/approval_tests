@@ -25,7 +25,7 @@ namespace ApprovalTests.Tests
 
 		[Test]
 		[Parallelizable]
-		[UseReporter(Reporter = typeof(CleanupReporter))]
+		[UseReporter(typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMismatchException))]
 		public void TextDoesNotMatchApproval()
 		{
@@ -34,7 +34,7 @@ namespace ApprovalTests.Tests
 
 		[Test]
 		[Parallelizable]
-		[UseReporter(Reporter = typeof(CleanupReporter))]
+		[UseReporter(typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMissingException))]
 		public void TextNotApprovedYet()
 		{
@@ -43,7 +43,7 @@ namespace ApprovalTests.Tests
 
 		[Test]
 		[Parallelizable]
-		[UseReporter(Reporter = typeof(CleanupReporter))]
+		[UseReporter(typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMismatchException))]
 		public void EnumerableDoesNotMatchApproval()
 		{
@@ -55,7 +55,7 @@ namespace ApprovalTests.Tests
 
 		[Test]
 		[Parallelizable]
-		[UseReporter(Reporter = typeof(CleanupReporter))]
+		[UseReporter(typeof(CleanupReporter))]
 		[ExpectedException(typeof (ApprovalMissingException))]
 		public void EnumerableNotApprovedYet()
 		{

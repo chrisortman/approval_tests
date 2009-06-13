@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using ApprovalTests.Approvers;
 using ApprovalTests.Core;
-using ApprovalTests.Core;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
@@ -14,10 +13,6 @@ namespace ApprovalTests
 	{
 		#region Text
 
-		/// <summary>
-		/// Approves the provided text. Produces a .txt file as an artifact.
-		/// </summary>
-		/// <param name="text">Text to approve.</param>
 		public static void Approve(string text)
 		{
 			Approve(new ApprovalTextWriter(text), new UnitTestFrameworkNamer(), GetReporter());
@@ -26,11 +21,6 @@ namespace ApprovalTests
 		#endregion
 
 		#region Enumerable
-
-		public static void Approve<T>(IEnumerable<T> enumerable)
-		{
-			Approve(EnumerableWriter.Write(enumerable));
-		}
 
 		public static void Approve<T>(IEnumerable<T> enumerable, string label)
 		{
@@ -51,7 +41,7 @@ namespace ApprovalTests
 
 		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
 		{
-			ApprovalTests.Core.Approvals.Approve(new FileApprover(writer, namer), reporter);
+			Core.Approvals.Approve(new FileApprover(writer, namer), reporter);
 		}
 
 		public static IApprovalFailureReporter GetReporter()
@@ -92,11 +82,5 @@ namespace ApprovalTests
 
 			return null;
 		}
-	}
-
-	[AttributeUsage(AttributeTargets.All)]
-	public class UseReporterAttribute : Attribute
-	{
-		public Type Reporter { set; get; }
 	}
 }

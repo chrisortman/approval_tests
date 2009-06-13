@@ -56,10 +56,6 @@
     <Compile Include="StringExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApprovalTests.Extensions\ApprovalTests.Extensions.csproj">
-      <Project>{41D87560-5BD3-4AD4-91E4-104D954D2A20}</Project>
-      <Name>ApprovalTests.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
       <Project>{F70C9A76-F797-4167-8178-14821F8634BC}</Project>
       <Name>ApprovalTests</Name>

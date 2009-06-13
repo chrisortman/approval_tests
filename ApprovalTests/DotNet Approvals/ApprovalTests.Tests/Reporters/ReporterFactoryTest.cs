@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests.Reporters
 {
 	[TestFixture]
-	[UseReporter(Reporter = typeof (MyReporter2))]
+	[UseReporter(typeof (MyReporter2))]
 	public class ReporterFactoryTest
 	{
 		[Test]
@@ -14,7 +14,7 @@ namespace ApprovalTests.Tests.Reporters
 		}
 
 		[Test]
-		[UseReporter(Reporter = typeof (MyReporter))]
+		[UseReporter(typeof (MyReporter))]
 		public void TestMethodOverride()
 		{
 			Assert.AreEqual(typeof (MyReporter), Approvals.GetReporter().GetType());

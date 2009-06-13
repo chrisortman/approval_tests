@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>ApprovalTests.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,6 +52,7 @@
     <Compile Include="StackTraceParsers\AttributeStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\MbUnitStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\VSStackTraceParser.cs" />
+    <Compile Include="UseReporterAttribute.cs" />
     <Compile Include="WinForms\Approvals.cs" />
     <Compile Include="Writers\ApprovalControlWriter.cs" />
     <Compile Include="Writers\ApprovalFormWriter.cs" />
@@ -69,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ApprovalTests.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
