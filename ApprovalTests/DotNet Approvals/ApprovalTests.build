@@ -7,8 +7,6 @@
 	<property name="packageName" value="*" />
 	<include buildfile="${properites}" if="${file::exists(properites)}"/>
 		
-	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
-	
 	<target name="nightlyBuild" depends="build,test,sourceforge">
 	</target>
 	
