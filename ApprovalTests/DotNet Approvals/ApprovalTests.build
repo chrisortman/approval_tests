@@ -19,9 +19,9 @@
 		    <attributes>
 			<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
 			<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
-			<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
+			<attribute type="AssemblyTitleAttribute" value="ApprovalTests" />
 			<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
-			<attribute type="AssemblyProductAttribute" value="Approval Tests" />
+			<attribute type="AssemblyProductAttribute" value="ApprovalTests" />
 		    </attributes>
 		</asminfo>
 		
@@ -33,9 +33,9 @@
 		    <attributes>
 			<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
 			<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
-			<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
+			<attribute type="AssemblyTitleAttribute" value="ApprovalTests" />
 			<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
-			<attribute type="AssemblyProductAttribute" value="Approval Tests" />
+			<attribute type="AssemblyProductAttribute" value="ApprovalTests" />
 		    </attributes>
 		</asminfo>	
 		<msbuild project="${base}/ApprovalTests.sln"/>
