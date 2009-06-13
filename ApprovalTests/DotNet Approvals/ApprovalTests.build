@@ -9,7 +9,7 @@
 		
 	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
 	
-	<target name="nightlyBuild" depends="build,test,package, sourceforge">
+	<target name="nightlyBuild" depends="build,test,sourceforge">
 	</target>
 	
 	<target name="build">
@@ -57,13 +57,6 @@
 			<include name="${base}/results/*" />
 		    </fileset>
 		</delete>
-	</target>
-	
-	
-
-	<target name="package" depends="cleanPackage">
-		<mkdir dir="${base}/results"/>
-		<copy file="${base}/ApprovalTests/bin/debug/ApprovalTests.dll" tofile="${base}/results/ApprovalTests.dll"/>
 	</target>
 
 	<target name="sourceforge">
