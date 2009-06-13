@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.WinForms
@@ -9,17 +10,11 @@ namespace ApprovalTests.Tests.WinForms
 		[Test]
 		public void TestControlApproved()
 		{
-			var l = new Label
-			{
-				Text = "approve this"
-				
-			};
-
-			ApprovalTests.WinForms.Approvals.Approve(l);
+			ApprovalTests.WinForms.Approvals.Approve(new Button {BackColor = Color.Blue});
 		}
 
 		[Test]
-		[Ignore("Not working correctly with build system.")]
+		[Ignore("Currently not working with build system")]
 		public void TestFormApproval()
 		{
 			ApprovalTests.WinForms.Approvals.Approve(new Form());
