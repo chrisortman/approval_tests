@@ -4,7 +4,7 @@
 	<property name="buildNumber" value="0.0.3.${environment::get-variable('BUILD_NUMBER')}" if="${environment::variable-exists('BUILD_NUMBER')}"/>
 	<property name="base" value="${directory::get-current-directory()}" />
 	<property name="properites" value="ApprovalTests.properties" />
-	<property name="packageName" value="ApprovalTests-${buildNumber}.zip" />
+	<property name="packageName" value="ApprovalTests.dll" />
 	<include buildfile="${properites}" if="${file::exists(properites)}"/>
 		
 	<loadtasks assembly="${base}/Common/nantcontrib-0.85/bin/NAnt.Contrib.Tasks.dll" />
@@ -92,14 +92,7 @@
 
 	<target name="package" depends="cleanPackage">
 		<mkdir dir="${base}/results"/>
-		<zip zipfile="${base}/results/${packageName}">
-			<fileset basedir="${base}/ApprovalTests/bin/debug/">
-				<include name="ApprovalTests.dll" />
-			</fileset>
-			<fileset basedir="${base}/ApprovalTests.Extensions/bin/debug/">
-				<include name="ApprovalTests.Extensions.dll" />
-			</fileset>
-		</zip>
+		<copy file="${base}/ApprovalTests/bin/debug/ApprovalTests.dll" tofile="${base}/results/ApprovalTests.dll"/>
 	</target>
 
 	<target name="sourceforge">
