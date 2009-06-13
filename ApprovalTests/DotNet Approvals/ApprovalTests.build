@@ -39,36 +39,7 @@
 			<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
 			<attribute type="AssemblyProductAttribute" value="Approval Tests" />
 		    </attributes>
-		</asminfo>
-		
-		<asminfo output="ApprovalTests.Extensions/Properties/AssemblyInfo.cs" language="CSharp">
-				    <imports>
-					<import namespace="System.Reflection" />
-					<import namespace="System.Runtime.InteropServices" />
-				    </imports>
-				    <attributes>
-					<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
-					<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
-					<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
-					<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
-					<attribute type="AssemblyProductAttribute" value="Approval Tests" />
-				    </attributes>
-		</asminfo>
-		
-		<asminfo output="ApprovalTests.Extensions.Tests/Properties/AssemblyInfo.cs" language="CSharp">
-				    <imports>
-					<import namespace="System.Reflection" />
-					<import namespace="System.Runtime.InteropServices" />
-				    </imports>
-				    <attributes>
-					<attribute type="AssemblyVersionAttribute" value="${buildNumber}" />
-					<attribute type="AssemblyFileVersionAttribute" value="${buildNumber}" />
-					<attribute type="AssemblyTitleAttribute" value="Approval Tests" />
-					<attribute type="AssemblyDescriptionAttribute" value="Approval testing library" />			
-					<attribute type="AssemblyProductAttribute" value="Approval Tests" />
-				    </attributes>
-		</asminfo>
-		
+		</asminfo>	
 		<msbuild project="${base}/ApprovalTests.sln"/>
 	</target>
 
