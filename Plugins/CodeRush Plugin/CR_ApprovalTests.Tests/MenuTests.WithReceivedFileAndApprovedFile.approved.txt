@@ -1,0 +1,9 @@
+Received File
+  View
+  Copy Filename
+  Show in Explorer
+Approved
+  View
+  Copy Filename
+  Replace Approval
+Diff
