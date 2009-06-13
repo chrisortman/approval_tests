@@ -49,6 +49,7 @@
     <Compile Include="Core\Exceptions\ApprovalException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
+    <Compile Include="Reporters\DiffReporter.cs" />
     <Compile Include="Reporters\OpenFailedReceivedFileReporter.cs" />
     <Compile Include="StackTraceParsers\AttributeStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\MbUnitStackTraceParser.cs" />
