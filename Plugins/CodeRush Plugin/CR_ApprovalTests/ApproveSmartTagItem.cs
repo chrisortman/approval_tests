@@ -29,6 +29,8 @@ namespace CR_ApprovalTests
 			}
 			File.Copy(Received, Approved, true);
 			File.Delete(Received);
+
+			CodeRush.Command.Execute("Test.RunTestsInCurrentContext");
 		}
 	}
 }

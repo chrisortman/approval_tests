@@ -27,10 +27,13 @@ namespace CR_ApprovalTests
 		{
 			var d = new OpenFileDialog();
 			if (d.ShowDialog() == DialogResult.OK)
+			{
 				if (File.Exists(approved))
 					File.Copy(d.FileName, approved, true);
 				else
 					File.Copy(d.FileName, String.Format("{0}{1}", approved, Path.GetExtension(d.FileName)), true);
+				CodeRush.Command.Execute("Test.RunTestsInCurrentContext");
+			}
 		}
 	}
 }

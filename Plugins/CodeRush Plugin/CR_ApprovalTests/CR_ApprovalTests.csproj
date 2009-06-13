@@ -68,6 +68,7 @@
     <Compile Include="OpenInExplorerSmartTagItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetApprovalSmartTagItem.cs" />
+    <Compile Include="TestSmartTagItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ApprovalTestsPlugin.resx">

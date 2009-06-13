@@ -1,6 +1,5 @@
 using System;
 using System.Drawing;
-using System.IO;
 using DevExpress.CodeRush.Core;
 using DevExpress.CodeRush.PlugInCore;
 using DevExpress.CodeRush.StructuralParser;
@@ -34,6 +33,7 @@ namespace CR_ApprovalTests
 		}
 
 		#endregion
+
 		private void ApprovalTestsPlugin_EditorPaintLanguageElement(EditorPaintLanguageElementEventArgs ea)
 		{
 			LanguageElement element = ea.LanguageElement;
@@ -44,7 +44,8 @@ namespace CR_ApprovalTests
 				Color lineColor = getColorForApproval(approvalFiles.TestStatus);
 
 				SourceRange range = element.Range;
-				ea.PaintArgs.DrawLine(range.Start.Line, range.Start.Offset, range.End.Offset - range.Start.Offset, lineColor, LineStyle.SolidUnderline);
+				ea.PaintArgs.DrawLine(range.Start.Line, range.Start.Offset, range.End.Offset - range.Start.Offset, lineColor,
+				                      LineStyle.SolidUnderline);
 			}
 		}
 
@@ -53,10 +54,14 @@ namespace CR_ApprovalTests
 		{
 			switch (status)
 			{
-				case TestStatus.NeverRun: return Color.LightBlue;
-				case TestStatus.NeverApproved: return Color.Yellow;
-				case TestStatus.Approved: return Color.Green;
-				case TestStatus.Failed: return Color.Red;
+				case TestStatus.NeverRun:
+					return Color.LightBlue;
+				case TestStatus.NeverApproved:
+					return Color.Yellow;
+				case TestStatus.Approved:
+					return Color.Green;
+				case TestStatus.Failed:
+					return Color.Red;
 			}
 
 			return Color.White;
@@ -87,6 +92,8 @@ namespace CR_ApprovalTests
 		{
 			var artifacts = new ApprovalArtifacts(CodeRush.Source.ActiveMethod);
 
+			ea.Add(new TestSmartTagItem("Test"));
+
 			if (artifacts.HasReceivedFile())
 			{
 				var received = new SmartTagItem("Received File");
@@ -105,7 +112,7 @@ namespace CR_ApprovalTests
 
 			if (artifacts.HasReceivedFile() && artifacts.HasApprovalFile())
 				ea.Add(new DiffSmartTagItem("Diff", artifacts.Received, artifacts.Approved));
-			
+
 			if (artifacts.HasReceivedFile())
 				ea.Add(new ApproveSmartTagItem("Approve", artifacts.Received, artifacts.Approved));
 		}
