@@ -39,6 +39,8 @@ namespace ApprovalTests
 
 		#endregion
 
+		
+
 		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
 		{
 			Core.Approvals.Approve(new FileApprover(writer, namer), reporter);

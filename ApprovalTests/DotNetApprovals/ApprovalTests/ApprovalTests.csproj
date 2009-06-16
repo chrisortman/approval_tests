@@ -58,6 +58,7 @@
     <Compile Include="WinForms\Approvals.cs" />
     <Compile Include="Writers\ApprovalControlWriter.cs" />
     <Compile Include="Writers\ApprovalFormWriter.cs" />
+    <Compile Include="Writers\BinaryWriter.cs" />
     <Compile Include="Writers\EnumerableWriter.cs" />
     <Compile Include="Core\IApprovalWriter.cs" />
     <Compile Include="Writers\ApprovalTextWriter.cs" />
