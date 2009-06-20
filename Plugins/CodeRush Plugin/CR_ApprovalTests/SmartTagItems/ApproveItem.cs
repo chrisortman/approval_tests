@@ -2,12 +2,11 @@ using System;
 using System.IO;
 using DevExpress.CodeRush.Core;
 
-namespace CR_ApprovalTests
+namespace CR_ApprovalTests.SmartTagItems
 {
-	public class ApproveSmartTagItem : SmartTagItem
+	public class ApproveItem : SmartTagItem
 	{
-		public ApproveSmartTagItem(string name, string received, string approved)
-			: base(name)
+		public ApproveItem(string name, string received, string approved) : base(name)
 		{
 			Approved = approved;
 			Received = received;

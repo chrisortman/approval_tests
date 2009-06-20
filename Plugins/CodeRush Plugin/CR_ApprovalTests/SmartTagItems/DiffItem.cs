@@ -2,16 +2,16 @@ using System.Diagnostics;
 using System.IO;
 using DevExpress.CodeRush.Core;
 
-namespace CR_ApprovalTests
+namespace CR_ApprovalTests.SmartTagItems
 {
-	public class DiffSmartTagItem : SmartTagItem
+	public class DiffItem : SmartTagItem
 	{
 		private string imageDiffArgs = "/left:\"{0}\" /right:\"{1}\"";
 		private string imageDiffTool = "tortoiseidiff";
 		private string textDiffArgs = "\"{0}\" \"{1}\"";
 		private string textDiffTool = "tortoisemerge";
 
-		public DiffSmartTagItem(string name, string received, string approved)
+		public DiffItem(string name, string received, string approved)
 			: base(name)
 		{
 			Received = received;

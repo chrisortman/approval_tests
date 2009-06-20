@@ -1,17 +1,13 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using DevExpress.CodeRush.Core;
-using DevExpress.CodeRush.PlugInCore;
-using DevExpress.CodeRush.StructuralParser;
 
-namespace CR_ApprovalTests
+namespace CR_ApprovalTests.SmartTagItems
 {
-	public class SetApprovalSmartTagItem : SmartTagItem
+	public class LoadApproveItem : SmartTagItem
 	{
-		public SetApprovalSmartTagItem(string name, string approved)
-			: base(name)
+		public LoadApproveItem(string name, string approved) : base(name)
 		{
 			Approved = approved;
 		}

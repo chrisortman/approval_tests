@@ -3,15 +3,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using DevExpress.CodeRush.Core;
-using DevExpress.CodeRush.PlugInCore;
-using DevExpress.CodeRush.StructuralParser;
 
-namespace CR_ApprovalTests
+namespace CR_ApprovalTests.SmartTagItems
 {
-	public class OpenInExplorerSmartTagItem : SmartTagItem
+	public class OpenInExplorerItem : SmartTagItem
 	{
-		public OpenInExplorerSmartTagItem(string name, string path)
-			: base(name)
+		public OpenInExplorerItem(string name, string path) : base(name)
 		{
 			Path = path;
 		}
@@ -25,10 +22,10 @@ namespace CR_ApprovalTests
 				if (
 					MessageBox.Show("Approval doesn't exist would you like to copy one?", "Approval Not Found", MessageBoxButtons.YesNo) ==
 					DialogResult.Yes)
-					SetApprovalSmartTagItem.PromptForFileAndCopyToApproval(Path);
+					LoadApproveItem.PromptForFileAndCopyToApproval(Path);
 			}
 			else
-			Process.Start("explorer", String.Format("/select,{0}", Path));
+				Process.Start("explorer", String.Format("/select,{0}", Path));
 		}
 	}
 }

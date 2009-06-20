@@ -2,15 +2,14 @@
 using System.Text;
 using System.Windows.Forms;
 using ApprovalTests;
-using NUnit.Framework;
 using TypeMock;
 using TypeMock.ArrangeActAssert;
-using CR=DevExpress.CodeRush.Core;
+using CR = DevExpress.CodeRush.Core;
+using NUnit.Framework;
 
 namespace CR_ApprovalTests.Tests
 {
 	[TestFixture]
-	[UseReporter(typeof (DiffReporter))]
 	public class MenuTests
 	{
 		#region Setup/Teardown
@@ -72,7 +71,6 @@ namespace CR_ApprovalTests.Tests
 
 		[NUnit.Framework.Test]
 		[Ignore]
-
 		public void WithReceivedFileAndApprovedFile()
 		{
 			var plugin = new ApprovalTestsPlugin();
@@ -89,7 +87,6 @@ namespace CR_ApprovalTests.Tests
 
 		[NUnit.Framework.Test]
 		[Ignore]
-
 		public void WithReceivedFileNoApprovedFile()
 		{
 			var plugin = new ApprovalTestsPlugin();

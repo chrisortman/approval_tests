@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\DevExpress\IDE Tools\Community\PlugIns</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Users\dangilkerson\Documents\DevExpress\IDE Tools\Community\PlugIns\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,12 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -61,14 +55,14 @@
     <Compile Include="ApprovalTestsPlugin.Designer.cs">
       <DependentUpon>ApprovalTestsPlugin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApproveSmartTagItem.cs" />
-    <Compile Include="CopyPathSmartTagItem.cs" />
-    <Compile Include="DiffSmartTagItem.cs" />
-    <Compile Include="OpenFileSmartTagItem.cs" />
-    <Compile Include="OpenInExplorerSmartTagItem.cs" />
+    <Compile Include="SmartTagItems\ApproveItem.cs" />
+    <Compile Include="SmartTagItems\CopyPathItem.cs" />
+    <Compile Include="SmartTagItems\DiffItem.cs" />
+    <Compile Include="SmartTagItems\OpenFileItem.cs" />
+    <Compile Include="SmartTagItems\OpenInExplorerItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetApprovalSmartTagItem.cs" />
-    <Compile Include="TestSmartTagItem.cs" />
+    <Compile Include="SmartTagItems\LoadApproveItem.cs" />
+    <Compile Include="SmartTagItems\RunTestItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ApprovalTestsPlugin.resx">

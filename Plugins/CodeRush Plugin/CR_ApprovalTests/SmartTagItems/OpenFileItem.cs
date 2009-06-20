@@ -3,12 +3,11 @@ using System.IO;
 using System.Windows.Forms;
 using DevExpress.CodeRush.Core;
 
-namespace CR_ApprovalTests
+namespace CR_ApprovalTests.SmartTagItems
 {
-	public class OpenFileSmartTagItem : SmartTagItem
+	public class OpenFileItem : SmartTagItem
 	{
-		public OpenFileSmartTagItem(string name, string path)
-			: base(name)
+		public OpenFileItem(string name, string path) : base(name)
 		{
 			Path = path;
 		}
@@ -22,7 +21,7 @@ namespace CR_ApprovalTests
 				if (
 					MessageBox.Show("Approval doesn't exist would you like to copy one?", "Approval Not Found", MessageBoxButtons.YesNo) ==
 					DialogResult.Yes)
-					SetApprovalSmartTagItem.PromptForFileAndCopyToApproval(Path);
+					LoadApproveItem.PromptForFileAndCopyToApproval(Path);
 			}
 			else
 				Process.Start(Path);

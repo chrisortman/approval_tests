@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
+using CR_ApprovalTests.SmartTagItems;
 using DevExpress.CodeRush.Core;
 using DevExpress.CodeRush.PlugInCore;
 using DevExpress.CodeRush.StructuralParser;
@@ -8,32 +12,6 @@ namespace CR_ApprovalTests
 {
 	public partial class ApprovalTestsPlugin : StandardPlugIn
 	{
-		#region InitializePlugIn
-
-		public override void InitializePlugIn()
-		{
-			base.InitializePlugIn();
-
-			//
-			// TODO: Add your initialization code here.
-			//
-		}
-
-		#endregion
-
-		#region FinalizePlugIn
-
-		public override void FinalizePlugIn()
-		{
-			//
-			// TODO: Add your finalization code here.
-			//
-
-			base.FinalizePlugIn();
-		}
-
-		#endregion
-
 		private void ApprovalTestsPlugin_EditorPaintLanguageElement(EditorPaintLanguageElementEventArgs ea)
 		{
 			LanguageElement element = ea.LanguageElement;
@@ -41,7 +19,7 @@ namespace CR_ApprovalTests
 			if (IsApproveCall(element) && element.ElementType == LanguageElementType.MethodCall)
 			{
 				var approvalFiles = new ApprovalArtifacts(element.GetMethod());
-				Color lineColor = getColorForApproval(approvalFiles.TestStatus);
+				Color lineColor = GetColorForApproval(approvalFiles.TestStatus);
 
 				SourceRange range = element.Range;
 				ea.PaintArgs.DrawLine(range.Start.Line, range.Start.Offset, range.End.Offset - range.Start.Offset, lineColor,
@@ -49,8 +27,7 @@ namespace CR_ApprovalTests
 			}
 		}
 
-
-		public static Color getColorForApproval(TestStatus status)
+		public static Color GetColorForApproval(TestStatus status)
 		{
 			switch (status)
 			{
@@ -92,29 +69,29 @@ namespace CR_ApprovalTests
 		{
 			var artifacts = new ApprovalArtifacts(CodeRush.Source.ActiveMethod);
 
-			ea.Add(new TestSmartTagItem("Test"));
+			ea.Add(new RunTestItem("Test"));
 
 			if (artifacts.HasReceivedFile())
 			{
 				var received = new SmartTagItem("Received File");
-				received.AddItem(new OpenFileSmartTagItem("View", artifacts.Received));
-				received.AddItem(new CopyPathSmartTagItem("Copy File Path", artifacts.Received));
-				received.AddItem(new OpenInExplorerSmartTagItem("Show in Explorer", artifacts.Received));
+				received.AddItem(new OpenFileItem("View", artifacts.Received));
+				received.AddItem(new CopyPathItem("Copy File Path", artifacts.Received));
+				received.AddItem(new OpenInExplorerItem("Show in Explorer", artifacts.Received));
 				ea.Add(received);
 			}
 
 			var approved = new SmartTagItem("Approved File");
-			approved.AddItem(new OpenFileSmartTagItem("View", artifacts.Approved));
-			approved.AddItem(new CopyPathSmartTagItem("Copy File Path", artifacts.Approved));
-			approved.AddItem(new OpenInExplorerSmartTagItem("Show in Explorer", artifacts.Approved));
-			approved.AddItem(new SetApprovalSmartTagItem("Set Approval", artifacts.Approved));
+			approved.AddItem(new OpenFileItem("View", artifacts.Approved));
+			approved.AddItem(new CopyPathItem("Copy File Path", artifacts.Approved));
+			approved.AddItem(new OpenInExplorerItem("Show in Explorer", artifacts.Approved));
+			approved.AddItem(new LoadApproveItem("Set Approval", artifacts.Approved));
 			ea.Add(approved);
 
 			if (artifacts.HasReceivedFile() && artifacts.HasApprovalFile())
-				ea.Add(new DiffSmartTagItem("Diff", artifacts.Received, artifacts.Approved));
+				ea.Add(new DiffItem("Diff", artifacts.Received, artifacts.Approved));
 
 			if (artifacts.HasReceivedFile())
-				ea.Add(new ApproveSmartTagItem("Approve", artifacts.Received, artifacts.Approved));
+				ea.Add(new ApproveItem("Approve", artifacts.Received, artifacts.Approved));
 		}
 
 		private void ApprovalTestsProvider_GetSmartTagItemColors(object sender, GetSmartTagItemColorsEventArgs ea)
