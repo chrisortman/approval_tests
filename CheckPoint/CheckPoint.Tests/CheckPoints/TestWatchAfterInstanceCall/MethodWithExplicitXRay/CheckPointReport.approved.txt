@@ -1,2 +1,0 @@
-Manually Defined Checkpoint
-	Calls: 1

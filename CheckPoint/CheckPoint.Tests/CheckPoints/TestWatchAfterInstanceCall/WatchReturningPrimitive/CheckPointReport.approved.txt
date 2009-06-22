@@ -1,2 +1,0 @@
-InstanceType.MethodReturningPrimitive
-	Calls: 1

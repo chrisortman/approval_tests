@@ -1,2 +1,0 @@
-StaticClass.StaticMethodReturningType
-	Calls: 1

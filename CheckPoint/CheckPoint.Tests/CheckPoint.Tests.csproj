@@ -31,13 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApprovalTests, Version=0.0.2.15, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ApprovalTests, Version=0.0.4.25, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\ApprovalTests-0.0.2\ApprovalTests.dll</HintPath>
+      <HintPath>..\Common\ApprovalTests.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\NUnit-2.4.8\bin\nunit.framework.dll</HintPath>
+      <HintPath>..\Common\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -51,15 +51,12 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TypeMock, Version=5.3.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
+    <Reference Include="Typemock.ArrangeActAssert, Version=5.3.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="InstanceType.cs" />
-    <Compile Include="StaticClass.cs" />
-    <Compile Include="TestWatchAfterInstanceCall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestWatchAfterStaticCall.cs" />
-    <Compile Include="Thing.cs" />
+    <Compile Include="SentryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CheckPoint\CheckPoint.csproj">

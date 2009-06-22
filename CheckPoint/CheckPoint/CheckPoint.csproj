@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApprovalTests, Version=0.0.2.15, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\ApprovalTests-0.0.2\ApprovalTests.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -48,27 +44,15 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TypeMock, Version=5.1.0.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\TypeMockIsolator-5.1.0\TypeMock.dll</HintPath>
-    </Reference>
-    <Reference Include="Typemock.ArrangeActAssert, Version=5.1.0.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\TypeMockIsolator-5.1.0\Typemock.ArrangeActAssert.Dll</HintPath>
-    </Reference>
+    <Reference Include="TypeMock, Version=5.3.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckPointCommandCenter.cs" />
-    <Compile Include="CheckPointWatch.cs" />
-    <Compile Include="Namers\CheckPointCommandCenterApprovalNamer.cs" />
-    <Compile Include="Extensions\CheckPointExtensions.cs" />
-    <Compile Include="CheckPoints.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Namers\CheckPointApprovalNamer.cs" />
+    <Compile Include="Sentry.cs" />
+    <Compile Include="Monitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporters\AutoApproveReporter.cs" />
-    <Compile Include="Reporters\ManualApproveReporter.cs" />
-    <Compile Include="Reporters\DebugOutputReporter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

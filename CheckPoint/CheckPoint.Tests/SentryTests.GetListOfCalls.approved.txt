@@ -1,0 +1,3 @@
+Call[0] = .ctor
+Call[1] = Call1
+Call[2] = Call2
