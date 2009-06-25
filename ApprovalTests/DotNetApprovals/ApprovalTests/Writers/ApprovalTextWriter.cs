@@ -6,7 +6,7 @@ namespace ApprovalTests
 {
 	public class ApprovalTextWriter : IApprovalWriter
 	{
-		public ApprovalTextWriter(string data)
+		public ApprovalTextWriter(string data) : this(data, "txt")
 		{
 			Data = data;
 		}

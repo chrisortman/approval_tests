@@ -17,7 +17,7 @@ namespace ApprovalTests.Tests.Reporters
 			{
 				Approvals.Approve(args.ToString());
 			}
-			catch (Exception ex)
+			catch
 			{
 				reporter.Launch(args);
 				throw;
