@@ -15,39 +15,24 @@ namespace CheckPoint.Tests
 		[Isolated]
 		public void GetListOfCalls()
 		{
-			Sentry s = Monitor.Calls(typeof(Model));
+			Sentry s = Monitor.Calls<Model>();
 
 			var controller = new Controller();
 			controller.Action();
 
-			Approvals.Approve(s.Calls, "Call");
+			Approvals.Approve(s.Results);
+		}
+
+		[Test]
+		[Isolated]
+		public void GetInteractions()
+		{
+			Sentry s = Monitor.Interactions(typeof(Controller));
+
+			var controller = new Controller();
+			controller.Action();
+
+			Approvals.Approve(s.Results);
 		}
 	}
-
-	public class Model
-	{
-		public void Call1()
-		{
-			
-		}
-
-		public void Call2()
-		{
-			
-		}
-	}
-
-	public class Controller
-	{
-		private Model model = new Model();
-		public void Action()
-		{
-			model.Call1();
-			model.Call2();
-		}
-	}
-
-	
-
-
 }

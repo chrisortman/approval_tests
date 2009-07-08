@@ -1,18 +1,14 @@
 using System.Collections.Generic;
 using TypeMock;
+using System;
+using System.Reflection;
+using System.Text;
 
 namespace CheckPoint
 {
 	public class Sentry
 	{
 		private readonly List<string> methodCalls = new List<string>();
-
-		public Sentry(Mock mock)
-		{
-			Mock = mock;
-		}
-
-		public Mock Mock { get; set; }
 
 		public string[] Calls
 		{
@@ -21,7 +17,20 @@ namespace CheckPoint
 
 		public void Call(object sender, MockMethodCallEventArgs args)
 		{
-			methodCalls.Add(args.CalledMethodName);
+			methodCalls.Add(String.Format("{0}.{1}", args.CalledType, args.CalledMethodName));
+		}
+
+		public string Results
+		{
+			get
+			{
+				var sb = new StringBuilder();
+				foreach (var call in Calls)
+				{
+					sb.AppendLine(call);
+				}
+				return sb.ToString();
+			}
 		}
 	}
 }
