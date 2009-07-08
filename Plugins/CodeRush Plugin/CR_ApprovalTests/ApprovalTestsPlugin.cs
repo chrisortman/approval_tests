@@ -51,7 +51,7 @@ namespace CR_ApprovalTests
 
 		private static bool IsApproveCall(LanguageElement element)
 		{
-			if (element.ElementType == LanguageElementType.MethodCall && element.Name == "Approve")
+			if (element.ElementType == LanguageElementType.MethodCall && element.Name.Contains("Approve"))
 				return true;
 
 			if (element.Parent != null)
