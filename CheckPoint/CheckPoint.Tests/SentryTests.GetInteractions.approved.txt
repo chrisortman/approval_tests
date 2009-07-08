@@ -1,2 +1,0 @@
-CheckPoint.Tests.Model..ctor
-CheckPoint.Tests.Model..ctor

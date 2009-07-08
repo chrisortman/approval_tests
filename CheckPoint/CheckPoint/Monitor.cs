@@ -50,7 +50,10 @@ namespace CheckPoint
 			{
 				try
 				{
-					mock.AlwaysReturn(methodInfo.Name, MockManager.MockObject(methodInfo.ReturnType));
+					if (methodInfo.ReturnType == typeof(void))
+						mock.ExpectAlways(methodInfo.Name);
+					else
+						mock.AlwaysReturn(methodInfo.Name, MockManager.MockObject(methodInfo.ReturnType));
 				}
 				catch (TypeMockException)
 				{
