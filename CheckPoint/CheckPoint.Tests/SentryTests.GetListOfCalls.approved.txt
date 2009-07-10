@@ -1,3 +1,4 @@
-CheckPoint.Tests.Model..ctor
-CheckPoint.Tests.Model.Call1
-CheckPoint.Tests.Model.Call2
+CheckPoint.Tests.Model..ctor()
+CheckPoint.Tests.Model.Method1()
+CheckPoint.Tests.Model.Method2()
+CheckPoint.Tests.Model.StaticMethod()

@@ -1,0 +1,8 @@
+(CheckPoint.Tests.Model) model..ctor()
+(CheckPoint.Tests.Model) <Model2>k__BackingField..ctor()
+(CheckPoint.Tests.Model) model.Method1()
+(CheckPoint.Tests.Model) model.Method2()
+(CheckPoint.Tests.Model) <Model2>k__BackingField.Method1()
+(CheckPoint.Tests.Model) <Model2>k__BackingField.Method2()
+(CheckPoint.Tests.Model) model.StaticMethod()
+(CheckPoint.Tests.Model) <Model2>k__BackingField.StaticMethod()

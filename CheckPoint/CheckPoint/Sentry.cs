@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using TypeMock;
 using System;
-using System.Reflection;
+using System.Collections.Generic;
 using System.Text;
+using TypeMock;
 
 namespace CheckPoint
 {
@@ -15,22 +14,27 @@ namespace CheckPoint
 			get { return methodCalls.ToArray(); }
 		}
 
-		public void Call(object sender, MockMethodCallEventArgs args)
-		{
-			methodCalls.Add(String.Format("{0}.{1}", args.CalledType, args.CalledMethodName));
-		}
-
-		public string Results
+		public string Report
 		{
 			get
 			{
 				var sb = new StringBuilder();
-				foreach (var call in Calls)
+				foreach (string call in Calls)
 				{
 					sb.AppendLine(call);
 				}
 				return sb.ToString();
 			}
+		}
+
+		public void Call(object sender, MockMethodCallEventArgs args)
+		{
+			methodCalls.Add(String.Format("{0}.{1}()", args.CalledType, args.CalledMethodName));
+		}
+
+		public void Call(object sender, MockMethodCallEventArgs args, string name)
+		{
+			methodCalls.Add(String.Format("({0}) {1}.{2}()", args.CalledType, name, args.CalledMethodName));
 		}
 	}
 }

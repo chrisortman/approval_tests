@@ -9,11 +9,12 @@ namespace CheckPoint
 	{
 		public static Sentry Calls<T>()
 		{
+			Isolate.Fake.StaticMethods(typeof (T));
 			var fake = Isolate.Fake.Instance<T>(Members.ReturnRecursiveFakes);
 			Isolate.Swap.NextInstance<T>().With(fake);
 			Mock<T> mock = MockManager.GetMockOf(fake);
 			var sentry = new Sentry();
-			mock.MockMethodCalled += (sender, args) => sentry.Call(sender, args);
+			mock.MockMethodCalled += sentry.Call;
 			return sentry;
 		}
 
@@ -27,37 +28,48 @@ namespace CheckPoint
 			var sentry = new Sentry();
 			foreach (FieldInfo field in GetAllFields(type))
 			{
-				if (MockManager.IsTypeMocked(field.FieldType)) continue;
+				//if (MockManager.IsTypeMocked(field.FieldType)) continue;
 				try
 				{
-					WatchType(field.FieldType, sentry);
+					WatchType(field.FieldType, sentry, field.Name);
 				}
 				catch (TypeMockException)
 				{
-					// Probably trying to mock a type defined in mscorlib which we can ignore.
+					// Probably tried mocking a type defined in mscorlib which we can ignore.
 				}
 			}
 
 			return sentry;
 		}
 
-		private static void WatchType(Type type, Sentry sentry)
+		private static void WatchType(Type type, Sentry sentry, string fieldName)
 		{
-			Mock mock = MockManager.MockAll(type);
-			mock.MockMethodCalled += (sender, args) => sentry.Call(sender, args);
+			Mock mock = MockManager.Mock(type);
+			mock.MockMethodCalled += (sender, args) => sentry.Call(sender, args, fieldName);
 
 			foreach (MethodInfo methodInfo in type.GetMethods())
 			{
 				try
 				{
-					if (methodInfo.ReturnType == typeof(void))
+					if (methodInfo.ReturnType == typeof (void))
 						mock.ExpectAlways(methodInfo.Name);
 					else
-						mock.AlwaysReturn(methodInfo.Name, MockManager.MockObject(methodInfo.ReturnType));
+					{
+						if (methodInfo.ReturnType.IsPrimitive)
+							mock.AlwaysReturn(methodInfo.Name, 0);
+						else
+							mock.AlwaysReturn(methodInfo.Name, MockManager.MockObject(methodInfo.ReturnType));
+					}
 				}
 				catch (TypeMockException)
 				{
-					// Probably trying to mock a method defined in mscorlib which we can ignore.
+					try
+					{
+						mock.AlwaysReturn(methodInfo.Name, null);
+					}
+					catch (TypeMockException)
+					{
+					}
 				}
 			}
 		}

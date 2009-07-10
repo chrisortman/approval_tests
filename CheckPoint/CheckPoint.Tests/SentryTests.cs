@@ -1,9 +1,5 @@
-﻿using System;
+﻿using ApprovalTests;
 using NUnit.Framework;
-using ApprovalTests;
-using TypeMock;
-using System.Collections.Generic;
-using System.Reflection;
 using TypeMock.ArrangeActAssert;
 
 namespace CheckPoint.Tests
@@ -13,6 +9,30 @@ namespace CheckPoint.Tests
 	{
 		[Test]
 		[Isolated]
+		public void GetInteractions()
+		{
+			Sentry s = Monitor.Interactions(typeof (Controller));
+
+			var controller = new Controller();
+			controller.Action();
+
+			Approvals.Approve(s.Report);
+		}
+
+		[Test]
+		[Isolated]
+		public void GetInteractionsAgainstSystemTypes()
+		{
+			Sentry s = Monitor.Interactions(typeof (Controller));
+
+			var controller = new Controller();
+			controller.ActionsAgainstSystemTypes();
+
+			Approvals.Approve(s.Report);
+		}
+
+		[Test]
+		[Isolated]
 		public void GetListOfCalls()
 		{
 			Sentry s = Monitor.Calls<Model>();
@@ -20,19 +40,7 @@ namespace CheckPoint.Tests
 			var controller = new Controller();
 			controller.Action();
 
-			Approvals.Approve(s.Results);
-		}
-
-		[Test]
-		[Isolated]
-		public void GetInteractions()
-		{
-			Sentry s = Monitor.Interactions(typeof(Controller));
-
-			var controller = new Controller();
-			controller.Action();
-
-			Approvals.Approve(s.Results);
+			Approvals.Approve(s.Report);
 		}
 	}
 }

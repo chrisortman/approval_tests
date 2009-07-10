@@ -1,0 +1,8 @@
+(CheckPoint.Tests.Model) model..ctor()
+(CheckPoint.Tests.Model) <Model2>k__BackingField..ctor()
+(CheckPoint.Tests.Model) model.ReturnsSystemType()
+(CheckPoint.Tests.Model) model.ReturnsInt()
+(CheckPoint.Tests.Model) model.get_SomeProperty()
+(CheckPoint.Tests.Model) <Model2>k__BackingField.ReturnsSystemType()
+(CheckPoint.Tests.Model) <Model2>k__BackingField.ReturnsInt()
+(CheckPoint.Tests.Model) model.get_SomeProperty()
