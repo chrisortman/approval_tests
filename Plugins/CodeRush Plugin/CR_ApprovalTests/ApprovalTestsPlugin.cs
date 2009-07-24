@@ -90,8 +90,11 @@ namespace CR_ApprovalTests
 			if (artifacts.HasReceivedFile() && artifacts.HasApprovalFile())
 				ea.Add(new DiffItem("Diff", artifacts.Received, artifacts.Approved));
 
-			if (artifacts.HasReceivedFile())
+			if (artifacts.HasReceivedFile()) {
+				ea.Add(new OpenFileItem("View Received", artifacts.Received));
 				ea.Add(new ApproveItem("Approve", artifacts.Received, artifacts.Approved));
+			}
+
 		}
 
 		private void ApprovalTestsProvider_GetSmartTagItemColors(object sender, GetSmartTagItemColorsEventArgs ea)
