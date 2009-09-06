@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ApprovalTests.Tests</RootNamespace>
     <AssemblyName>ApprovalTests.Tests</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
@@ -46,11 +46,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Common\NUnit 2.4.6\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovalsTest.cs" />
@@ -63,6 +72,7 @@
     <Compile Include="Reporters\ReporterFactoryTest.cs" />
     <Compile Include="ExampleUsages.cs" />
     <Compile Include="WinForms\ApprovalsTest.cs" />
+    <Compile Include="Wpf\ApprovalsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="a.png" />
