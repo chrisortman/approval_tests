@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="**.svn" kind="src" path="java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="java/jars/acme.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-daemon.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-httpclient-2.0-rc3.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-io-1.2.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-logging.jar"/>
+	<classpathentry kind="lib" path="java/jars/commons-net-1.1.0.jar"/>
+	<classpathentry kind="lib" path="java/jars/j2ssh-core-0.2.7.jar"/>
+	<classpathentry kind="lib" path="java/jars/junit.jar"/>
+	<classpathentry kind="lib" path="java/jars/log4j-1.2.9.jar"/>
+	<classpathentry kind="lib" path="java/jars/mail.jar"/>
+	<classpathentry kind="lib" path="java/jars/objectplanet.jar"/>
+	<classpathentry kind="lib" path="java/jars/quartz.jar"/>
+	<classpathentry kind="lib" path="java/jars/servlet.jar"/>
+	<classpathentry kind="lib" path="java/jars/velocity-1.4-p1.jar"/>
+	<classpathentry kind="lib" path="java/jars/Verisign.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
