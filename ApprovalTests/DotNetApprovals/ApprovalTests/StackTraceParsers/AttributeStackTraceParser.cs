@@ -47,13 +47,26 @@ namespace ApprovalTests.StackTraceParsers
 
 			for (int i = 0; i < frames.Length; i++)
 			{
-				if (frames[i].GetMethod().GetCustomAttributes(attribute, false).Length != 0)
+				if ( ContainsAttribute( frames[i].GetMethod().GetCustomAttributes( false ), attribute ) )
 				{
 					return frames[i];
 				}
 			}
 
 			return null;
+		}
+
+		private static bool ContainsAttribute(object[] attributes, Type attribute)
+		{
+			foreach ( object a in attributes )
+			{
+				if ( a.GetType().FullName == attribute.FullName )
+				{
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 		private StackFrame FindApprovalFrame()
