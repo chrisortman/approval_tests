@@ -4,6 +4,7 @@ using System.Diagnostics;
 using ApprovalTests.Approvers;
 using ApprovalTests.Core;
 using ApprovalTests.Namers;
+using ApprovalTests.Persistence;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
 
@@ -84,5 +85,10 @@ namespace ApprovalTests
 
 			return null;
 		}
+
+	    public static void Approve(IExecutableQuery query)
+	    {
+            Approve(new ApprovalTextWriter(query.GetQuery()), new UnitTestFrameworkNamer(), new ExecutableQueryFailure(query));
+	    }
 	}
 }

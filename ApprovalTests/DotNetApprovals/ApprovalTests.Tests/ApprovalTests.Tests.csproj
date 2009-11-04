@@ -66,6 +66,8 @@
     <Compile Include="CleanupReporter.cs" />
     <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
+    <Compile Include="Persistence\DatabaseTest.cs" />
+    <Compile Include="Persistence\WeatherTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Namer\NunitStackTraceNamerTests.cs" />
     <Compile Include="Reporters\DiffReporterTest.cs" />
