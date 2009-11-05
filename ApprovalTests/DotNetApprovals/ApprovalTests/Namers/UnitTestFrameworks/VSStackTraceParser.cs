@@ -8,7 +8,7 @@ namespace ApprovalTests.StackTraceParsers
 		{
 			return
 				Type.GetType(
-					"Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute, Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+					"Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute, Microsoft.VisualStudio.QualityTools.UnitTestFramework",
 					false);
 		}
 	}

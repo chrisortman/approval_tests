@@ -10,7 +10,7 @@ using ApprovalTests.Writers;
 
 namespace ApprovalTests
 {
-	public class Approvals
+	public class Approvals 
 	{
 		#region Text
 
