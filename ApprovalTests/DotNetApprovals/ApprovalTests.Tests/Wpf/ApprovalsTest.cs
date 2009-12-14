@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using AlgorithmGui.Test;
+using ApprovalTests.Reporters;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.Wpf

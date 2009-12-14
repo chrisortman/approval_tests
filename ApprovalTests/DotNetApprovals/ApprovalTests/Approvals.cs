@@ -10,7 +10,7 @@ using ApprovalTests.Writers;
 
 namespace ApprovalTests
 {
-	public class Approvals 
+	public class Approvals
 	{
 		#region Text
 
@@ -40,7 +40,7 @@ namespace ApprovalTests
 
 		#endregion
 
-		
+
 
 		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
 		{
@@ -54,11 +54,12 @@ namespace ApprovalTests
 
 		private static IApprovalFailureReporter GetReporterFromAttribute()
 		{
-			UseReporterAttribute frame = GetFirstFrameForAttribute(new StackTrace(true).GetFrames(),
-			                                                       typeof (UseReporterAttribute));
+			UseReporterAttribute frame = GetFirstFrameForAttribute(
+				new StackTrace(true).GetFrames(),
+				typeof(UseReporterAttribute));
 			if (frame != null)
 			{
-				return (IApprovalFailureReporter) Activator.CreateInstance((frame).Reporter);
+				return (IApprovalFailureReporter)Activator.CreateInstance((frame).Reporter);
 			}
 			return null;
 		}
@@ -73,22 +74,22 @@ namespace ApprovalTests
 				object[] attributes = frames[i].GetMethod().GetCustomAttributes(attribute, true);
 				if (attributes.Length != 0)
 				{
-					return (UseReporterAttribute) attributes[0];
+					return (UseReporterAttribute)attributes[0];
 				}
 
 				attributes = frames[i].GetMethod().DeclaringType.GetCustomAttributes(attribute, true);
 				if (attributes.Length != 0)
 				{
-					return (UseReporterAttribute) attributes[0];
+					return (UseReporterAttribute)attributes[0];
 				}
 			}
 
 			return null;
 		}
 
-	    public static void Approve(IExecutableQuery query)
-	    {
-            Approve(new ApprovalTextWriter(query.GetQuery()), new UnitTestFrameworkNamer(), new ExecutableQueryFailure(query));
-	    }
+		public static void Approve(IExecutableQuery query)
+		{
+			Approve(new ApprovalTextWriter(query.GetQuery()), new UnitTestFrameworkNamer(), new ExecutableQueryFailure(query));
+		}
 	}
 }

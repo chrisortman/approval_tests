@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using ApprovalTests.Core;
-using ApprovalTests.Reporters;
 
-namespace AlgorithmGui.Test
+namespace ApprovalTests.Reporters
 {
 	public class ImageReporter : IApprovalFailureReporter
 	{
