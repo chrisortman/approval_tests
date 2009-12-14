@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using System.ServiceModel.Web;
 
-namespace ApprovalTests.Silverlight.Web
+namespace ApprovalTests.Silverlight.Service
 {
 	[ServiceContract]
 	public interface IApprovalService

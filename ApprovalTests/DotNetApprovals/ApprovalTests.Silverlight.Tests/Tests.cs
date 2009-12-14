@@ -15,7 +15,7 @@ namespace ApprovalTests.Silverlight.Tests
 			TestPanel.Children.Add(control);
 
 			EnqueueCallback(() => Approvals.Approve(
-				@"D:\Projects\ApprovalsForSilverlight\ApprovalTests.Silverlight.Tests", 
+				@"D:\Projects\ApprovalTests\ApprovalTests.Silverlight.Tests", 
 				"Tests.TestMethod1",
 				control));
 

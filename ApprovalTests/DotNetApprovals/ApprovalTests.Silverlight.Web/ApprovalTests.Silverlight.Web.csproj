@@ -72,9 +72,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApprovalService.svc.cs">
-      <DependentUpon>ApprovalService.svc</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -82,10 +79,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="IApprovalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApprovalTests.Silverlight.Service\ApprovalTests.Silverlight.Service.csproj">
+      <Project>{C4D525C1-CC71-40E7-98CC-11EE32DEC358}</Project>
+      <Name>ApprovalTests.Silverlight.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
       <Project>{F70C9A76-F797-4167-8178-14821F8634BC}</Project>
       <Name>ApprovalTests</Name>

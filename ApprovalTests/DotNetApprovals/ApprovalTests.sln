@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.Silverlight",
 		{EA285791-9C5D-4D98-A967-6151CD64938E} = {EA285791-9C5D-4D98-A967-6151CD64938E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.Silverlight.Service", "ApprovalTests.Silverlight.Service\ApprovalTests.Silverlight.Service.csproj", "{C4D525C1-CC71-40E7-98CC-11EE32DEC358}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{8EEA3F3E-5741-4C2C-82B9-CE6711F2CF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EEA3F3E-5741-4C2C-82B9-CE6711F2CF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EEA3F3E-5741-4C2C-82B9-CE6711F2CF5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D525C1-CC71-40E7-98CC-11EE32DEC358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D525C1-CC71-40E7-98CC-11EE32DEC358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D525C1-CC71-40E7-98CC-11EE32DEC358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D525C1-CC71-40E7-98CC-11EE32DEC358}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
