@@ -1,68 +1,36 @@
-﻿using ApprovalTests.Core.Exceptions;
-using MbUnit.Framework;
+﻿using ApprovalTests.Reporters;
+using NUnit.Framework;
 
 namespace ApprovalTests.Tests
 {
-	[TestFixture]
-	public class ApprovalsTest
-	{
-		[Test]
-		[Parallelizable]
-		public void TextMatchesApproval()
-		{
-			Approvals.Approve("should be a approved");
-		}
+    [TestFixture]
+    [UseReporter(typeof (DiffReporter))]
+    public class ApprovalsTest
+    {
+        private static readonly string[] text = new string[] {"abc", "123", "!@#"};
 
-		[Test]
-		[Parallelizable]
-		public void EnumerableMatchesApproval()
-		{
-			Approvals.Approve(new[]
-			{
-				"abc", "123", "!@#"
-			}, "collection");
-		}
+        [Test]
+        public void Text()
+        {
+            Approvals.Approve("should be approved");
+        }
 
-		[Test]
-		[Parallelizable]
-		[UseReporter(typeof(CleanupReporter))]
-		[ExpectedException(typeof (ApprovalMismatchException))]
-		public void TextDoesNotMatchApproval()
-		{
-			Approvals.Approve("should fail with mismatch");
-		}
+        [Test]
+        public void EnumerableWithLabel()
+        {
+            Approvals.Approve(text, "collection");
+        }
 
-		[Test]
-		[Parallelizable]
-		[UseReporter(typeof(CleanupReporter))]
-		[ExpectedException(typeof (ApprovalMissingException))]
-		public void TextNotApprovedYet()
-		{
-			Approvals.Approve("should fail with a missing exception");
-		}
+        [Test]
+        public void EnumerableWithLabelAndFormatter()
+        {
+            Approvals.Approve(text, "collection", (t) => "" + t.Length);
+        }
 
-		[Test]
-		[Parallelizable]
-		[UseReporter(typeof(CleanupReporter))]
-		[ExpectedException(typeof (ApprovalMismatchException))]
-		public void EnumerableDoesNotMatchApproval()
-		{
-			Approvals.Approve(new[]
-			{
-				"Does not match"
-			}, "collection");
-		}
-
-		[Test]
-		[Parallelizable]
-		[UseReporter(typeof(CleanupReporter))]
-		[ExpectedException(typeof (ApprovalMissingException))]
-		public void EnumerableNotApprovedYet()
-		{
-			Approvals.Approve(new[]
-			{
-				"Not approved"
-			}, "collection");
-		}
-	}
+        [Test]
+        public void EnumerableWithFormatter()
+        {
+            Approvals.Approve(text, (t) => "" + t.Length);
+        }
+    }
 }

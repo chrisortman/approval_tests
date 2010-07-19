@@ -21,7 +21,7 @@ namespace ApprovalTests.Writers
 
 		public static string Write<T>(IEnumerable<T> enumerable, string label, CustomFormatter<T> formatter)
 		{
-			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}", label, i, formatter(s)),
+			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}\r\n", label, i, formatter(s)),
 			             string.Format("{0} is empty", label));
 		}
 
