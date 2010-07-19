@@ -4,9 +4,9 @@ namespace ApprovalTests.StackTraceParsers
 {
 	public class NUnitStackTraceParser : AttributeStackTraceParser
 	{
-		protected override Type GetAttributeType()
+		protected override string GetAttributeType()
 		{
-			return Type.GetType("NUnit.Framework.TestAttribute, NUnit.Framework", false);
+		    return "NUnit.Framework.TestAttribute";
 		}
 	}
 }
