@@ -25,6 +25,11 @@ namespace ApprovalTests.Reporters
 		{
 			get { return arguments; }
 		}
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", program, arguments);
+        }
 	}
 
 	public class DiffReporter : IApprovalFailureReporter

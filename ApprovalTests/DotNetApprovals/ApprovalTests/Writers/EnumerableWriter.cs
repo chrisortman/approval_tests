@@ -21,13 +21,13 @@ namespace ApprovalTests.Writers
 
 		public static string Write<T>(IEnumerable<T> enumerable, string label, CustomFormatter<T> formatter)
 		{
-			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}" + Environment.NewLine, label, i, formatter(s)),
+			return Write(enumerable, (i, s) => string.Format("{0}[{1}] = {2}", label, i, formatter(s)),
 			             string.Format("{0} is empty", label));
 		}
 
 		public static string Write<T>(IEnumerable<T> enumerable, CustomFormatter<T> formatter)
 		{
-			return Write(enumerable, (i, s) => formatter(s), "Empty");
+			return Write(enumerable, (i, s) => formatter(s) + Environment.NewLine, "Empty");
 		}
 
 		public static string Write<T>(IEnumerable<T> enumerable, CustomFormatterWithIndex<T> formatter, string emptyMessage)

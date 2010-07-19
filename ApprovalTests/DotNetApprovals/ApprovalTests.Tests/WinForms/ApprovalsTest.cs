@@ -1,10 +1,12 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using ApprovalTests.Reporters;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.WinForms
 {
 	[TestFixture]
+    [UseReporter(typeof(DiffReporter))]
 	public class ApprovalsTest
 	{
 		[Test]
@@ -14,7 +16,6 @@ namespace ApprovalTests.Tests.WinForms
 		}
 
 		[Test]
-		[Ignore("Currently not working with build system")]
 		public void TestFormApproval()
 		{
 			ApprovalTests.WinForms.Approvals.Approve(new Form());

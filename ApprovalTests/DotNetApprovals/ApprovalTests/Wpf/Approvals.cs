@@ -11,7 +11,11 @@ namespace ApprovalTests.Wpf
 			ApprovalTests.Approvals.Approve(new ApprovalWpfWindowWriter(window), new UnitTestFrameworkNamer(),
 			                                ApprovalTests.Approvals.GetReporter());
 		}
-
+        public static void Approve(WindowWpfWriter.Loader<Window> action)
+        {
+            ApprovalTests.Approvals.Approve(new WindowWpfWriter(action), new UnitTestFrameworkNamer(),
+                              ApprovalTests.Approvals.GetReporter());
+        }
 		//public static void Approve(Control control)
 		//{
 		//    ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new UnitTestFrameworkNamer(),

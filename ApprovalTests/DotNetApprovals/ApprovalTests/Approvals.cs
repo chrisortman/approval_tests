@@ -14,10 +14,15 @@ namespace ApprovalTests
 	{
 		#region Text
 
-		public static void Approve(string text)
-		{
-			Approve(new ApprovalTextWriter(text), new UnitTestFrameworkNamer(), GetReporter());
-		}
+        public static void Approve(string text)
+        {
+            Approve(new ApprovalTextWriter(text), new UnitTestFrameworkNamer(), GetReporter());
+        }
+        public static void Approve(object text)
+        {
+            Approve(new ApprovalTextWriter("" + text), new UnitTestFrameworkNamer(), GetReporter());
+        }
+
 
 		#endregion
 
