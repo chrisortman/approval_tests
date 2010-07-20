@@ -85,6 +85,7 @@
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="CleanupReporter.cs" />
     <Compile Include="FailedApprovalTests.cs" />
+    <Compile Include="LockDownTest.cs" />
     <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
     <Compile Include="Persistence\WeatherTest.cs" />
