@@ -61,4 +61,3 @@
 		<exec program="${base}/build/pscp.exe" commandline=" -pw ${password} ${base}/results/${packageName} ${username}@frs.sourceforge.net:${uploadPath}"/>
 	</target>
 </project>
-
