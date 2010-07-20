@@ -7,7 +7,7 @@
 	<property name="packageName" value="*" />
 	<include buildfile="${properites}" if="${file::exists(properites)}"/>
 		
-	<target name="nightlyBuild" depends="build,test,sourceforge">
+	<target name="nightlyBuild" depends="build,sourceforge">
 	</target>
 	
 	<target name="build">
