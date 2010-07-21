@@ -53,7 +53,12 @@ namespace ApprovalTests
 
         public static IApprovalFailureReporter GetReporter()
         {
-            return GetReporterFromAttribute() ?? new QuietReporter();
+            return GetReporter(new QuietReporter());
+        }
+
+        public static IApprovalFailureReporter GetReporter(IApprovalFailureReporter defaultIfNotFound)
+        {
+            return GetReporterFromAttribute() ?? defaultIfNotFound;
         }
 
         private static IApprovalFailureReporter GetReporterFromAttribute()

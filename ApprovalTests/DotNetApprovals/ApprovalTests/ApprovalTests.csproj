@@ -66,6 +66,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase">
@@ -73,6 +76,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asp\Approvals.cs" />
+    <Compile Include="Asp\AppRenderer.cs" />
     <Compile Include="Core\Approvals.cs" />
     <Compile Include="Approvals.cs" />
     <Compile Include="Core\Exceptions\ApprovalException.cs" />

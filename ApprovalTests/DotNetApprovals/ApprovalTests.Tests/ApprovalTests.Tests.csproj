@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovalsTest.cs" />
+    <Compile Include="Asp\RenderHtmlTest.cs" />
     <Compile Include="CleanupReporter.cs" />
     <Compile Include="FailedApprovalTests.cs" />
     <Compile Include="LockDownTest.cs" />
