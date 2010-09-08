@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using ImageTools;
@@ -8,6 +11,28 @@ namespace ApprovalTests.Silverlight
 {
 	public static class Approvals
 	{
+		public static void Approve<T>(string path, string testName, IEnumerable<T> enumerable, string label)
+		{
+			var client = new ApprovalServiceClient();
+			string result = EnumerableWriter.Write(enumerable, label);
+			client.ApproveAsync(path, testName, Encoding.UTF8.GetBytes(result));
+		}
+
+		public static void Approve<T>(string path, string testName, IEnumerable<T> enumerable, string label, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			var client = new ApprovalServiceClient();
+			string result = EnumerableWriter.Write(enumerable, label, formatter);
+			client.ApproveAsync(path, testName, Encoding.UTF8.GetBytes(result));
+		}
+
+		public static void Approve<T>(string path, string testName, IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			var client = new ApprovalServiceClient();
+			string result = EnumerableWriter.Write(enumerable, formatter);
+			client.ApproveAsync(path, testName, Encoding.UTF8.GetBytes(result));
+		}
+
+
 		public static void Approve(string path, string testName, Control control)
 		{
 			var client = new ApprovalServiceClient();

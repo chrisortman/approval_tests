@@ -28,6 +28,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.MSTest", "App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication", "MvcApplication\MvcApplication.csproj", "{576E7C1D-A707-46EC-87CD-428B3E108A72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.Silverlight.Tests", "ApprovalTests.Silverlight.Tests\ApprovalTests.Silverlight.Tests.csproj", "{B925D046-E2F7-4987-B8D0-55E4AC779D38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA285791-9C5D-4D98-A967-6151CD64938E} = {EA285791-9C5D-4D98-A967-6151CD64938E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +73,10 @@ Global
 		{576E7C1D-A707-46EC-87CD-428B3E108A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{576E7C1D-A707-46EC-87CD-428B3E108A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{576E7C1D-A707-46EC-87CD-428B3E108A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

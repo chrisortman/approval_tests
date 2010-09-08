@@ -12,7 +12,7 @@
     <RootNamespace>ApprovalTests.Silverlight.Web</RootNamespace>
     <AssemblyName>ApprovalTests.Silverlight.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SilverlightApplicationList>{488BFA7A-2F2F-43EA-A8BE-897E0CE0A499}|..\ApprovalTests.Silverlight.Tests\ApprovalTests.Silverlight.Tests.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{B925D046-E2F7-4987-B8D0-55E4AC779D38}|..\ApprovalTests.Silverlight.Tests\ApprovalTests.Silverlight.Tests.csproj|ClientBin|False</SilverlightApplicationList>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApprovalService.svc" />
-    <Content Include="ApprovalTests.Silverlight.TestsTestPage.aspx" />
     <Content Include="ApprovalTests.Silverlight.TestsTestPage.html" />
     <Content Include="ClientBin\ApprovalTests.Silverlight.Tests.xap" />
     <Content Include="Default.aspx" />
