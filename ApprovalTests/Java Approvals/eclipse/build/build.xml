@@ -1,5 +1,5 @@
-<project name="LegacyCodeTalk" basedir="." default="createDownload">
-	<property file="properties/general.properties" />
+<project name="OpenSource" basedir="." default="createDownload">
+	<property file="properties/lambda.properties" />
 	<target name="compile" depends="cleanUp">
 		<mkdir dir="${build}" />
 		<delete dir="${build}/com/spun" />
@@ -20,7 +20,7 @@
 	<target name="buildJarFile" depends="compile">
 		<delete file="${jar}" failonerror="false" />
 		<jar destfile="${jar}" basedir="${build}" update="false">
-			<include name="com/spun/**" />
+			<include name="**" />
 		</jar>
 	</target>
 	<target name="createDownload" depends="buildJarFile">
