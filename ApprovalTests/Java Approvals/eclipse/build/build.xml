@@ -1,10 +1,9 @@
 <project name="OpenSource" basedir="." default="createDownload">
-	<property file="properties/lambda.properties" />
 	<target name="compile" depends="cleanUp">
 		<mkdir dir="${build}" />
 		<delete dir="${build}/com/spun" />
 		<echo>${targetJavaClass}</echo>
-		<javac srcdir="${src}" destdir="${build}" debug="true" includes="${targetJavaClass}" target="1.6" listfiles="false">
+		<javac srcdir="${src}" destdir="${build}" debug="true" includes="${targetJavaClass}" target="1.6" listfiles="true">
 			<exclude name="**/tests/**" if="excludeTests" />
 			<classpath>
 				<fileset dir="${src}/jars">
@@ -24,7 +23,25 @@
 		</jar>
 	</target>
 	<target name="createDownload" depends="buildJarFile">
-		<zip destfile="${zip}"  basedir="${build}" includes="*.jar"/>
+		<zip destfile="${zip}" basedir="${build}" includes="*.jar,*.txt">
+			<fileset dir="${documentation}" includes="**">
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="Publish    Lambdas">
+		<property file="properties/lambda.properties" />
+		<antcall target="createDownload" />
+	</target>
+
+	<target name="Publish    ApprovalTests">
+		<property file="properties/approvaltests.properties" />
+		<antcall target="createDownload" />
+	</target>
+
+	<target name="Publish    ExtensionMethods">
+		<property file="properties/extension_methods.properties" />
+		<antcall target="createDownload" />
 	</target>
 </project>
 
