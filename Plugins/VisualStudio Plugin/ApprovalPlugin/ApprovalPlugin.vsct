@@ -71,7 +71,7 @@
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <CommandName>cmdidViewApprovalFile</CommandName>
-          <ButtonText>View Approval File</ButtonText>
+          <ButtonText>Approve</ButtonText>
         </Strings>
       </Button>
 

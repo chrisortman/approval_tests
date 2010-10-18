@@ -32,7 +32,7 @@ namespace ApprovalTest.ApprovalPlugin
         {
             if (pguidCmdGroup == GuidList.guidApprovalPluginCmdSet && nCmdID == 0x0100)
             {
-                DoStuff();
+                ApproveResult();
                 return VSConstants.S_OK;
             }
             return next.Exec(pguidCmdGroup, nCmdID, nCmdexecopt, pvaIn, pvaOut);
@@ -45,7 +45,7 @@ namespace ApprovalTest.ApprovalPlugin
                 ITextSnapshotLine line =
                     textView.TextBuffer.CurrentSnapshot.GetLineFromPosition(
                         textView.Caret.Position.BufferPosition.Position);
-                if (line.GetText().Contains("Approve"))
+                if (line.GetText().Contains("Approve") && GetMethodInfoFromActiveDocument(dte).ReceivedFileExists())
                 {
                     prgCmds[0].cmdf = (uint) (OLECMDF.OLECMDF_ENABLED | OLECMDF.OLECMDF_SUPPORTED);
                 }
@@ -64,7 +64,12 @@ namespace ApprovalTest.ApprovalPlugin
             textView.GotAggregateFocus -= textView_GotAggregateFocus;
         }
 
-        private void DoStuff()
+        private void ApproveResult()
+        {
+            ApproveResult(GetMethodInfoFromActiveDocument(dte));
+        }
+
+        private static MethodInfo GetMethodInfoFromActiveDocument(_DTE dte)
         {
             dynamic selection = dte.ActiveDocument.Selection;
             TextPoint point = selection.ActivePoint();
@@ -74,9 +79,47 @@ namespace ApprovalTest.ApprovalPlugin
             CodeElement method = dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(point,
                                                                                                    vsCMElement.
                                                                                                        vsCMElementFunction);
-            string contents = dte.ActiveDocument.FullName + "\r\n" + clazz.Name + "\r\n" + method.Name;
-            File.WriteAllText("D:\\out.txt", contents);
-            Process.Start("d:\\out.txt");
+            string fullName = dte.ActiveDocument.FullName;
+            string parentPath = new DirectoryInfo(fullName).Parent.FullName;
+            var info = new MethodInfo {path = parentPath, clazz = clazz.Name, method = method.Name};
+            return info;
+        }
+
+        private void ApproveResult(MethodInfo info)
+        {
+            var approval = info.GetApprovedFile();
+            if (File.Exists(approval))
+            {
+                File.Delete(approval);
+            }
+            File.Move(info.GetReceivedFile(), approval);
+        }
+    }
+
+    internal class MethodInfo
+    {
+        public string clazz;
+        public string method;
+        public string path;
+
+        public bool ReceivedFileExists()
+        {
+            return File.Exists(GetReceivedFile());
+        }
+
+        public string GetReceivedFile()
+        {
+            return GetFileName("received");
+        }
+
+        public string GetApprovedFile()
+        {
+            return GetFileName("approved");
+        }
+
+        private string GetFileName(string state)
+        {
+            return string.Format("{0}\\{1}.{2}.{3}.txt", path, clazz, method, state);
         }
     }
 }
