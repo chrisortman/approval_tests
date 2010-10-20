@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Process = System.Diagnostics.Process;
+using System.Diagnostics;
 
 namespace ApprovalTest.ApprovalPlugin
 {
@@ -81,26 +82,51 @@ namespace ApprovalTest.ApprovalPlugin
                                                                                                        vsCMElementFunction);
             string fullName = dte.ActiveDocument.FullName;
             string parentPath = new DirectoryInfo(fullName).Parent.FullName;
-            var info = new MethodInfo {path = parentPath, clazz = clazz.Name, method = method.Name};
+            var info = new MethodInfo(clazz.Name, method.Name, parentPath);
             return info;
         }
 
         private void ApproveResult(MethodInfo info)
         {
-            var approval = info.GetApprovedFile();
-            if (File.Exists(approval))
-            {
-                File.Delete(approval);
-            }
-            File.Move(info.GetReceivedFile(), approval);
+          if (File.Exists(info.GetApprovedFile()))
+          {
+            File.SetAttributes(info.GetApprovedFile(), File.GetAttributes(info.GetApprovedFile()) & ~FileAttributes.ReadOnly);
+          }
+            File.Replace(info.GetReceivedFile(), info.GetApprovedFile(), null, true);
         }
     }
 
     internal class MethodInfo
     {
-        public string clazz;
-        public string method;
-        public string path;
+        public readonly string clazz;
+        public readonly string method;
+        public readonly string path;
+        public readonly string extension;
+
+        private static readonly string[] extensions = new string[] { "txt", "png" };
+
+        public MethodInfo(string @class, string method, string path)
+        {
+            this.clazz = @class;
+            this.method = method;
+            this.path = path;
+
+            // We now need to work out the extension, so let probe
+            foreach (string extension in extensions)
+            {
+                if (File.Exists(GetApprovedFile(extension)) || File.Exists(GetReceivedFile(extension)))
+                {
+                    this.extension = extension;
+                    break;
+                }
+            }
+
+            // If we didn't find one, we'll assume .txt
+            if (this.extension == null)
+            {
+                this.extension = "txt";
+            }
+        }
 
         public bool ReceivedFileExists()
         {
@@ -109,17 +135,29 @@ namespace ApprovalTest.ApprovalPlugin
 
         public string GetReceivedFile()
         {
-            return GetFileName("received");
+            Debug.Assert(this.extension != null);
+            return GetReceivedFile(this.extension);
+        }
+
+        public string GetReceivedFile(string extension)
+        {
+            return GetFileName("received", extension);
         }
 
         public string GetApprovedFile()
         {
-            return GetFileName("approved");
+            Debug.Assert(this.extension != null);
+            return GetApprovedFile(this.extension);
         }
 
-        private string GetFileName(string state)
+        private string GetApprovedFile(string extension)
         {
-            return string.Format("{0}\\{1}.{2}.{3}.txt", path, clazz, method, state);
+            return GetFileName("approved", extension);
+        }
+
+        private string GetFileName(string state, string extension)
+        {
+            return string.Format("{0}\\{1}.{2}.{3}.{4}", path, clazz, method, state, extension);
         }
     }
 }
