@@ -33,19 +33,27 @@ namespace ApprovalTests.Wpf
 
         public string WriteReceivedFile(string received)
         {
-            bool w = false;
+            Exception caught = null;
             var t = new Thread(() =>
                                    {
-                                       Window window = Action.Invoke();
-                                       ScreenCapture(window, received);
-
-                                       w = true;
+                                       try
+                                       {
+                                           Window window = Action.Invoke();
+                                           ScreenCapture(window, received);
+                                       }
+                                       catch (Exception e)
+                                       {
+                                           caught = e;
+                                       }
                                    });
+
             t.SetApartmentState(ApartmentState.STA); //Many WPF UI elements need to be created inside STA
             t.Start();
-            while (!w)
+            t.Join();
+
+            if (caught != null)
             {
-                Thread.Sleep(10);
+                throw new Exception("Creating window failed.", caught);
             }
 
             return received;
@@ -55,18 +63,25 @@ namespace ApprovalTests.Wpf
 
         public static void ScreenCapture(Window window, string filename)
         {
-            window.Show(); // make sure it is ready for rendering
-
-            // The BitmapSource that is rendered with a Visual.
-            var rtb = new RenderTargetBitmap((int)window.ActualWidth, (int)window.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            rtb.Render(window);
-
-            // Encoding the RenderBitmapTarget as a PNG file.
-            var png = new PngBitmapEncoder();
-            png.Frames.Add(BitmapFrame.Create(rtb));
-            using (Stream stm = File.Create(filename))
+            try
             {
-                png.Save(stm);
+                window.Show(); // make sure it is ready for rendering
+
+                // The BitmapSource that is rendered with a Visual.
+                var rtb = new RenderTargetBitmap((int)window.ActualWidth, (int)window.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+                rtb.Render(window);
+
+                // Encoding the RenderBitmapTarget as a PNG file.
+                var png = new PngBitmapEncoder();
+                png.Frames.Add(BitmapFrame.Create(rtb));
+                using (Stream stm = File.Create(filename))
+                {
+                    png.Save(stm);
+                }
+            }
+            finally
+            {
+                window.Close();
             }
         }
     }

@@ -66,7 +66,10 @@ namespace ApprovalTests.Reporters
 		public LaunchArgs GetLaunchArguments(string approved, string received)
 		{
 			if (!File.Exists(approved))
-				File.Create(approved);
+            {
+                File.Create(approved).Dispose();
+            }
+
 			LaunchArgs args = GetLaunchArgumentsForFile(approved);
 			return new LaunchArgs(args.Program, string.Format(args.Arguments, received, approved));
 		}
@@ -74,8 +77,10 @@ namespace ApprovalTests.Reporters
 		private LaunchArgs GetLaunchArgumentsForFile(string approved)
 		{
 			string ext = Path.GetExtension(approved);
-			if (types.ContainsKey(ext))
-				return types[ext];
+            if (types.ContainsKey(ext))
+            {
+                return types[ext];
+            }
 			return types["*"];
 		}
 
