@@ -4,19 +4,31 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests
 {
     [TestFixture]
-    [UseReporter(typeof(DiffReporter))]
+    [UseReporter(typeof (DiffReporter))]
     public class LockDownTests
     {
-        public string ProcessCall(int i, string s)
+        public string Echo(params int[] i)
         {
-            return string.Format("[{0}, {1}]", i, s);
+            return StringUtils.ToReadableString(i);
         }
 
         [Test]
         public void TestLockDown()
         {
-            LockDown.Approvals.LockDown(ProcessCall, new[] {1, 2, 3, 4, 5},
-                                        new[] {"a", "b", "c", "d"});
+            int[] n = {1, 2};
+            LockDown.Approvals.LockDown(n,n,n,n,n,n,n,n,n,(a,b,c,d,e,f,g,h,i)=>Echo(a,b,c,d,e,f,g,h,i));
+        }
+        [Test]
+        public void TestLockDown8()
+        {
+            int[] n = { 1, 2 };
+            LockDown.Approvals.LockDown(n, n, n, n, n, n, n, n, (a, b, c, d, e, f, g, h) => Echo(a, b, c, d, e, f, g, h));
+        }
+        [Test]
+        public void TestLockDown2()
+        {
+            int[] n = { 1, 2 };
+            LockDown.Approvals.LockDown(n, n,  (a, b) => Echo(a, b));
         }
     }
 }
