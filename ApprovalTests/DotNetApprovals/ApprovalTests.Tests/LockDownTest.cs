@@ -16,19 +16,25 @@ namespace ApprovalTests.Tests
         public void TestLockDown()
         {
             int[] n = {1, 2};
-            LockDown.Approvals.LockDown(n,n,n,n,n,n,n,n,n,(a,b,c,d,e,f,g,h,i)=>Echo(a,b,c,d,e,f,g,h,i));
+            LockDown.Approvals.ApproveAllCombinations(n,n,n,n,n,n,n,n,n,(a,b,c,d,e,f,g,h,i)=>Echo(a,b,c,d,e,f,g,h,i));
         }
         [Test]
         public void TestLockDown8()
         {
             int[] n = { 1, 2 };
-            LockDown.Approvals.LockDown(n, n, n, n, n, n, n, n, (a, b, c, d, e, f, g, h) => Echo(a, b, c, d, e, f, g, h));
+            LockDown.Approvals.ApproveAllCombinations(n, n, n, n, n, n, n, n, (a, b, c, d, e, f, g, h) => Echo(a, b, c, d, e, f, g, h));
         }
         [Test]
         public void TestLockDown2()
         {
             int[] n = { 1, 2 };
-            LockDown.Approvals.LockDown(n, n,  (a, b) => Echo(a, b));
+            LockDown.Approvals.ApproveAllCombinations(n, n,  (a, b) => Echo(a, b));
+        }
+        [Test]
+        public void TestExceptions()
+        {
+            int[] n = { 0, 2 };
+            LockDown.Approvals.ApproveAllCombinations(n, n, (a, b) => a / b);
         }
     }
 }
