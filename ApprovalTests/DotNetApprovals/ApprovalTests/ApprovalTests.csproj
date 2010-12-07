@@ -84,7 +84,7 @@
     <Compile Include="Core\Exceptions\ApprovalException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
-    <Compile Include="LockDown\Approvals.cs" />
+    <Compile Include="Combinations\Approvals.cs" />
     <Compile Include="Persistence\ILoader.cs" />
     <Compile Include="Persistence\ISaver.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />

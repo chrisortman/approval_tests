@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApprovalTests.LockDown
+namespace ApprovalTests.Combinations
 {
     public class Approvals
     {
