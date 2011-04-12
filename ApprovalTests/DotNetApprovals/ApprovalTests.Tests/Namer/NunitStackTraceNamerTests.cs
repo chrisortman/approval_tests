@@ -8,15 +8,7 @@ namespace ApprovalTests.Tests.Namer
 	[TestFixture]
     public class NunitStackTraceNamerTests
     {
-		public static string DirectoryThisSourceFileIsIn
-		{
-			get
-			{
-				string basePath = String.Format(@"{0}\..\..\..\namer", System.Reflection.Assembly.GetExecutingAssembly().Location);
-				string pathGetFullPathToLower = Path.GetFullPath(basePath).ToLower();
-				return pathGetFullPathToLower;
-			}
-		}
+		
 
 		[Test]
 		public void TestApprovalName()
@@ -29,7 +21,8 @@ namespace ApprovalTests.Tests.Namer
         public void TestSourcePath()
         {
             string name = new UnitTestFrameworkNamer().SourcePath;
-            Assert.AreEqual(DirectoryThisSourceFileIsIn, name.ToLower());
-        }
+						var path = name.ToLower() + "\\"+ this.GetType().Name+".cs";
+						Assert.IsTrue(File.Exists(path), path + " does not exist");
+				}
     }
 }

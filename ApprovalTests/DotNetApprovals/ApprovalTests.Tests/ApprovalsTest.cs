@@ -27,6 +27,14 @@ namespace ApprovalTests.Tests
             Approvals.Approve(text, "collection", (t) => "" + t.Length);
         }
 
+				[Test]
+				public void EnumerableWithHeaderAndFormatter()
+				{
+					var word = "Llewellyn";
+
+					Approvals.Approve(word, word.ToCharArray(), (c) => c+ " => " + (int)c);
+				}
+
         [Test]
         public void EnumerableWithFormatter()
         {

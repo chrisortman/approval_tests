@@ -1,6 +1,5 @@
 ﻿using System;
-using ApprovalTests.Core;
-using ApprovalTests.Writers;
+using ApprovalTests.Approvers;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests
@@ -9,7 +8,7 @@ namespace ApprovalTests.Tests
 	public class FileApproverTests
 	{
 		
-		/*[Test]
+		[Test]
 		public void TestFailureDueToMissingApproval()
 		{
 			AssertApprover("a.txt", "non_existing_file.txt", false);
@@ -29,18 +28,9 @@ namespace ApprovalTests.Tests
 
 		private static void AssertApprover(string receivedFile, string approvedFile, bool expected)
 		{
-			var writer = new Mock<IApprovalWriter>();
-			var namer = new Mock<IApprovalNamer>();
 			var basePath = Environment.CurrentDirectory + @"\..\..\";
-			namer.Expect(n => n.Name).Returns("a");
-			namer.Expect(n => n.SourcePath).Returns(basePath);
-			writer.Expect(w => w.WriteReceivedFile(It.IsAny<string>())).Returns(basePath + receivedFile);
-			writer.Expect(w => w.GetApprovalFilename(It.IsAny<string>())).Returns(basePath + approvedFile);
-			writer.Expect(w => w.GetReceivedFilename(It.IsAny<string>())).Returns(basePath + receivedFile);
-			
-            FileApprover approver = new FileApprover(writer.Object, namer.Object);
-
-			Assert.AreEqual(expected, approver.	Approve());
-		}*/
+			var exception = FileApprover.Approve(basePath + approvedFile, basePath + receivedFile);
+			Assert.AreEqual(expected, exception == null);
+		}
 	}
 }
