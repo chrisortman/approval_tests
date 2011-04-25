@@ -85,6 +85,7 @@
     <Compile Include="Core\Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Combinations\Approvals.cs" />
+    <Compile Include="IReporterWithApprovalPower.cs" />
     <Compile Include="Persistence\ILoader.cs" />
     <Compile Include="Persistence\ISaver.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
@@ -117,6 +118,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Namers\UnitTestFrameworkNamer.cs" />
     <Compile Include="StackTraceParsers\StackTraceParser.cs" />
+    <Compile Include="Writers\ExistingFileWriter.cs" />
+    <Compile Include="Writers\WriterUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

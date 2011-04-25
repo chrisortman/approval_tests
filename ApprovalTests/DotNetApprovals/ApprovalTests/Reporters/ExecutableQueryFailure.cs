@@ -32,9 +32,6 @@ namespace ApprovalTests.Reporters
             return newFileName;
         }
 
-        public bool ApprovedWhenReported()
-        {
-            return false;
-        }
+      
     }
 }

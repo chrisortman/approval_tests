@@ -49,20 +49,13 @@ namespace ApprovalTests.Reporters
 			types.Add(".png", new LaunchArgs(imageDiffTool, imageDiffArgs));
 		}
 
-		#region IApprovalFailureReporter Members
-
+	
 		public void Report(string approved, string received)
 		{
 			Launch(GetLaunchArguments(approved, received));
 		}
 
-		public bool ApprovedWhenReported()
-		{
-			return false;
-		}
-
-		#endregion
-
+	
 		public LaunchArgs GetLaunchArguments(string approved, string received)
 		{
 			if (!File.Exists(approved))

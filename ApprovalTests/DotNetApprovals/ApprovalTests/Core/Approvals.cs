@@ -12,7 +12,7 @@ namespace ApprovalTests.Core
 			{
 				approver.ReportFailure(reporter);
 
-				if (reporter.ApprovedWhenReported())
+				if (reporter is IReporterWithApprovalPower && ((IReporterWithApprovalPower)reporter).ApprovedWhenReported())
 					approver.CleanUpAfterSucess();
 				else
 					approver.Fail();

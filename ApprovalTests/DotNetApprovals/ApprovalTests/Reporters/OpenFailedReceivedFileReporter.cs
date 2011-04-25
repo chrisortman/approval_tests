@@ -5,7 +5,6 @@ namespace ApprovalTests.Reporters
 {
 	public class OpenReceivedFileReporter : IApprovalFailureReporter
 	{
-		#region IApprovalFailureReporter Members
 
 		public void Report(string approved, string received)
 		{
@@ -13,11 +12,5 @@ namespace ApprovalTests.Reporters
 			Process.Start(received);
 		}
 
-		public bool ApprovedWhenReported()
-		{
-			return false;
-		}
-
-		#endregion
 	}
 }

@@ -14,7 +14,6 @@ namespace ApprovalTests
 			control = controlHandle;
 		}
 
-		#region IApprovalWriter Members
 
 		public string GetApprovalFilename(string basename)
 		{
@@ -37,7 +36,6 @@ namespace ApprovalTests
 			return received;
 		}
 
-		#endregion
 
 		private void EnsureControlDisplaysCorrectly()
 		{

@@ -6,11 +6,7 @@ namespace ApprovalTests.Reporters
 {
 	public class ImageReporter : IApprovalFailureReporter
 	{
-		public bool ApprovedWhenReported()
-		{
-			return false;
-		}
-
+	
 		private const string DiffImageTool = "TortoiseIDiff.exe";
 		private const string DiffImageToolArgs = "/left:\"{0}\" /right:\"{1}\"";
 

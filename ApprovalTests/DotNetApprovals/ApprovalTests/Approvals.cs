@@ -16,12 +16,17 @@ namespace ApprovalTests
 
         public static void Approve(string text)
         {
-            Approve(new ApprovalTextWriter(text), new UnitTestFrameworkNamer(), GetReporter());
+            Approve(new ApprovalTextWriter(text), GetDefaultNamer(), GetReporter());
         }
 
-        public static void Approve(object text)
+    	public static IApprovalNamer GetDefaultNamer()
+    	{
+    		return new UnitTestFrameworkNamer();
+    	}
+
+    	public static void Approve(object text)
         {
-            Approve(new ApprovalTextWriter("" + text), new UnitTestFrameworkNamer(), GetReporter());
+            Approve(new ApprovalTextWriter("" + text), GetDefaultNamer(), GetReporter());
         }
 
         #endregion
@@ -37,6 +42,11 @@ namespace ApprovalTests
                                       EnumerableWriter.CustomFormatter<T> formatter)
         {
             Approve(EnumerableWriter.Write(enumerable, label, formatter));
+        } 
+			
+			public static void Approve<T>(String header, IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+        {
+            Approve(header + "\r\n\r\n" + EnumerableWriter.Write(enumerable, formatter));
         }
 
         public static void Approve<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
@@ -98,7 +108,7 @@ namespace ApprovalTests
 
         public static void Approve(IExecutableQuery query)
         {
-            Approve(new ApprovalTextWriter(query.GetQuery()), new UnitTestFrameworkNamer(),
+            Approve(new ApprovalTextWriter(query.GetQuery()), GetDefaultNamer(),
                     new ExecutableQueryFailure(query));
         }
     }

@@ -97,6 +97,7 @@
     <Compile Include="ExampleUsages.cs" />
     <Compile Include="WinForms\ApprovalsTest.cs" />
     <Compile Include="Wpf\ApprovalsTest.cs" />
+    <Compile Include="Writers\ExistingFileTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="a.png" />

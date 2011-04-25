@@ -26,19 +26,23 @@ namespace ApprovalTests.Approvers
 			received = Path.GetFullPath(writer.GetReceivedFilename(basename));
 			received = writer.WriteReceivedFile(received);
 
+			failure = Approve(approved, received);
+			return failure == null;
+		}
+
+		public static ApprovalException Approve(string approved, string received)
+		{
 			if (!File.Exists(approved))
 			{
-				failure = new ApprovalMissingException(received, approved);
-				return false;
+				return new ApprovalMissingException(received, approved);
 			}
 
 			if (!Compare(File.ReadAllBytes(received), File.ReadAllBytes(approved)))
 			{
-				failure = new ApprovalMismatchException(received, approved);
-				return false;
+				return new ApprovalMismatchException(received, approved);
 			}
 
-			return true;
+			return null;
 		}
 
 		public void Fail()
@@ -56,7 +60,7 @@ namespace ApprovalTests.Approvers
 			File.Delete(received);
 		}
 
-		private bool Compare(ICollection<byte> bytes1, ICollection<byte> bytes2)
+		private static bool Compare(ICollection<byte> bytes1, ICollection<byte> bytes2)
 		{
 			if (bytes1.Count != bytes2.Count)
 				return false;
