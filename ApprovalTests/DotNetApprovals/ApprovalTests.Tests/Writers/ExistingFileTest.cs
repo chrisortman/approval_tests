@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
 using NUnit.Framework;
@@ -15,7 +16,10 @@ namespace ApprovalTests.Tests.Writers
         {
 					var basePath = Environment.CurrentDirectory + @"\..\..\";
 
-            Approvals.Approve(new ExistingFileWriter(basePath + "a.png"), Approvals.GetDefaultNamer(), Approvals.GetReporter());
+        	var original = basePath + "a.png";
+        	var copy = basePath + "a1.png";
+					File.Copy(original, copy);
+        	Approvals.Approve(new ExistingFileWriter(copy), Approvals.GetDefaultNamer(), Approvals.GetReporter());
         }
 
     }
