@@ -1,0 +1,10 @@
+=> LoggerTest.TestMainPath()
+    Event: Starting
+    Variable: name = 'Llewellyn'
+    Message: I Got here
+    Sql: Select * From table_name
+**************************************************************************************
+ Problem
+   at SimpleLogger.Tests.LoggerTest.TestMainPath() in C:\code\DotNetApprovals\SimpleLogger.Tests\LoggerTest.cs:line 24
+**************************************************************************************
+<= LoggerTest.TestMainPath()
