@@ -34,6 +34,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.Silverlight.T
 		{EA285791-9C5D-4D98-A967-6151CD64938E} = {EA285791-9C5D-4D98-A967-6151CD64938E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogger.Tests", "SimpleLogger.Tests\SimpleLogger.Tests.csproj", "{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogger", "SimpleLogger\SimpleLogger.csproj", "{E9683C33-7A71-4776-B7C9-E89C565AC16B}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ApprovalTests1.vsmdi
@@ -81,6 +85,14 @@ Global
 		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B925D046-E2F7-4987-B8D0-55E4AC779D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9683C33-7A71-4776-B7C9-E89C565AC16B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9683C33-7A71-4776-B7C9-E89C565AC16B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9683C33-7A71-4776-B7C9-E89C565AC16B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9683C33-7A71-4776-B7C9-E89C565AC16B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
