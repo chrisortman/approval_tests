@@ -4,30 +4,30 @@ using System.IO;
 
 namespace SimpleLogger
 {
-	public class FileWriter : IAppendable
-	{
-		public FileWriter()
-		{
-			LogFile = Path.GetTempPath() + "Logger.txt";
-		}
+    public class FileWriter : IAppendable
+    {
+        public FileWriter()
+        {
+            LogFile = Path.GetTempPath() + "Logger.txt";
+        }
 
-		public void AppendLine(string text)
-		{
-			File.AppendAllText(LogFile, text);
-		}
+        public void AppendLine(string text)
+        {
+            File.AppendAllText(LogFile, text + Environment.NewLine);
+        }
 
-		private string logFile;
+        private string logFile;
 
-		protected string LogFile
-		{
-			get { return logFile; }
-			set
-			{
-				logFile = value;
-				var message = "Logging to:" + logFile;
-				Console.WriteLine(message);
-				Debug.WriteLine(message);
-			}
-		}
-	}
+        public string LogFile
+        {
+            get { return logFile; }
+            set
+            {
+                logFile = value;
+                var message = "Logging to:" + logFile;
+                Console.WriteLine(message);
+                Debug.WriteLine(message);
+            }
+        }
+    }
 }
