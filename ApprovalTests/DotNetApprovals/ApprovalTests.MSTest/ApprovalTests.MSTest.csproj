@@ -45,6 +45,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MSTestReporterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NamerTest.cs" />
   </ItemGroup>

@@ -9,7 +9,7 @@ namespace ApprovalTests.Asp
         {
             var host = AppRenderer.GetHostRelativeToAssemblyPath(relativePath);
             var htmlResult = host.ExecuteMvcUrl(page, queryString);
-            ApprovalTests.Approvals.Approve(new ApprovalTextWriter(htmlResult, "html"), new UnitTestFrameworkNamer(), ApprovalTests.Approvals.GetReporter(new OpenReceivedFileReporter()));
+            ApprovalTests.Approvals.Approve(new ApprovalTextWriter(htmlResult, "html"), new UnitTestFrameworkNamer(), ApprovalTests.Approvals.GetReporter(new FileLauncherReporter()));
         }
     }
 }

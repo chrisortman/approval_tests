@@ -13,7 +13,7 @@ namespace ApprovalTests.Reporters
 		public void Report(string approved, string received)
 		{
 			if (!File.Exists(approved))
-				new OpenReceivedFileReporter().Report(approved, received);
+				new FileLauncherReporter().Report(approved, received);
 			else
 				Process.Start(DiffImageTool, string.Format(DiffImageToolArgs, approved, received));
 		}

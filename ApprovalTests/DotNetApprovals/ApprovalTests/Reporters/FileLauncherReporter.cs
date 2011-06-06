@@ -3,7 +3,7 @@ using ApprovalTests.Core;
 
 namespace ApprovalTests.Reporters
 {
-	public class OpenReceivedFileReporter : IApprovalFailureReporter
+	public class FileLauncherReporter : IApprovalFailureReporter
 	{
 
 		public void Report(string approved, string received)
