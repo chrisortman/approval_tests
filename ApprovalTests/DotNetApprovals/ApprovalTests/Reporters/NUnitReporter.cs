@@ -19,7 +19,7 @@ namespace ApprovalTests.Reporters
 			var a = File.Exists(approved) ? File.ReadAllText(approved) : "";
 			var r = File.ReadAllText(received);
 
-			Debug.WriteLine(string.Format("move /Y \"{0}\" \"{1}\"", received, approved));
+			QuietReporter.DisplayCommandLineApproval(approved, received);
 			try
 			{
 				Type.GetType(assertClass).InvokeMember("AreEqual",

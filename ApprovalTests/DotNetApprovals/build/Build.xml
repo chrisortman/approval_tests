@@ -8,7 +8,8 @@
   <target name="createZip" depends="clean">
     <zip zipfile="output/ApprovalTests${version}.zip">
       <fileset basedir=".">
-        <include name="../../ApprovalTests/bin/debug/\ApprovalTests.dll" />
+        <include name="../ApprovalTests/bin/debug/*.dll" />
+		<include name="Documentation/*.pdf" />
       </fileset>
     </zip>
   </target>

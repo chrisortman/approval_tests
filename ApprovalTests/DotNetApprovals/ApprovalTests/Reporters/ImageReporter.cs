@@ -12,6 +12,7 @@ namespace ApprovalTests.Reporters
 
 		public void Report(string approved, string received)
 		{
+			QuietReporter.DisplayCommandLineApproval(approved, received);
 			if (!File.Exists(approved))
 				new FileLauncherReporter().Report(approved, received);
 			else
