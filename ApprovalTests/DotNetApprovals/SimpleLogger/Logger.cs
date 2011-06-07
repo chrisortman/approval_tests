@@ -1,4 +1,5 @@
 using System;
+using SimpleLogger.Writers;
 
 namespace SimpleLogger
 {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace SimpleLogger
+namespace SimpleLogger.Writers
 {
     public class FileWriter : IAppendable
     {
