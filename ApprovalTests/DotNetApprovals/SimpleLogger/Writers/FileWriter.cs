@@ -24,10 +24,24 @@ namespace SimpleLogger.Writers
             set
             {
                 logFile = value;
+                EnsureDirectoryExists(new FileInfo(logFile).Directory);
                 var message = "Logging to:" + logFile;
                 Console.WriteLine(message);
                 Debug.WriteLine(message);
             }
+        }
+
+        public static void EnsureDirectoryExists(DirectoryInfo directory)
+        {
+            directory.Refresh();
+            if (directory.Exists)
+            {
+                return;
+            }
+
+            EnsureDirectoryExists(directory.Parent);
+
+            directory.Create();
         }
     }
 }
