@@ -63,5 +63,10 @@ namespace SimpleLogger
         {
             log.UseTimer(timeLoader);
         }
+
+        public static void Warning(string format, params object[] data)
+        {
+            log.Warning(format, data);
+        }
     }
 }
