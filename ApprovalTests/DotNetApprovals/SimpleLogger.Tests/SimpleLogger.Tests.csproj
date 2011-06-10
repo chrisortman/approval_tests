@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ApprovalTests">
+      <HintPath>..\Libraries\ApprovalTests.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -49,10 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
-      <Project>{F70C9A76-F797-4167-8178-14821F8634BC}</Project>
-      <Name>ApprovalTests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SimpleLogger\SimpleLogger.csproj">
       <Project>{E9683C33-7A71-4776-B7C9-E89C565AC16B}</Project>
       <Name>SimpleLogger</Name>
