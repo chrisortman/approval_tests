@@ -2,6 +2,7 @@
 using ApprovalTests;
 using ApprovalTests.Reporters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SimpleLogger.Utilities;
 
 namespace SimpleLogger.Tests
 {
@@ -28,7 +29,7 @@ namespace SimpleLogger.Tests
                 Logger.Warning(e);
             }
             Logger.MarkerOut();
-            Approvals.Approve(log.ToString());
+            Approvals.Approve(log.ScrubPath(PathUtilities.GetDirectoryForCaller()));
         }
         [TestMethod]
         public void TestShowMarker()
