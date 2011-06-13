@@ -15,5 +15,12 @@ namespace SimpleLogger.Writers
         {
             return sb.ToString();
         }
+
+        public string ScrubPath(string path)
+        {
+            return ToString().Replace(path, @"...\");
+        }
     }
+
+   
 }
