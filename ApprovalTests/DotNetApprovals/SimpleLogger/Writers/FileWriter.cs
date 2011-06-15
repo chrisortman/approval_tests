@@ -13,7 +13,10 @@ namespace SimpleLogger.Writers
 
         public void AppendLine(string text)
         {
-            File.AppendAllText(LogFile, text + Environment.NewLine);
+            lock (this)
+            {
+                File.AppendAllText(LogFile, text + Environment.NewLine);
+            }
         }
 
         private string logFile;
