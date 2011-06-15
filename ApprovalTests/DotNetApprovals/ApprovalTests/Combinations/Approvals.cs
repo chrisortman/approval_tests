@@ -8,42 +8,24 @@ namespace ApprovalTests.Combinations
     {
         private static readonly object[] EMPTY = {null};
 
-        public static void ApproveAllCombinations<A>(
-            IEnumerable<A> aList,
-            Func<A, object> processCall)
+        public static void ApproveAllCombinations<A>(Func<A, object> processCall, IEnumerable<A> aList)
         {
-            ApproveAllCombinations("[{0}]", aList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a), "[{0}]", aList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            Func<A, B, object> processCall)
+        public static void ApproveAllCombinations<A, B>(Func<A, B, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList)
         {
-            ApproveAllCombinations("[{0},{1}]", aList, bList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b), "[{0},{1}]", aList, bList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            Func<A, B, C, object> processCall)
+        public static void ApproveAllCombinations<A, B, C>(Func<A, B, C, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList)
         {
-            ApproveAllCombinations("[{0},{1},{2}]", aList, bList, cList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b, c));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c), "[{0},{1},{2}]", aList, bList, cList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C, D>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            Func<A, B, C, D, object> processCall)
+        public static void ApproveAllCombinations<A, B, C, D>(Func<A, B, C, D, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList)
         {
-            ApproveAllCombinations("[{0},{1},{2},{3}]", aList, bList, cList, dList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d), "[{0},{1},{2},{3}]", aList, bList, cList, dList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
         }
 
         public static void ApproveAllCombinations<A, B, C, D, E>(
@@ -54,119 +36,53 @@ namespace ApprovalTests.Combinations
             IEnumerable<E> eList,
             Func<A, B, C, D, E, object> processCall)
         {
-            ApproveAllCombinations("[{0},{1},{2},{3},{4}]", aList, bList, cList, dList, eList, EMPTY, EMPTY, EMPTY,
-                                   EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e), "[{0},{1},{2},{3},{4}]", aList, bList, cList, dList, eList, EMPTY, EMPTY, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C, D, E, F>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            IEnumerable<F> fList,
-            Func<A, B, C, D, E, F, object> processCall)
+        public static void ApproveAllCombinations<A, B, C, D, E, F>(Func<A, B, C, D, E, F, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList, IEnumerable<F> fList)
         {
-            ApproveAllCombinations("[{0},{1},{2},{3},{4},{5}]", aList, bList, cList, dList, eList, fList, EMPTY, EMPTY,
-                                   EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e, f));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e, f), "[{0},{1},{2},{3},{4},{5}]", aList, bList, cList, dList, eList, fList, EMPTY, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C, D, E, F, G>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            IEnumerable<F> fList,
-            IEnumerable<G> gList,
-            Func<A, B, C, D, E, F, G, object> processCall)
+        public static void ApproveAllCombinations<A, B, C, D, E, F, G>(Func<A, B, C, D, E, F, G, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList, IEnumerable<F> fList, IEnumerable<G> gList)
         {
-            ApproveAllCombinations("[{0},{1},{2},{3},{4},{5},{6}]", aList, bList, cList, dList, eList, fList, gList,
-                                   EMPTY, EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e, f, g));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e, f, g), "[{0},{1},{2},{3},{4},{5},{6}]", aList, bList, cList, dList, eList, fList, gList, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C, D, E, F, G, H>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            IEnumerable<F> fList,
-            IEnumerable<G> gList,
-            IEnumerable<H> hList,
-            Func<A, B, C, D, E, F, G, H, object> processCall)
+        public static void ApproveAllCombinations<A, B, C, D, E, F, G, H>(Func<A, B, C, D, E, F, G, H, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList, IEnumerable<F> fList, IEnumerable<G> gList, IEnumerable<H> hList)
         {
-            ApproveAllCombinations("[{0},{1},{2},{3},{4},{5},{6},{7}]",
-                                   aList, bList, cList, dList, eList, fList, gList, hList, EMPTY,
-                                   (a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e, f, g, h));
+            ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e, f, g, h), "[{0},{1},{2},{3},{4},{5},{6},{7}]", aList, bList, cList, dList, eList, fList, gList, hList, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C, D, E, F, G, H, I>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            IEnumerable<F> fList,
-            IEnumerable<G> gList,
-            IEnumerable<H> hList,
-            IEnumerable<I> iList,
-            Func<A, B, C, D, E, F, G, H, I, object> processCall)
+        public static void ApproveAllCombinations<A, B, C, D, E, F, G, H, I>(Func<A, B, C, D, E, F, G, H, I, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList, IEnumerable<F> fList, IEnumerable<G> gList, IEnumerable<H> hList, IEnumerable<I> iList)
         {
-            ApproveAllCombinations("[{0},{1},{2},{3},{4},{5},{6},{7},{8}]",
-                                   aList, bList, cList, dList, eList, fList, gList, hList, iList,
-                                   processCall);
+            ApproveAllCombinations(processCall, "[{0},{1},{2},{3},{4},{5},{6},{7},{8}]", aList, bList, cList, dList, eList, fList, gList, hList, iList);
         }
 
-        private static void ApproveAllCombinations<A, B, C, D, E, F, G, H, I>(
-            String format,
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            IEnumerable<F> fList,
-            IEnumerable<G> gList,
-            IEnumerable<H> hList,
-            IEnumerable<I> iList,
-            Func<A, B, C, D, E, F, G, H, I, object> processCall)
+        private static void ApproveAllCombinations<A, B, C, D, E, F, G, H, I>(Func<A, B, C, D, E, F, G, H, I, object> processCall, string format, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList, IEnumerable<F> fList, IEnumerable<G> gList, IEnumerable<H> hList, IEnumerable<I> iList)
 
         {
             var sb = new StringBuilder();
-            AllCombinations(aList, bList, cList, dList, eList, fList, gList, hList, iList,
-                            (a, b, c, d, e, f, g, h, i) =>
-                                {
-                                    object result;
-                                    try
-                                    {
-                                        result = processCall(a, b, c, d, e, f, g, h, i);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        result = ex.Message;
-                                    }
-                                    var input = String.Format(format, a, b, c, d, e, f, g, h, i);
-                                    sb.Append(String.Format("{0} => {1}\r\n", input, result));
-                                });
+            AllCombinations((a, b, c, d, e, f, g, h, i) =>
+                            	{
+                            		object result;
+                            		try
+                            		{
+                            			result = processCall(a, b, c, d, e, f, g, h, i);
+                            		}
+                            		catch (Exception ex)
+                            		{
+                            			result = ex.Message;
+                            		}
+                            		var input = String.Format(format, a, b, c, d, e, f, g, h, i);
+                            		sb.Append(String.Format("{0} => {1}\r\n", input, result));
+                            	}, aList, bList, cList, dList, eList, fList, gList, hList, iList);
 
             ApprovalTests.Approvals.Approve(sb);
         }
 
         
-        private static void AllCombinations<A, B, C, D, E, F, G, H, I>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            IEnumerable<F> fList,
-            IEnumerable<G> gList,
-            IEnumerable<H> hList,
-            IEnumerable<I> iList,
-            Action<A, B, C, D, E, F, G, H, I> processCall)
+        private static void AllCombinations<A, B, C, D, E, F, G, H, I>(Action<A, B, C, D, E, F, G, H, I> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList, IEnumerable<F> fList, IEnumerable<G> gList, IEnumerable<H> hList, IEnumerable<I> iList)
         {
             foreach (var a in aList)
                 foreach (var b in bList)

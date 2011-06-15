@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using ApprovalTests.Namers;
-using ApprovalTests.Writers;
 
 namespace ApprovalTests.Wpf
 {
@@ -11,15 +11,11 @@ namespace ApprovalTests.Wpf
 			ApprovalTests.Approvals.Approve(new ApprovalWpfWindowWriter(window), new UnitTestFrameworkNamer(),
 			                                ApprovalTests.Approvals.GetReporter());
 		}
-        public static void Approve(WindowWpfWriter.Loader<Window> action)
-        {
-            ApprovalTests.Approvals.Approve(new WindowWpfWriter(action), new UnitTestFrameworkNamer(),
-                              ApprovalTests.Approvals.GetReporter());
-        }
-		//public static void Approve(Control control)
-		//{
-		//    ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control), new UnitTestFrameworkNamer(),
-		//                                    ApprovalTests.Approvals.GetReporter());
-		//}
+
+		public static void Approve(Func<Window> action)
+		{
+			ApprovalTests.Approvals.Approve(new WindowWpfWriter(action), new UnitTestFrameworkNamer(),
+			                                ApprovalTests.Approvals.GetReporter());
+		}
 	}
 }

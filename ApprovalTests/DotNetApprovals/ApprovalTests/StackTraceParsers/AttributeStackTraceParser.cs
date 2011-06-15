@@ -19,7 +19,6 @@ namespace ApprovalTests.StackTraceParsers
             get { return Method.DeclaringType.Name; }
         }
 
-        #region IStackTraceParser Members
 
         public string ApprovalName
         {
@@ -37,7 +36,6 @@ namespace ApprovalTests.StackTraceParsers
             return FindApprovalFrame() != null;
         }
 
-        #endregion
 
         public static StackFrame GetFirstFrameForAttribute(StackFrame[] frames, string attributeName)
         {

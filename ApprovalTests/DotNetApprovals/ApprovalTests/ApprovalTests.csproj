@@ -86,8 +86,6 @@
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Combinations\Approvals.cs" />
     <Compile Include="IReporterWithApprovalPower.cs" />
-    <Compile Include="Persistence\ILoader.cs" />
-    <Compile Include="Persistence\ISaver.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
     <Compile Include="Persistence\IExecutableQuery.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
@@ -99,14 +97,14 @@
     <Compile Include="StackTraceParsers\AttributeStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\MbUnitStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\VSStackTraceParser.cs" />
-    <Compile Include="StringUtils.cs" />
-    <Compile Include="UseReporterAttribute.cs" />
+    <Compile Include="Reporters\UseReporterAttribute.cs" />
     <Compile Include="WinForms\Approvals.cs" />
+    <Compile Include="WinForms\WinFormsUtils.cs" />
     <Compile Include="Wpf\Approvals.cs" />
     <Compile Include="Wpf\ApprovalWpfWindowWriter.cs" />
     <Compile Include="Wpf\WindowWpfWriter.cs" />
-    <Compile Include="Writers\ApprovalControlWriter.cs" />
-    <Compile Include="Writers\ApprovalFormWriter.cs" />
+    <Compile Include="WinForms\ApprovalControlWriter.cs" />
+    <Compile Include="WinForms\ApprovalFormWriter.cs" />
     <Compile Include="Writers\BinaryWriter.cs" />
     <Compile Include="Writers\EnumerableWriter.cs" />
     <Compile Include="Core\IApprovalWriter.cs" />
@@ -145,9 +143,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleLogger\SimpleLogger.csproj">
+    <ProjectReference Include="..\SimpleLogger\ApprovalUtilities.csproj">
       <Project>{E9683C33-7A71-4776-B7C9-E89C565AC16B}</Project>
-      <Name>SimpleLogger</Name>
+      <Name>ApprovalUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

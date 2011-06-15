@@ -34,9 +34,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalTests.Silverlight.T
 		{EA285791-9C5D-4D98-A967-6151CD64938E} = {EA285791-9C5D-4D98-A967-6151CD64938E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogger.Tests", "SimpleLogger.Tests\SimpleLogger.Tests.csproj", "{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalUtilities.Tests", "SimpleLogger.Tests\ApprovalUtilities.Tests.csproj", "{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogger", "SimpleLogger\SimpleLogger.csproj", "{E9683C33-7A71-4776-B7C9-E89C565AC16B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalUtilities", "SimpleLogger\ApprovalUtilities.csproj", "{E9683C33-7A71-4776-B7C9-E89C565AC16B}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

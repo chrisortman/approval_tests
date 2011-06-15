@@ -1,10 +1,11 @@
 ﻿using System;
 using ApprovalTests;
 using ApprovalTests.Reporters;
+using ApprovalUtilities.Persistence;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleLogger.Utilities;
 
-namespace SimpleLogger.Tests
+namespace ApprovalUtilites.Tests
 {
     [TestClass]
     [UseReporter(typeof(DiffReporter))]

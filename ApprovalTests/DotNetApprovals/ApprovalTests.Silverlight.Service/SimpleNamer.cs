@@ -1,3 +1,4 @@
+
 using ApprovalTests.Core;
 
 namespace ApprovalTests.Silverlight.Service

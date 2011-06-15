@@ -1,15 +1,15 @@
-﻿using System.Windows;
+using System.Windows.Forms;
 using ApprovalTests.Core;
 
-namespace ApprovalTests.Wpf
+namespace ApprovalTests.WinForms
 {
-	internal class ApprovalWpfWindowWriter : IApprovalWriter
+	public class ApprovalFormWriter : IApprovalWriter
 	{
-		private readonly Window window;
+		private readonly Form form;
 
-		public ApprovalWpfWindowWriter(Window window)
+		public ApprovalFormWriter(Form form)
 		{
-			this.window = window;
+			this.form = form;
 		}
 
 		public string GetApprovalFilename(string basename)
@@ -24,7 +24,7 @@ namespace ApprovalTests.Wpf
 
 		public string WriteReceivedFile(string received)
 		{
-			WpfUtils.ScreenCapture(window, received);
+			WinFormsUtils.ScreenCapture(received, form);
 			return received;
 		}
 	}

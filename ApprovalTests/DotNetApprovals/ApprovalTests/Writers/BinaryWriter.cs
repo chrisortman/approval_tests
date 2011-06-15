@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using ApprovalTests.Core;
 
 namespace ApprovalTests.Writers
@@ -28,22 +26,22 @@ namespace ApprovalTests.Writers
 
 		private string EnsureDoc(string extension)
 		{
-			string extensionWithDot = String.Format(".{0}", extension);
+			var extensionWithDot = ".{0}".FormatWith(extension);
 			return extension.StartsWith(".") ? extension : extensionWithDot;
 		}
-        public byte[] Data { get; set; }
+
+		public byte[] Data { get; set; }
 		public string ExtensionWithDot { get; set; }
 
-		#region IApprovalWriter Members
 
 		public string GetApprovalFilename(string basename)
 		{
-			return String.Format("{0}.approved{1}", basename, ExtensionWithDot);
+			return String.Format("{0}{1}{2}", basename, WriterUtils.Approved, ExtensionWithDot);
 		}
 
 		public string GetReceivedFilename(string basename)
 		{
-			return String.Format("{0}.received{1}", basename, ExtensionWithDot);
+			return String.Format("{0}{1}{2}", basename, WriterUtils.Received, ExtensionWithDot);
 		}
 
 		public string WriteReceivedFile(string received)
@@ -52,8 +50,5 @@ namespace ApprovalTests.Writers
 			File.WriteAllBytes(received, Data);
 			return received;
 		}
-
-		#endregion
-
 	}
 }
