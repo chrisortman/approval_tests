@@ -47,6 +47,8 @@ namespace ApprovalTests.Reporters
 		{
 			var tortoise = new LaunchArgs(textDiffProgram, textDiffArguments);
 			types.Add("*", tortoise);
+			types.Add(".tif", new LaunchArgs(imageDiffTool, imageDiffArgs));
+			types.Add(".tiff", new LaunchArgs(imageDiffTool, imageDiffArgs));
 			types.Add(".png", new LaunchArgs(imageDiffTool, imageDiffArgs));
 		}
 
