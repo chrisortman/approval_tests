@@ -1,5 +1,7 @@
 
-namespace SimpleLogger.Writers
+using ApprovalUtilites;
+
+namespace ApprovalUtilities.SimpleLogger.Writers
 {
     public class MultiWriter : IAppendable
     {

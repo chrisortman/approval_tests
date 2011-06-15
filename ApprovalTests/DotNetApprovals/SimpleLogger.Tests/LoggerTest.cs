@@ -3,6 +3,7 @@ using ApprovalTests;
 using ApprovalTests.Reporters;
 using ApprovalUtilities.Persistence;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SimpleLogger.Utilities;
 
 namespace ApprovalUtilites.Tests
 {

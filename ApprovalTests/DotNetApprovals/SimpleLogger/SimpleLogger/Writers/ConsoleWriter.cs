@@ -1,7 +1,7 @@
 ﻿using System;
-using SimpleLogger;
+using ApprovalUtilites;
 
-namespace SplitEntireFile.Test
+namespace ApprovalUtilities.SimpleLogger.Writers
 {
     public class ConsoleWriter : IAppendable
     {

@@ -1,6 +1,6 @@
-﻿using SimpleLogger;
+﻿using ApprovalUtilites;
 
-namespace SplitEntireFile.Test
+namespace ApprovalUtilities.SimpleLogger.Writers
 {
     public class NullWriter : IAppendable
     {
