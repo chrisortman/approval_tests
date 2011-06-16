@@ -4,7 +4,10 @@
     Message: I Got here
     Sql: Select * From table_name
 **************************************************************************************
- Problem
-   at ApprovalUtilities.Tests.LoggerTest.TestMainPath() in ...\LoggerTest.cs:line 27
+*                                                                                    *
+* Exception: 'Void TestMainPath()' | 'ApprovalUtilities.Tests'
+*  Problem
+*    at ApprovalUtilities.Tests.LoggerTest.TestMainPath() in ...\LoggerTest.cs:line 27
+*                                                                                    *
 **************************************************************************************
 <= LoggerTest.TestMainPath()
