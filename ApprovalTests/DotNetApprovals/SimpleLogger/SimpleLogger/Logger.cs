@@ -53,6 +53,11 @@ namespace ApprovalUtilities.SimpleLogger
             log.Warning(exception);
         }
 
+        public static void Warning(string format, params object[] data)
+        {
+            log.Warning(format, data);
+        }
+
         public static void Show(bool markerIn = true, bool variables = true, bool events = true, bool sql = true,
                                 bool timestamp = true, bool timeDifference = true)
         {

@@ -121,14 +121,30 @@ namespace ApprovalUtilities.SimpleLogger
             return sql;
         }
 
-        public void Warning(Exception exception)
+        public void Warning(Exception except)
         {
-            var LineBreak = "**************************************************************************************";
-            Writer.AppendLine(LineBreak);
-            Writer.AppendLine(exception.Message);
-            Writer.AppendLine(exception.StackTrace);
-            Writer.AppendLine(LineBreak);
+            PrintWarning(String.Format("Exception: '{0}' | '{1}'", except.TargetSite, except.Source), except.Message, except.StackTrace);
         }
+
+        public void Warning(string format, params object[] data)
+        {
+            PrintWarning(string.Format(format, data));
+        }
+
+        private void PrintWarning(params string[] lines)
+        {
+            var LineBreakOut = "**************************************************************************************";
+            var LineBreakIn = "*                                                                                    *";
+            Writer.AppendLine(LineBreakOut);
+            Writer.AppendLine(LineBreakIn);
+            foreach (var line in lines)
+            {
+                Writer.AppendLine("* " + line);
+            }
+            Writer.AppendLine(LineBreakIn);
+            Writer.AppendLine(LineBreakOut);
+        }
+
 
         public void Show(bool markerIn = true, bool variables = true, bool events = true, bool sql = true,
                          bool timestamp = true, bool timeDifference = true)
