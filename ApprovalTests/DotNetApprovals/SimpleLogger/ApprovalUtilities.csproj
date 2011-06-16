@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SimpleLogger\Clock.cs" />
-    <Compile Include="SimpleLogger\FileWriter.cs" />
     <Compile Include="SimpleLogger\LoggerInstance.cs" />
     <Compile Include="SimpleLogger\IAppendable.cs" />
     <Compile Include="SimpleLogger\Logger.cs" />
