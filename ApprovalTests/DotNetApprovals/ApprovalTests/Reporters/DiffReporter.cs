@@ -55,6 +55,7 @@ namespace ApprovalTests.Reporters
 	
 		public void Report(string approved, string received)
 		{
+			QuietReporter.DisplayCommandLineApproval(approved, received);
 			Launch(GetLaunchArguments(approved, received));
 		}
 
