@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ApprovalTests.Core;
+using ApprovalUtilities.Utilities;
 
 namespace ApprovalTests.Writers
 {

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace SimpleLogger.Utilities
+namespace ApprovalUtilities.Utilities
 {
     public class PathUtilities
     {

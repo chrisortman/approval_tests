@@ -1,6 +1,4 @@
-﻿using ApprovalUtilites;
-
-namespace ApprovalUtilities.SimpleLogger.Writers
+﻿namespace ApprovalUtilities.SimpleLogger.Writers
 {
     public class NullWriter : IAppendable
     {

@@ -61,7 +61,7 @@
     <Compile Include="SimpleLogger\Writers\MultiWriter.cs" />
     <Compile Include="SimpleLogger\Writers\NullWriter.cs" />
     <Compile Include="SimpleLogger\Writers\StringBuilderLogger.cs" />
-    <Compile Include="StringUtils.cs" />
+    <Compile Include="Utilities\StringUtils.cs" />
     <Compile Include="Utilities\PathUtilities.cs" />
     <Compile Include="WinForms\WinFormsUtils.cs" />
     <Compile Include="Wpf\WpfUtils.cs" />

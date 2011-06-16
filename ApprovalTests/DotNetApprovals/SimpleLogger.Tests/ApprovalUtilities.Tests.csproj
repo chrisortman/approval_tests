@@ -9,8 +9,8 @@
     <ProjectGuid>{01EB7BB9-743C-4FB0-B97F-A6E2B4AF86CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleLogger.Tests</RootNamespace>
-    <AssemblyName>SimpleLogger.Tests</AssemblyName>
+    <RootNamespace>ApprovalUtilities.Tests</RootNamespace>
+    <AssemblyName>ApprovalUtilities.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

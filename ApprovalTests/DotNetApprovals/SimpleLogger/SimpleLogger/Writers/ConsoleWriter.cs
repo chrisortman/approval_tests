@@ -1,5 +1,4 @@
 ﻿using System;
-using ApprovalUtilites;
 
 namespace ApprovalUtilities.SimpleLogger.Writers
 {

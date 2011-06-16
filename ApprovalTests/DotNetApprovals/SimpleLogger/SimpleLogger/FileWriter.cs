@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ApprovalUtilites
+namespace ApprovalUtilities.SimpleLogger
 {
     public class FileWriter : IAppendable
     {

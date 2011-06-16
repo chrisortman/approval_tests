@@ -3,9 +3,8 @@
     Variable: name = 'Llewellyn'
     Message: I Got here
     Sql: Select * From table_name
-vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-Exception: 'Void TestMainPath()' | 'SimpleLogger.Tests'
+**************************************************************************************
  Problem
-   at SimpleLogger.Tests.LoggerTest.TestMainPath() in ...\LoggerTest.cs:line 25
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   at ApprovalUtilites.Tests.LoggerTest.TestMainPath() in ...\LoggerTest.cs:line 26
+**************************************************************************************
 <= LoggerTest.TestMainPath()

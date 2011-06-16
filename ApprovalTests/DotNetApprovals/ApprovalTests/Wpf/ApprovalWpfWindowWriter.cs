@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using ApprovalTests.Core;
+using ApprovalUtilities.Wpf;
 
 namespace ApprovalTests.Wpf
 {

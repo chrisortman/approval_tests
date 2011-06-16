@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using ApprovalUtilites;
 
-namespace SimpleLogger.Writers
+namespace ApprovalUtilities.SimpleLogger.Writers
 {
     public class FileWriter : IAppendable
     {

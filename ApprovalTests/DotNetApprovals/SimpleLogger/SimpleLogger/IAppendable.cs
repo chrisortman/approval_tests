@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ApprovalUtilites
+namespace ApprovalUtilities.SimpleLogger
 {
 	public interface IAppendable
 	{

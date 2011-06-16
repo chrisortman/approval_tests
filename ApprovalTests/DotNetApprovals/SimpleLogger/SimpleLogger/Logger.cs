@@ -1,7 +1,7 @@
 using System;
 using ApprovalUtilities.Persistence;
 
-namespace ApprovalUtilites
+namespace ApprovalUtilities.SimpleLogger
 {
     public class Logger
     {

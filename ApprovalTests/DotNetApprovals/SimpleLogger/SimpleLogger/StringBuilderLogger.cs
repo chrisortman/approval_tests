@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ApprovalUtilites
+namespace ApprovalUtilities.SimpleLogger
 {
 	public class StringBuilderLogger : IAppendable
 	{
@@ -14,6 +14,11 @@ namespace ApprovalUtilites
 		public override string ToString()
 		{
 			return sb.ToString();
+		}
+
+		public string ScrubPath(string directory)
+		{
+			return ToString().Replace(directory, "...\\");
 		}
 	}
 }
