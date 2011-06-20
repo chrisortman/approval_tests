@@ -5,12 +5,11 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests.Reporters
 {
 	[TestFixture]
+	[UseReporter(typeof(DiffReporter))]
 	public class DiffReporterTest
 	{
-		private static void AssertLauncher(string approved, string received)
+		private static void AssertLauncher(string approved, string received, DiffReporter reporter)
 		{
-			var reporter = new DiffReporter();
-
 			LaunchArgs args = reporter.GetLaunchArguments(approved, received);
 
 			try
@@ -27,14 +26,18 @@ namespace ApprovalTests.Tests.Reporters
 		[Test]
 		public void TestLaunchesTortoiseImage()
 		{
-			AssertLauncher("../../a.png", "../../b.png");
+			AssertLauncher("../../a.png", "../../b.png", new DiffReporter());
 		}
 
 		[Test]
-		
 		public void TestLaunchesTortoiseMerge()
 		{
-			AssertLauncher("../../a.txt", "../../b.txt");
+			AssertLauncher("../../a.txt", "../../b.txt", new DiffReporter());
+		}
+		[Test]
+		public void TestWinMerge()
+		{
+			AssertLauncher("../../a.txt", "../../b.txt", new WinMergeReporter());
 		}
 	}
 }

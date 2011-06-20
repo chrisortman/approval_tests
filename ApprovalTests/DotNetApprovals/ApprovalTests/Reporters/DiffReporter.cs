@@ -1,38 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using ApprovalTests.Core;
 
 namespace ApprovalTests.Reporters
 {
-	public struct LaunchArgs
-	{
-		private string arguments;
-		private string program;
-
-		public LaunchArgs(string program, string arguments)
-		{
-			this.program = program;
-			this.arguments = arguments;
-		}
-
-		public string Program
-		{
-			get { return program; }
-		}
-
-		public string Arguments
-		{
-			get { return arguments; }
-		}
-
-        public override string ToString()
-        {
-            return string.Format("{0} {1}", program, arguments);
-        }
-	}
-
 	public class DiffReporter : IApprovalFailureReporter
 	{
 		private string imageDiffArgs = "/left:\"{0}\" /right:\"{1}\"";
@@ -46,38 +18,43 @@ namespace ApprovalTests.Reporters
 		public DiffReporter()
 		{
 			var tortoise = new LaunchArgs(textDiffProgram, textDiffArguments);
-			types.Add("*", tortoise);
-			types.Add(".tif", new LaunchArgs(imageDiffTool, imageDiffArgs));
-			types.Add(".tiff", new LaunchArgs(imageDiffTool, imageDiffArgs));
-			types.Add(".png", new LaunchArgs(imageDiffTool, imageDiffArgs));
+			AddDiffReporter("*", tortoise);
+			AddDiffReporter(".tif", new LaunchArgs(imageDiffTool, imageDiffArgs));
+			AddDiffReporter(".tiff", new LaunchArgs(imageDiffTool, imageDiffArgs));
+			AddDiffReporter(".png", new LaunchArgs(imageDiffTool, imageDiffArgs));
 		}
 
-	
+		/// <param name = "extensionWithDot"> Use * for default</param>
+		public void AddDiffReporter(string extensionWithDot, LaunchArgs fileParameters)
+		{
+			types[extensionWithDot] =  fileParameters;
+		}
+
 		public void Report(string approved, string received)
 		{
 			QuietReporter.DisplayCommandLineApproval(approved, received);
 			Launch(GetLaunchArguments(approved, received));
 		}
 
-	
+
 		public LaunchArgs GetLaunchArguments(string approved, string received)
 		{
 			if (!File.Exists(approved))
-            {
-                File.Create(approved).Dispose();
-            }
+			{
+				File.Create(approved).Dispose();
+			}
 
-			LaunchArgs args = GetLaunchArgumentsForFile(approved);
+			var args = GetLaunchArgumentsForFile(approved);
 			return new LaunchArgs(args.Program, string.Format(args.Arguments, received, approved));
 		}
 
 		private LaunchArgs GetLaunchArgumentsForFile(string approved)
 		{
-			string ext = Path.GetExtension(approved);
-            if (types.ContainsKey(ext))
-            {
-                return types[ext];
-            }
+			var ext = Path.GetExtension(approved);
+			if (types.ContainsKey(ext))
+			{
+				return types[ext];
+			}
 			return types["*"];
 		}
 

@@ -1,8 +1,5 @@
-using System;
-using System.Diagnostics;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
-using ApprovalTests;
 
 namespace ApprovalTests.Tests.Reporters
 {
@@ -22,5 +19,6 @@ namespace ApprovalTests.Tests.Reporters
 				Assert.AreEqual("  String lengths are both 5. Strings differ at index 0.\r\n  Expected: \"World\"\r\n  But was:  \"Hello\"\r\n  -----------^\r\n", e.Message);
 			}
 		}
+		
 	}
 }

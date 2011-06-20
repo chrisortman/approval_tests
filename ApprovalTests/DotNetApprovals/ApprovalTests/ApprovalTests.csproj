@@ -91,9 +91,11 @@
     <Compile Include="Reporters\DiffReporter.cs" />
     <Compile Include="Reporters\ImageReporter.cs" />
     <Compile Include="Reporters\FileLauncherReporter.cs" />
+    <Compile Include="Reporters\LaunchArgs.cs" />
     <Compile Include="Reporters\MsTestReporter.cs" />
     <Compile Include="Reporters\NotepadLauncher.cs" />
     <Compile Include="Reporters\NUnitReporter.cs" />
+    <Compile Include="Reporters\WinMergeReporter.cs" />
     <Compile Include="StackTraceParsers\AttributeStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\MbUnitStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\VSStackTraceParser.cs" />
