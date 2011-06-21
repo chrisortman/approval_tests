@@ -3,7 +3,7 @@ using ApprovalUtilities.Persistence;
 
 namespace ApprovalUtilities.SimpleLogger
 {
-	internal class Clock : ILoader<DateTime>
+	public class Clock : ILoader<DateTime>
 	{
 		public DateTime Load()
 		{
