@@ -13,7 +13,10 @@ namespace ApprovalUtilities.Utilities
             {
                 sb.Append(l + ", ");
             }
-            sb.Remove(sb.Length - 2, 2);
+            if (sb.Length >0)
+            {
+            	sb.Remove(sb.Length - 2, 2);
+            }
             sb.Append("]");
             return sb.ToString();
         }
