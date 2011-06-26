@@ -28,13 +28,7 @@ namespace ApprovalTests.Combinations
             ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d), "[{0},{1},{2},{3}]", aList, bList, cList, dList, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
         }
 
-        public static void ApproveAllCombinations<A, B, C, D, E>(
-            IEnumerable<A> aList,
-            IEnumerable<B> bList,
-            IEnumerable<C> cList,
-            IEnumerable<D> dList,
-            IEnumerable<E> eList,
-            Func<A, B, C, D, E, object> processCall)
+        public static void ApproveAllCombinations<A, B, C, D, E>(Func<A, B, C, D, E, object> processCall, IEnumerable<A> aList, IEnumerable<B> bList, IEnumerable<C> cList, IEnumerable<D> dList, IEnumerable<E> eList)
         {
             ApproveAllCombinations((a, b, c, d, e, f, g, h, i) => processCall(a, b, c, d, e), "[{0},{1},{2},{3},{4}]", aList, bList, cList, dList, eList, EMPTY, EMPTY, EMPTY, EMPTY);
         }

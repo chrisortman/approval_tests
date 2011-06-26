@@ -12,7 +12,7 @@ namespace ApprovalTests.Tests.WinForms
 		[Test]
 		public void TestControlApproved()
 		{
-			ApprovalTests.WinForms.Approvals.Approve(new Button {BackColor = Color.Blue});
+			ApprovalTests.WinForms.Approvals.Approve(new Button {BackColor = Color.Blue, Text = "Help"});
 		}
 
 		[Test]

@@ -60,6 +60,10 @@ namespace ApprovalTests
 		{
 			Approve(new BinaryWriter(bytes,fileExtensionWithoutDot));
 		}
+		public void ApproveHtml(string html)
+		{
+			Approvals.Approve(new ApprovalTextWriter(html, "html"));
+		}
 
 		#endregion
 

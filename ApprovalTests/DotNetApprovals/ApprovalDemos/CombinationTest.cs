@@ -15,6 +15,7 @@ namespace ApprovalDemos.Data
 		public void TestLambdas()
 		{
 			Approvals.ApproveAllCombinations((int a, int b, int c) =>average(a,b,c), Enumerable.Range(-10, 1000), new int[]{1,2,3,4,5,6,7},Enumerable.Range(-200, 50)  );
+			
 		}
 
 		public double average(int a, int b, int c)
