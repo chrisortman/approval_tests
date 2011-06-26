@@ -23,6 +23,10 @@ namespace ApprovalTests.Reporters
 			AddDiffReporter(".tiff", new LaunchArgs(imageDiffTool, imageDiffArgs));
 			AddDiffReporter(".png", new LaunchArgs(imageDiffTool, imageDiffArgs));
 		}
+		public DiffReporter(LaunchArgs defaultLauncher)
+		{
+			AddDiffReporter("*", defaultLauncher);
+		}
 
 		/// <param name = "extensionWithDot"> Use * for default</param>
 		public void AddDiffReporter(string extensionWithDot, LaunchArgs fileParameters)

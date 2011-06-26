@@ -51,6 +51,7 @@
     <Compile Include="Data\AdoLoaderWrapper.cs" />
     <Compile Include="Data\Author.cs" />
     <Compile Include="Data\AuthorLoader.cs" />
+    <Compile Include="CombinationTest.cs" />
     <Compile Include="Data\DatabaseHelper.cs" />
     <Compile Include="Data\DatabaseTest.cs" />
     <Compile Include="Data\IAdoLoader.cs" />
