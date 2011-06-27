@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using ApprovalTests.Core;
-using ApprovalTests.Persistence;
+using ApprovalUtilities.Persistence;
 
 namespace ApprovalTests.Reporters
 {

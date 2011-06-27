@@ -88,7 +88,6 @@
     <Compile Include="IReporterWithApprovalPower.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
-    <Compile Include="Persistence\IExecutableQuery.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
     <Compile Include="Reporters\ImageReporter.cs" />
     <Compile Include="Reporters\FileLauncherReporter.cs" />
@@ -150,6 +149,9 @@
       <Project>{E9683C33-7A71-4776-B7C9-E89C565AC16B}</Project>
       <Name>ApprovalUtilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Persistence\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

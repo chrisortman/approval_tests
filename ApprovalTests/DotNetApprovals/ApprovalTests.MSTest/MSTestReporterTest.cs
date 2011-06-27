@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ApprovalTests.MSTest
 {
 	[TestClass]
-	public class MSTestReporterTest
+	public class MsTestReporterTest
 	{
 		[TestMethod]
 		[UseReporter((typeof(MsTestReporter)))]

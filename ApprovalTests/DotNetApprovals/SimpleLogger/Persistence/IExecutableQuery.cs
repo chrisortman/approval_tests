@@ -1,4 +1,4 @@
-namespace ApprovalTests.Persistence
+namespace ApprovalUtilities.Persistence
 {
     public  interface IExecutableQuery
     {

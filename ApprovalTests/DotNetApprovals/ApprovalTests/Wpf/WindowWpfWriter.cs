@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using ApprovalTests.Core;
-using ApprovalTests.Persistence;
 using ApprovalUtilities.Wpf;
 
 namespace ApprovalTests.Wpf

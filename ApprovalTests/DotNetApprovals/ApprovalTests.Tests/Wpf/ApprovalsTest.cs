@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Drawing;
+using System.Windows;
 using System.Windows.Controls;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
@@ -12,7 +13,7 @@ namespace ApprovalTests.Tests.Wpf
 		[Test]
 		public void TestControlApproved()
 		{
-			//ApprovalTests.Wpf.Approvals.Approve(new Button {Background = Brushes.Blue});
+			//ApprovalTests.Wpf.Approvals.Approve(() => new Button {Background = Brushes.Blue});
 		}
 
 		[Test]

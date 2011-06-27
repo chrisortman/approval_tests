@@ -1,6 +1,6 @@
 using System;
 using System.Net;
-using ApprovalTests.Persistence;
+using ApprovalUtilities.Persistence;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.Persistence

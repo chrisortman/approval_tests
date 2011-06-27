@@ -5,9 +5,9 @@ using System.IO;
 using ApprovalTests.Approvers;
 using ApprovalTests.Core;
 using ApprovalTests.Namers;
-using ApprovalTests.Persistence;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
+using ApprovalUtilities.Persistence;
 using BinaryWriter = ApprovalTests.Writers.BinaryWriter;
 
 namespace ApprovalTests
@@ -60,7 +60,7 @@ namespace ApprovalTests
 		{
 			Approve(new BinaryWriter(bytes,fileExtensionWithoutDot));
 		}
-		public void ApproveHtml(string html)
+		public static void ApproveHtml(string html)
 		{
 			Approvals.Approve(new ApprovalTextWriter(html, "html"));
 		}

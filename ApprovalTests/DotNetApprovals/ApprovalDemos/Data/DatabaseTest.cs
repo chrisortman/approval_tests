@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using ApprovalTests;
-using ApprovalTests.Persistence;
 using ApprovalTests.Writers;
 using ApprovalUtilities.Persistence;
 using NUnit.Framework;

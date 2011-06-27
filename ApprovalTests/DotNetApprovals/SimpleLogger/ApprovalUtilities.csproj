@@ -46,6 +46,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\IExecutableQuery.cs" />
     <Compile Include="SimpleLogger\Clock.cs" />
     <Compile Include="SimpleLogger\LoggerInstance.cs" />
     <Compile Include="SimpleLogger\IAppendable.cs" />

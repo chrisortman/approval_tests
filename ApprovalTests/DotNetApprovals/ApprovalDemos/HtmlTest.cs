@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace ApprovalDemos.Data
 {
 	[TestFixture]
-	[UseReporter(typeof(FileLauncherReporter))]
+	[UseReporter(typeof(DiffReporter))]
 	public class HtmlTest
 	{
 	
@@ -13,7 +13,7 @@ namespace ApprovalDemos.Data
 		public void TestLambdas()
 		{
 			string html = "<html><body><h1>Hello World</h1></body></html>";
-			Approvals.Approve(new ApprovalTextWriter(html, "html"));
+			Approvals.ApproveHtml(html);
 		}
 
 		
