@@ -12,7 +12,8 @@
     <RootNamespace>ApprovalTests.Silverlight.Web</RootNamespace>
     <AssemblyName>ApprovalTests.Silverlight.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SilverlightApplicationList>{B925D046-E2F7-4987-B8D0-55E4AC779D38}|..\ApprovalTests.Silverlight.Tests\ApprovalTests.Silverlight.Tests.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>
+    </SilverlightApplicationList>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>

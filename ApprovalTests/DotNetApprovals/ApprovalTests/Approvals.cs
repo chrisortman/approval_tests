@@ -120,7 +120,7 @@ namespace ApprovalTests
 		public static void Approve(IExecutableQuery query)
 		{
 			Approve(new ApprovalTextWriter(query.GetQuery()), GetDefaultNamer(),
-			        new ExecutableQueryFailure(query));
+			        new ExecutableQueryFailure(query, GetReporter()));
 		}
 		public static void Approve(IApprovalWriter writer)
 		{
