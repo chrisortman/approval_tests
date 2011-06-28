@@ -1,6 +1,4 @@
-using ApprovalTests.Core;
-
-namespace ApprovalTests
+namespace ApprovalTests.Core
 {
 	public interface IReporterWithApprovalPower : IApprovalFailureReporter
 	{

@@ -25,7 +25,6 @@ namespace ApprovalTests.Tests.Reporters
 
 	public class MyReporter : IApprovalFailureReporter
 	{
-		#region IApprovalFailureReporter Members
 
 		public void Report(string approved, string received)
 		{
@@ -36,12 +35,10 @@ namespace ApprovalTests.Tests.Reporters
 			return false;
 		}
 
-		#endregion
 	}
 
 	public class MyReporter2 : IApprovalFailureReporter
 	{
-		#region IApprovalFailureReporter Members
 
 		public void Report(string approved, string received)
 		{
@@ -52,6 +49,5 @@ namespace ApprovalTests.Tests.Reporters
 			return false;
 		}
 
-		#endregion
 	}
 }

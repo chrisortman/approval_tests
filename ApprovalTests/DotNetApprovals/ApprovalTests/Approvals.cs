@@ -55,14 +55,20 @@ namespace ApprovalTests
 		{
 			Approve(EnumerableWriter.Write(enumerable, formatter));
 		}
-		
+
 		public static void ApproveBinaryFile(byte[] bytes, string fileExtensionWithoutDot)
 		{
-			Approve(new BinaryWriter(bytes,fileExtensionWithoutDot));
+			Approve(new BinaryWriter(bytes, fileExtensionWithoutDot));
 		}
+
 		public static void ApproveHtml(string html)
 		{
-			Approvals.Approve(new ApprovalTextWriter(html, "html"));
+			Html.Approvals.ApproveHtml(html);
+		}
+
+		public static void ApproveXml(string xml)
+		{
+			Xml.Approvals.ApproveXml(xml);
 		}
 
 		#endregion
@@ -84,9 +90,7 @@ namespace ApprovalTests
 
 		private static IApprovalFailureReporter GetReporterFromAttribute()
 		{
-			var frame = GetFirstFrameForAttribute(
-				new StackTrace(true).GetFrames(),
-				typeof (UseReporterAttribute));
+			var frame = GetFirstFrameForAttribute(new StackTrace(true).GetFrames(), typeof (UseReporterAttribute));
 			if (frame != null)
 			{
 				return (IApprovalFailureReporter) Activator.CreateInstance((frame).Reporter);
@@ -112,6 +116,11 @@ namespace ApprovalTests
 				{
 					return (UseReporterAttribute) attributes[0];
 				}
+				attributes = frames[i].GetMethod().DeclaringType.Assembly.GetCustomAttributes(attribute, true);
+				if (attributes.Length != 0)
+				{
+					return (UseReporterAttribute) attributes[0];
+				}
 			}
 
 			return null;
@@ -122,10 +131,12 @@ namespace ApprovalTests
 			Approve(new ApprovalTextWriter(query.GetQuery()), GetDefaultNamer(),
 			        new ExecutableQueryFailure(query, GetReporter()));
 		}
+
 		public static void Approve(IApprovalWriter writer)
 		{
 			Approve(writer, GetDefaultNamer(), GetReporter());
 		}
+
 		public static void ApproveFile(string file)
 		{
 			Approve(new ExistingFileWriter(file));

@@ -7,13 +7,13 @@ namespace ApprovalTests.Core
 		public static void Approve(IApprovalApprover approver, IApprovalFailureReporter reporter)
 		{
 			if (approver.Approve())
-				approver.CleanUpAfterSucess();
+				approver.CleanUpAfterSucess(reporter);
 			else
 			{
 				approver.ReportFailure(reporter);
 
 				if (reporter is IReporterWithApprovalPower && ((IReporterWithApprovalPower)reporter).ApprovedWhenReported())
-					approver.CleanUpAfterSucess();
+					approver.CleanUpAfterSucess(reporter);
 				else
 					approver.Fail();
 			}

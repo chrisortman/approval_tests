@@ -72,11 +72,13 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IApprovalReporterWithCleanUp.cs" />
     <Compile Include="Asp\Approvals.cs" />
     <Compile Include="Asp\AppRenderer.cs" />
     <Compile Include="Core\Approvals.cs" />
@@ -85,7 +87,8 @@
     <Compile Include="Core\Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Combinations\Approvals.cs" />
-    <Compile Include="IReporterWithApprovalPower.cs" />
+    <Compile Include="Html\Approvals.cs" />
+    <Compile Include="Core\IReporterWithApprovalPower.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="StackTraceParsers\StackTraceParser.cs" />
     <Compile Include="Writers\ExistingFileWriter.cs" />
     <Compile Include="Writers\WriterUtils.cs" />
+    <Compile Include="Xml\Approvals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

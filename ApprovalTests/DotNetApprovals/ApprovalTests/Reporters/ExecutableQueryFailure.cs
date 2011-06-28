@@ -1,11 +1,13 @@
+using System;
 using System.IO;
 using ApprovalTests.Core;
 using ApprovalUtilities.Persistence;
 
 namespace ApprovalTests.Reporters
 {
-	public class ExecutableQueryFailure : IApprovalFailureReporter
+	public class ExecutableQueryFailure : IApprovalFailureReporter, IApprovalReporterWithCleanUp
 	{
+		private const string FILE_ADDITION = ".queryresults.txt";
 		private readonly IExecutableQuery query;
 		private readonly IApprovalFailureReporter reporter;
 
@@ -29,9 +31,15 @@ namespace ApprovalTests.Reporters
 
 			var newQuery = File.ReadAllText(fileName).Trim();
 			var newResult = query.ExecuteQuery(newQuery);
-			var newFileName = fileName + ".queryresults.txt";
+			var newFileName = fileName + FILE_ADDITION;
 			File.WriteAllText(newFileName, string.Format("query:\r\n{0}\r\nresult:\r\n{1}", newQuery, newResult));
 			return newFileName;
+		}
+
+		public void CleanUp(string approved, string received)
+		{
+			File.Delete(approved + FILE_ADDITION);
+			File.Delete(received + FILE_ADDITION);
 		}
 	}
 }

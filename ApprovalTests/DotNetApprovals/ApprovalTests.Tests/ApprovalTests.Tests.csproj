@@ -86,12 +86,14 @@
     <Compile Include="Asp\RenderHtmlTest.cs" />
     <Compile Include="CleanupReporter.cs" />
     <Compile Include="FailedApprovalTests.cs" />
+    <Compile Include="Html\HtmlTest.cs" />
     <Compile Include="LockDownTest.cs" />
     <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
     <Compile Include="Persistence\WeatherTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Namer\NunitStackTraceNamerTests.cs" />
+    <Compile Include="Reporters\AssemblyLevelTest.cs" />
     <Compile Include="Reporters\DiffReporterTest.cs" />
     <Compile Include="Reporters\NUnitReporterTest.cs" />
     <Compile Include="Reporters\ReporterFactoryTest.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="WinForms\ApprovalsTest.cs" />
     <Compile Include="Wpf\ApprovalsTest.cs" />
     <Compile Include="Writers\ExistingFileTest.cs" />
+    <Compile Include="Xml\XmlTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="a.png" />

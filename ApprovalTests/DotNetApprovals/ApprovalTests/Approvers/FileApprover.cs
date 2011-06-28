@@ -55,9 +55,13 @@ namespace ApprovalTests.Approvers
 			reporter.Report(approved, received);
 		}
 
-		public void CleanUpAfterSucess()
+		public void CleanUpAfterSucess(IApprovalFailureReporter reporter)
 		{
 			File.Delete(received);
+			if (reporter is IApprovalReporterWithCleanUp)
+			{
+				((IApprovalReporterWithCleanUp) reporter).CleanUp(approved, received);
+			}
 		}
 
 		private static bool Compare(ICollection<byte> bytes1, ICollection<byte> bytes2)

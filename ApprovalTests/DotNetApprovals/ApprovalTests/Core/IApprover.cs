@@ -5,6 +5,6 @@
 		bool Approve();
 		void Fail();
 		void ReportFailure(IApprovalFailureReporter reporter);
-		void CleanUpAfterSucess();
+		void CleanUpAfterSucess(IApprovalFailureReporter reporter);
 	}
 }
