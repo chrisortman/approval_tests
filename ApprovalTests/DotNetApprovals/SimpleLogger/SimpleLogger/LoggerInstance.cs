@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using ApprovalUtilities.Persistence;
 using ApprovalUtilities.SimpleLogger.Writers;
+using ApprovalUtilities.Utilities;
 
 namespace ApprovalUtilities.SimpleLogger
 {

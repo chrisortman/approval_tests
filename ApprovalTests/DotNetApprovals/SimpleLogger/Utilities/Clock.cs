@@ -11,7 +11,7 @@ namespace ApprovalUtilities.Utilities
 		}
 	}
 
-	public class MockTimer : Clock
+	public class MockClock : Clock
 	{
 		private int ticks;
 

@@ -49,7 +49,6 @@
     <Compile Include="Persistence\Database\DatabaseUtils.cs" />
     <Compile Include="Persistence\Database\SqlLoader.cs" />
     <Compile Include="Persistence\IExecutableQuery.cs" />
-    <Compile Include="SimpleLogger\Clock.cs" />
     <Compile Include="SimpleLogger\LoggerInstance.cs" />
     <Compile Include="SimpleLogger\IAppendable.cs" />
     <Compile Include="SimpleLogger\Logger.cs" />
@@ -63,6 +62,7 @@
     <Compile Include="SimpleLogger\Writers\MultiWriter.cs" />
     <Compile Include="SimpleLogger\Writers\NullWriter.cs" />
     <Compile Include="SimpleLogger\Writers\StringBuilderLogger.cs" />
+    <Compile Include="Utilities\Clock.cs" />
     <Compile Include="Utilities\StringUtils.cs" />
     <Compile Include="Utilities\PathUtilities.cs" />
     <Compile Include="WinForms\WinFormsUtils.cs" />
