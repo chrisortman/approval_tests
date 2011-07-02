@@ -75,6 +75,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase">
@@ -115,6 +116,10 @@
     <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
       <Project>{F70C9A76-F797-4167-8178-14821F8634BC}</Project>
       <Name>ApprovalTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Asp.Net.Demo\Asp.Net.Demo.csproj">
+      <Project>{4A185DA2-D6DA-4E45-A4E8-1DC67B849EAE}</Project>
+      <Name>Asp.Net.Demo</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleLogger\ApprovalUtilities.csproj">
       <Project>{E9683C33-7A71-4776-B7C9-E89C565AC16B}</Project>
