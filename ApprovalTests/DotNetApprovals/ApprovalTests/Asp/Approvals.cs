@@ -10,14 +10,8 @@ namespace ApprovalTests.Asp
 	{
 		public static void ApproveAspPage(Action testMethod)
 		{
-			var html = LoadHtmlFromUrl(testMethod);
-			Html.Approvals.ApproveHtml(html);
-		}
-
-		private static string LoadHtmlFromUrl(Action testMethod)
-		{
-			var host = "http://localhost:1359";
-			return ApproveUrl(host, GetUrl(testMethod, host));
+			var url = GetUrl(testMethod, "http://localhost:1359");
+			ApproveUrl(url);
 		}
 
 		private static string GetUrl(Action testMethod, string host)
@@ -30,20 +24,20 @@ namespace ApprovalTests.Asp
 			return "{0}{1}/{2}.aspx?{3}".FormatWith(host, path, clazz, method);
 		}
 
-		private static string ApproveUrl(string host, string url)
+		public static void ApproveUrl(string url)
 		{
 			try
 			{
-				string html;
 				using (var client = new WebClient())
 				{
-					html = client.DownloadString(url);
+					var baseUrl = url.Substring(0, url.LastIndexOf("/"));
+					var html = client.DownloadString(url);
 					if (!html.Contains("<base"))
 					{
-						html = html.Replace("<head>", "<head><base href=\"{0}\">".FormatWith(host));
+						html = html.Replace("<head>", "<head><base href=\"{0}\">".FormatWith(baseUrl));
 					}
+					Html.Approvals.ApproveHtml(html);
 				}
-				return html;
 			}
 			catch (Exception e)
 			{
