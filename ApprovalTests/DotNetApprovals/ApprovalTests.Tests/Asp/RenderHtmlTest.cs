@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests.Asp
 {
     [TestFixture]
-    [UseReporter(typeof(FileLauncherReporter))]
+    [UseReporter(typeof(DiffReporter))]
     public class RenderHtmlTest
     {
         [Test]
