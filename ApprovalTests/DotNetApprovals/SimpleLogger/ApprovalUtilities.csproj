@@ -38,6 +38,7 @@
     <Reference Include="System.Core">
       <HintPath>..\..\..\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Persistence\Database\DatabaseUtils.cs" />
     <Compile Include="Persistence\Database\SqlLoader.cs" />
+    <Compile Include="Persistence\Database\SqlLoaderUtils.cs" />
+    <Compile Include="Persistence\EntityFramework\EntityFrameworkLoader.cs" />
     <Compile Include="Persistence\IExecutableQuery.cs" />
     <Compile Include="SimpleLogger\LoggerInstance.cs" />
     <Compile Include="SimpleLogger\IAppendable.cs" />

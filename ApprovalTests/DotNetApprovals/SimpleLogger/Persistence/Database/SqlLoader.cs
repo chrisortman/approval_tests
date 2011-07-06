@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using ApprovalUtilities.SimpleLogger;
 
 namespace ApprovalUtilities.Persistence.Database
 {
@@ -26,38 +24,7 @@ namespace ApprovalUtilities.Persistence.Database
 
 		public string ExecuteQuery(string query)
 		{
-			if (string.IsNullOrEmpty(query))
-			{
-				return string.Empty;
-			}
-
-			try
-			{
-				string[] dataset = null;
-				if (ConnectionString != null)
-				{
-					dataset = DatabaseUtils.Query(query, ConnectionString, ConvertRowToString).ToArray();
-				}
-				else if (CommandCreator != null)
-				{
-					dataset = DatabaseUtils.Query(query, CommandCreator, ConvertRowToString).ToArray();
-				}
-				return string.Join("\r\n", dataset);
-			}
-			catch (Exception ex)
-			{
-				return LoggerInstance.FormatExeption(ex);
-			}
-		}
-
-		private static string ConvertRowToString(SqlDataReader row)
-		{
-			var output = new List<string>();
-			for (var i = 0; i < row.FieldCount; i++)
-			{
-				output.Add("" + row.GetValue(i));
-			}
-			return string.Join(", ", output.ToArray());
+			return SqlLoaderUtils.ExecuteQueryToDisplayString(query, ConnectionString, CommandCreator);
 		}
 	}
 }
