@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.UI;
 using ApprovalTests.Asp;
 
@@ -40,7 +41,6 @@ namespace Asp.Net.Demo.Orders
 		{
 			Invoice = new InvoiceLoaderById(Page.ClientQueryString).Load();
 		}
-
 		public void TestSimpleInvoice()
 		{
 			var invoice = new Invoice() {CompanyName = "Sammy Sweet Shop", OrderNumber = "123", OrderDate = new DateTime(1592, 3, 14)};

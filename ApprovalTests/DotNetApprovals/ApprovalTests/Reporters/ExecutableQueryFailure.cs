@@ -32,7 +32,8 @@ namespace ApprovalTests.Reporters
 			var newQuery = File.ReadAllText(fileName).Trim();
 			var newResult = query.ExecuteQuery(newQuery);
 			var newFileName = fileName + FILE_ADDITION;
-			File.WriteAllText(newFileName, string.Format("query:\r\n{0}\r\nresult:\r\n{1}", newQuery, newResult));
+			var header = "\t\tDo NOT approve\r\n\t\tThis File will be Deleted\r\n\t\tit is for feedback purposes only\r\n";
+			File.WriteAllText(newFileName, string.Format("{0}query:\r\n\r\n{1}\r\n\r\nresult:\r\n\r\n{2}", header, newQuery, newResult));
 			return newFileName;
 		}
 

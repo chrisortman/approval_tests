@@ -74,7 +74,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -86,6 +89,12 @@
     <Compile Include="ApprovalsTest.cs" />
     <Compile Include="Asp\RenderHtmlTest.cs" />
     <Compile Include="CleanupReporter.cs" />
+    <Compile Include="EntityFramework\EntityFrameworkLoaderTest.cs" />
+    <Compile Include="EntityFramework\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="FailedApprovalTests.cs" />
     <Compile Include="Html\HtmlTest.cs" />
     <Compile Include="LockDownTest.cs" />
@@ -111,6 +120,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EntityDeploy Include="EntityFramework\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
