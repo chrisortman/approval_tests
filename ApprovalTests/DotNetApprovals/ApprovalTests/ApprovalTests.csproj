@@ -54,6 +54,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -81,7 +83,6 @@
     <Compile Include="Asp\AspTestingUtils.cs" />
     <Compile Include="Core\IApprovalReporterWithCleanUp.cs" />
     <Compile Include="Asp\Approvals.cs" />
-    <Compile Include="Asp\AppRenderer.cs" />
     <Compile Include="Core\Approvals.cs" />
     <Compile Include="Approvals.cs" />
     <Compile Include="Core\Exceptions\ApprovalException.cs" />
@@ -90,6 +91,9 @@
     <Compile Include="Combinations\Approvals.cs" />
     <Compile Include="Html\Approvals.cs" />
     <Compile Include="Core\IReporterWithApprovalPower.cs" />
+    <Compile Include="RdlcReports\Approvals.cs" />
+    <Compile Include="Persistence\DataSets\ColumnDefaults.cs" />
+    <Compile Include="Persistence\DataSets\DataSetTestingUtilities.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
@@ -155,9 +159,7 @@
       <Name>ApprovalUtilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Persistence\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

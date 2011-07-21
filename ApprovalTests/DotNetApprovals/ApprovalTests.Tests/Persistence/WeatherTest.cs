@@ -1,4 +1,3 @@
-using System;
 using System.Net;
 using ApprovalUtilities.Persistence;
 using NUnit.Framework;

@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Web.UI;
 
 namespace ApprovalTests.Asp

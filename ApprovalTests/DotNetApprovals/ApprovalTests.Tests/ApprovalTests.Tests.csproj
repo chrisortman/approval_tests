@@ -59,6 +59,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Common\mbunit\MbUnit.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
       <HintPath>..\..\..\..\..\..\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
@@ -74,6 +76,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -100,9 +103,15 @@
     <Compile Include="LockDownTest.cs" />
     <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
+    <Compile Include="Persistence\Datasets\DatasetTest.cs" />
     <Compile Include="Persistence\WeatherTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Namer\NunitStackTraceNamerTests.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Reporters\AssemblyLevelTest.cs" />
     <Compile Include="Reporters\DiffReporterTest.cs" />
     <Compile Include="Reporters\NUnitReporterTest.cs" />
@@ -124,6 +133,10 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApprovalTests\ApprovalTests.csproj">
@@ -133,6 +146,10 @@
     <ProjectReference Include="..\Asp.Net.Demo\Asp.Net.Demo.csproj">
       <Project>{4A185DA2-D6DA-4E45-A4E8-1DC67B849EAE}</Project>
       <Name>Asp.Net.Demo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReportingDemo\ReportingDemo.csproj">
+      <Project>{F50278FC-C888-4DD3-898D-CFCF99147E3D}</Project>
+      <Name>ReportingDemo</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleLogger\ApprovalUtilities.csproj">
       <Project>{E9683C33-7A71-4776-B7C9-E89C565AC16B}</Project>

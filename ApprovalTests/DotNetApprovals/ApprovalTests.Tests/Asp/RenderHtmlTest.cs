@@ -9,11 +9,6 @@ namespace ApprovalTests.Tests.Asp
     public class RenderHtmlTest
     {
         [Test]
-        public void TestRender()
-        {
-           ApprovalTests.Asp.Approvals.ApproveAspPage("Home/Index", "", @"..\..\..\MVCApplication");
-        } 
-				[Test]
 				public void TestSimpleInvoice()
         {
 					ApprovalTests.Asp.Approvals.ApproveAspPage(new InvoiceView().TestSimpleInvoice);

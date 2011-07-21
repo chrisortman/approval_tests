@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApprovalUtilities", "Simple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp.Net.Demo", "Asp.Net.Demo\Asp.Net.Demo.csproj", "{4A185DA2-D6DA-4E45-A4E8-1DC67B849EAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportingDemo", "ReportingDemo\ReportingDemo.csproj", "{F50278FC-C888-4DD3-898D-CFCF99147E3D}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ApprovalTests1.vsmdi
@@ -90,6 +92,10 @@ Global
 		{4A185DA2-D6DA-4E45-A4E8-1DC67B849EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A185DA2-D6DA-4E45-A4E8-1DC67B849EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A185DA2-D6DA-4E45-A4E8-1DC67B849EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50278FC-C888-4DD3-898D-CFCF99147E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50278FC-C888-4DD3-898D-CFCF99147E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50278FC-C888-4DD3-898D-CFCF99147E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50278FC-C888-4DD3-898D-CFCF99147E3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

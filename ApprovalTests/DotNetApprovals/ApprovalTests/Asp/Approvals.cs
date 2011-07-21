@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Net;
-using ApprovalTests.Namers;
-using ApprovalTests.Reporters;
 using ApprovalUtilities.Utilities;
 
 namespace ApprovalTests.Asp
@@ -44,14 +42,6 @@ namespace ApprovalTests.Asp
 				throw new Exception(
 					"The following error occured while connecting to:\r\n{0}\r\nError:\r\n{1}".FormatWith(url, e.Message), e);
 			}
-		}
-
-		public static void ApproveAspPage(string page, string queryString, string relativePath)
-		{
-			var host = AppRenderer.GetHostRelativeToAssemblyPath(relativePath);
-			var htmlResult = host.ExecuteMvcUrl(page, queryString);
-			ApprovalTests.Approvals.Approve(new ApprovalTextWriter(htmlResult, "html"), new UnitTestFrameworkNamer(),
-			                                ApprovalTests.Approvals.GetReporter(new FileLauncherReporter()));
 		}
 	}
 }
