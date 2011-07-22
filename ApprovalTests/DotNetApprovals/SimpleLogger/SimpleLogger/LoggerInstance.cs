@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using ApprovalUtilities.Persistence;
 using ApprovalUtilities.SimpleLogger.Writers;
@@ -122,23 +123,26 @@ namespace ApprovalUtilities.SimpleLogger
 			return sql;
 		}
 
-		public void Warning(Exception except)
+		public void Warning(Exception except, params string[] additional)
 		{
-			PrintWarning(GetExceptionLines(except));
+			PrintWarning(GetExceptionLines(except, additional));
 		}
 
-		public static string FormatExeption(Exception exception)
+		public static string FormatExeption(Exception exception, params string[] additional)
 		{
-			return string.Join("\r\n", GetExceptionLines(exception));
+			return string.Join("\r\n", GetExceptionLines(exception, additional));
 		}
 
-		private static string[] GetExceptionLines(Exception except)
+		private static string[] GetExceptionLines(Exception except, params string[] additional)
 		{
-			return new string[]
-			       	{
-			       		String.Format("Exception: '{0}' | '{1}'", except.TargetSite, except.Source), except.Message,
-			       		except.StackTrace
-			       	};
+			var lines = new List<string>
+			            	{
+			            		string.Format("Exception: '{0}' | '{1}'", except.TargetSite, except.Source),
+			            		except.Message,
+			            		except.StackTrace
+			            	};
+			lines.AddRange(additional);
+			return lines.ToArray();
 		}
 
 		public void Warning(string format, params object[] data)
