@@ -158,7 +158,7 @@ namespace ApprovalUtilities.SimpleLogger
 			Writer.AppendLine(LineBreakIn);
 			foreach (var line in lines)
 			{
-				Writer.AppendLine("* " + line);
+				Writer.AppendLine("* " + line.Replace(Environment.NewLine, "{0}* ".FormatWith(Environment.NewLine)));
 			}
 			Writer.AppendLine(LineBreakIn);
 			Writer.AppendLine(LineBreakOut);
