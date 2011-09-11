@@ -25,8 +25,6 @@ namespace Asp.Net.Demo.Orders
 			}
 		}
 
-		
-
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -41,14 +39,16 @@ namespace Asp.Net.Demo.Orders
 		{
 			Invoice = new InvoiceLoaderById(Page.ClientQueryString).Load();
 		}
+
+# if DEBUG
 		public void TestSimpleInvoice()
 		{
-			var invoice = new Invoice() {CompanyName = "Sammy Sweet Shop", OrderNumber = "123", OrderDate = new DateTime(1592, 3, 14)};
+			var invoice = new Invoice()
+			              	{CompanyName = "Sammy Sweet Shop", OrderNumber = "123", OrderDate = new DateTime(1592, 3, 14)};
 			invoice.AddLineItem("Candy Bars", 0.50, 200);
 			invoice.AddLineItem("Fizzy Straws", 0.70, 100);
 			Invoice = invoice;
 		}
-
-		
+#endif
 	}
 }

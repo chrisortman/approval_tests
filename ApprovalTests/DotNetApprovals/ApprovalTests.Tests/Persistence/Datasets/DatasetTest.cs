@@ -14,7 +14,7 @@ namespace ApprovalTests.Tests.Persistence.Datasets
 
 		private static DataTable GetDefaultData()
 		{
-			return new InsultsDataSet.InsultsDataTable().AddTestDataRows();
+			return new InsultsDataSet.InsultsDataTable().AddTestDataRows(1);
 		}
 		private static Assembly GetAssembly()
 		{

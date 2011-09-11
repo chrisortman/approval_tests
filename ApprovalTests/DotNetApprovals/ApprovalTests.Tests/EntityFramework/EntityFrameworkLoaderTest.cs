@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using ApprovalUtilities.Persistence;
 using ApprovalUtilities.Persistence.EntityFramework;
 using NUnit.Framework;
 
@@ -9,61 +10,31 @@ namespace ApprovalTests.Tests.EntityFramework
 	public class EntityFrameworkLoaderTest
 	{
 		[Test]
-		public void Text()
+		public void FromInheritence()
 		{
-			Approvals.Approve(new CompanyLoaderByName("M"));
-		}
-	}
-
-	public class CompanyLoaderByName : EntityFrameworkLoader<Company, Company[], ModelContainer>
-	{
-		private readonly string name;
-		
-		public CompanyLoaderByName(string name) : base(() => new ModelContainer())
-		{
-			this.name = name;
+			Approvals.Approve(new CompanyLoaderByName2("M1"));
 		}
 
-		public override IQueryable<Company> GetLinqStatement()
+		[Test]
+		public void FromLambda()
 		{
-			return (from c in GetDatabaseContext().Companies
-			       where c.Name.StartsWith(name)
-			       select c).Take(1);
-		}
-		
-		public override Company[] Load()
-		{
-			return GetLinqStatement().ToArray();
-		}
-	}
-	public class CompanyLoaderByName2 : MultiLoader<Company>
-	{
-		private readonly string name;
-		
-		public CompanyLoaderByName2(string name) 
-		{
-			this.name = name;
+			Approvals.Approve(CreateCompanyLoaderByName("Mic"));
 		}
 
-		public override IQueryable<Company> GetLinqStatement()
+		private LamdaArrayLoader<Company, ModelContainer> CreateCompanyLoaderByName(string name)
 		{
-			return (from c in GetDatabaseContext().Companies
-			       where c.Name.StartsWith(name)
-			       select c).Take(1);
-		}
-	}
-
-	public abstract class MultiLoader<T>: EntityFrameworkLoader<T, IEnumerable<T>, ModelContainer>
-	{
-		public MultiLoader(): base(() =>new ModelContainer())
-		{
-			
+			return LoaderUtils.Load(db => (from c in db.Companies
+												 where c.Name.StartsWith(name)
+												 select c).Take(10));
 		}
 
-
-		public override IEnumerable<T> Load()
+		[Test]
+		public void FromSingleLambda()
 		{
-			return GetLinqStatement().ToArray();
+			var loader1 = CreateCompanyLoaderByName("Mic");
+			IExecutableLoader<Company> loader = loader1.Singleton();
+			Approvals.Approve(loader);
 		}
+
 	}
 }

@@ -57,7 +57,9 @@
     <Compile Include="ReportHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InsultsReport.rdlc" />
+    <EmbeddedResource Include="InsultsReport.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

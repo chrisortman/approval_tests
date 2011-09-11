@@ -8,8 +8,7 @@ using ApprovalUtilities.Persistence.Database;
 
 namespace ApprovalUtilities.Persistence.EntityFramework
 {
-	public abstract class EntityFrameworkLoader<QueryType, LoaderType, DatabaseContextType> : IExecutableQuery,
-	                                                                                          ILoader<LoaderType>,
+	public abstract class EntityFrameworkLoader<QueryType, LoaderType, DatabaseContextType> : IExecutableLoader<LoaderType>,
 	                                                                                          IDisposable
 		where DatabaseContextType : ObjectContext
 
@@ -47,7 +46,7 @@ namespace ApprovalUtilities.Persistence.EntityFramework
 			return sql;
 		}
 
-		public string ExecuteQuery(string query)
+		public virtual string ExecuteQuery(string query)
 		{
 			var conn = (SqlConnection) ((EntityConnection) db.Connection).StoreConnection;
 			if (conn.State == ConnectionState.Closed)

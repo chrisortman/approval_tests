@@ -74,6 +74,9 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\Common\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,6 +85,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\Common\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase">
@@ -90,8 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovalsTest.cs" />
+    <Compile Include="Asp\Razor\RazorTest.cs" />
     <Compile Include="Asp\RenderHtmlTest.cs" />
     <Compile Include="CleanupReporter.cs" />
+    <Compile Include="EntityFramework\CompanyList.cs" />
+    <Compile Include="EntityFramework\CompanyLoaderByName.cs" />
+    <Compile Include="EntityFramework\CompanyLoaderByName2.cs" />
+    <Compile Include="EntityFramework\CompanyListTest.cs" />
+    <Compile Include="EntityFramework\LoaderUtils.cs" />
+    <Compile Include="EntityFramework\MultiLoader.cs" />
+    <Compile Include="MineSweeperTest.cs" />
     <Compile Include="EntityFramework\EntityFrameworkLoaderTest.cs" />
     <Compile Include="EntityFramework\Model.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -133,6 +147,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Asp\Razor\Details.cshtml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

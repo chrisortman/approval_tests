@@ -51,6 +51,10 @@
     <Compile Include="Persistence\Database\SqlLoader.cs" />
     <Compile Include="Persistence\Database\SqlLoaderUtils.cs" />
     <Compile Include="Persistence\EntityFramework\EntityFrameworkLoader.cs" />
+    <Compile Include="Persistence\EntityFramework\EntityFrameworkLoadersExtensions.cs" />
+    <Compile Include="Persistence\EntityFramework\LamdaArrayLoader.cs" />
+    <Compile Include="Persistence\EntityFramework\LamdaSingleLoader.cs" />
+    <Compile Include="Persistence\EntityFramework\Loaders.cs" />
     <Compile Include="Persistence\IExecutableQuery.cs" />
     <Compile Include="SimpleLogger\LoggerInstance.cs" />
     <Compile Include="SimpleLogger\IAppendable.cs" />
