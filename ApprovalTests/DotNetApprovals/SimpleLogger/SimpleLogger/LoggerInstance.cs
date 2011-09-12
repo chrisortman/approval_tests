@@ -84,8 +84,8 @@ namespace ApprovalUtilities.SimpleLogger
 
 		private string GetIndentation()
 		{
-			return "                                                                                           "
-				.Substring(0, indent);
+			return "".PadLeft(indent, ' ');
+//				.Substring(0, indent);
 		}
 
 		public string Event(string message, params object[] items)
