@@ -105,7 +105,6 @@
     <Compile Include="EntityFramework\CompanyListTest.cs" />
     <Compile Include="EntityFramework\LoaderUtils.cs" />
     <Compile Include="EntityFramework\MultiLoader.cs" />
-    <Compile Include="MineSweeperTest.cs" />
     <Compile Include="EntityFramework\EntityFrameworkLoaderTest.cs" />
     <Compile Include="EntityFramework\Model.Designer.cs">
       <AutoGen>True</AutoGen>
