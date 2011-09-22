@@ -85,7 +85,7 @@ namespace ApprovalUtilities.SimpleLogger
 		private string GetIndentation()
 		{
 			return "".PadLeft(indent, ' ');
-//				.Substring(0, indent);
+			//				.Substring(0, indent);
 		}
 
 		public string Event(string message, params object[] items)
@@ -121,6 +121,12 @@ namespace ApprovalUtilities.SimpleLogger
 				Write("Sql: " + sql);
 			}
 			return sql;
+		}
+
+		public string Miscellaneous(string label, string message)
+		{
+			Write("{0}: {1}".FormatWith(label, message));
+			return message;
 		}
 
 		public void Warning(Exception except, params string[] additional)

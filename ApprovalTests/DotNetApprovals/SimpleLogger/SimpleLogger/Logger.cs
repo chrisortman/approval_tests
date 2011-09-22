@@ -48,6 +48,11 @@ namespace ApprovalUtilities.SimpleLogger
 			return log.Sql(sql);
 		}
 
+		public static string Miscelleneous(string label, string message)
+		{
+			return log.Miscellaneous(label, message);
+		}
+
 		public static void Warning(Exception exception, params string[] additional)
 		{
 			log.Warning(exception, additional);
