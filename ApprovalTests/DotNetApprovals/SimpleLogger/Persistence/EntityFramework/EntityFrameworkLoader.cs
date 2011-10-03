@@ -9,9 +9,8 @@ using ApprovalUtilities.Persistence.Database;
 namespace ApprovalUtilities.Persistence.EntityFramework
 {
 	public abstract class EntityFrameworkLoader<QueryType, LoaderType, DatabaseContextType> : IExecutableLoader<LoaderType>,
-	                                                                                          IDisposable
+																							  IDisposable
 		where DatabaseContextType : ObjectContext
-
 	{
 		private readonly Func<DatabaseContextType> dbCreator;
 		private DatabaseContextType db;
@@ -20,7 +19,7 @@ namespace ApprovalUtilities.Persistence.EntityFramework
 		{
 			this.dbCreator = dbCreator;
 		}
-		
+
 		protected EntityFrameworkLoader(DatabaseContextType nonDisposableDatabaseContext)
 		{
 			db = nonDisposableDatabaseContext;
@@ -28,27 +27,19 @@ namespace ApprovalUtilities.Persistence.EntityFramework
 
 		public DatabaseContextType GetDatabaseContext()
 		{
-			if (db == null)
-			{
-				db = dbCreator();
-			}
-			return db;
+			return db ?? (db = dbCreator());
 		}
 
 		public string GetQuery()
 		{
-			var linq = ((ObjectQuery) GetLinqStatement());
+			var linq = ((ObjectQuery)GetLinqStatement());
 			var sql = linq.ToTraceString();
-			foreach (var p in linq.Parameters)
-			{
-				sql = sql.Replace("@" + p.Name, "\'" + p.Value.ToString() + "\'");
-			}
-			return sql;
+			return linq.Parameters.Aggregate(sql, (current, p) => current.Replace("@" + p.Name, "\'" + p.Value + "\'"));
 		}
 
 		public virtual string ExecuteQuery(string query)
 		{
-			var conn = (SqlConnection) ((EntityConnection) db.Connection).StoreConnection;
+			var conn = (SqlConnection)((EntityConnection)db.Connection).StoreConnection;
 			if (conn.State == ConnectionState.Closed)
 			{
 				conn.Open();
@@ -61,6 +52,9 @@ namespace ApprovalUtilities.Persistence.EntityFramework
 
 		public void Dispose()
 		{
+			/* Note: Llewellyn This seams wrong. I do not believe a dbCreator needs to exist to dispose the db.
+			 * Note:    If so then it needs to be documented as to why.
+			 */
 			if (db != null && dbCreator != null)
 			{
 				db.Dispose();
