@@ -158,16 +158,16 @@ namespace ApprovalUtilities.SimpleLogger
 
 		public void PrintWarning(params string[] lines)
 		{
-			var LineBreakOut = "**************************************************************************************";
-			var LineBreakIn = "*                                                                                    *";
-			Writer.AppendLine(LineBreakOut);
-			Writer.AppendLine(LineBreakIn);
+			const string lineBreakOut = "**************************************************************************************";
+			const string lineBreakIn = "*                                                                                    *";
+			Writer.AppendLine(lineBreakOut);
+			Writer.AppendLine(lineBreakIn);
 			foreach (var line in lines)
 			{
 				Writer.AppendLine("* " + line.Replace(Environment.NewLine, "{0}* ".FormatWith(Environment.NewLine)));
 			}
-			Writer.AppendLine(LineBreakIn);
-			Writer.AppendLine(LineBreakOut);
+			Writer.AppendLine(lineBreakIn);
+			Writer.AppendLine(lineBreakOut);
 		}
 
 
