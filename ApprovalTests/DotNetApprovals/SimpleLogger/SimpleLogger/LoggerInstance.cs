@@ -69,7 +69,7 @@ namespace ApprovalUtilities.SimpleLogger
 
 		private void Write(string text)
 		{
-			var time = showTimestamp ? clock.Load().ToString() + " " : "";
+			var time = showTimestamp ? clock.Load() + " " : "";
 			var difference = "";
 			if (showTimeDifference)
 			{
@@ -79,7 +79,8 @@ namespace ApprovalUtilities.SimpleLogger
 				difference = string.Format("~{0:000000}ms ", diff.TotalMilliseconds);
 			}
 
-			Writer.AppendLine(time + difference + GetIndentation() + text);
+			var message = text.Replace(Environment.NewLine, Environment.NewLine + "\t");
+			Writer.AppendLine(time + difference + GetIndentation() + message);
 		}
 
 		private string GetIndentation()
