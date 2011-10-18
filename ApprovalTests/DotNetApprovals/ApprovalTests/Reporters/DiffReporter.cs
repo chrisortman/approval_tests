@@ -31,10 +31,10 @@ namespace ApprovalTests.Reporters
 		/// <param name = "extensionWithDot"> Use * for default</param>
 		public void AddDiffReporter(string extensionWithDot, LaunchArgs fileParameters)
 		{
-			types[extensionWithDot] =  fileParameters;
+			types[extensionWithDot] = fileParameters;
 		}
 
-		public void Report(string approved, string received)
+		public virtual void Report(string approved, string received)
 		{
 			QuietReporter.DisplayCommandLineApproval(approved, received);
 			Launch(GetLaunchArguments(approved, received));
