@@ -58,6 +58,14 @@
       <Name>ApprovalUtilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="LoggerTest.TestMainPath.approved.txt">
+      <DependentUpon>LoggerTest.cs</DependentUpon>
+    </Content>
+    <Content Include="LoggerTest.TestTimes.approved.txt">
+      <DependentUpon>LoggerTest.cs</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
