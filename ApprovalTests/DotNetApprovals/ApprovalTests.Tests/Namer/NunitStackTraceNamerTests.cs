@@ -24,5 +24,16 @@ namespace ApprovalTests.Tests.Namer
 						var path = name.ToLower() + "\\"+ this.GetType().Name+".cs";
 						Assert.IsTrue(File.Exists(path), path + " does not exist");
 				}
+
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("The approval file should be based on the scenario name with outline")]
+        [NUnit.Framework.TestCaseAttribute("Fred")]
+        [NUnit.Framework.TestCaseAttribute("John")]
+        public virtual void TestCaseAttributes(string caseName)
+        {
+            NamerFactory.AdditionalInformation = caseName;
+            string name = new UnitTestFrameworkNamer().Name;
+            Assert.AreEqual("NunitStackTraceNamerTests.TestCaseAttributes." + caseName, name);
+        }
     }
 }

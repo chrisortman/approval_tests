@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using ApprovalTests.Namers;
 
 namespace ApprovalTests.StackTraceParsers
 {
@@ -19,10 +20,26 @@ namespace ApprovalTests.StackTraceParsers
             get { return Method.DeclaringType.Name; }
         }
 
+        public string AdditionalInfo
+        {
+            get 
+            { 
+                var additionalInformation = NamerFactory.AdditionalInformation;
+                if (additionalInformation != null)
+                {
+                    NamerFactory.AdditionalInformation = null;
+                    additionalInformation = "." + additionalInformation;
+                }
+                return additionalInformation;
+            }
+        }
 
         public string ApprovalName
         {
-            get { return String.Format(@"{0}.{1}", TypeName, Method.Name); }
+            get
+            {
+                return String.Format(@"{0}.{1}{2}", TypeName, Method.Name, AdditionalInfo);
+            }
         }
 
         public string SourcePath
@@ -37,7 +54,7 @@ namespace ApprovalTests.StackTraceParsers
         }
 
 
-        public static StackFrame GetFirstFrameForAttribute(StackFrame[] frames, string attributeName)
+        public StackFrame GetFirstFrameForAttribute(StackFrame[] frames, string attributeName)
         {
             if (frames == null)
                 return null;
@@ -45,7 +62,8 @@ namespace ApprovalTests.StackTraceParsers
 
             for (int i = 0; i < frames.Length; i++)
             {
-                if (ContainsAttribute(frames[i].GetMethod().GetCustomAttributes(false), attributeName))
+                object[] customAttributes = frames[i].GetMethod().GetCustomAttributes(false);
+                if (ContainsAttribute(customAttributes, attributeName))
                 {
                     return frames[i];
                 }
