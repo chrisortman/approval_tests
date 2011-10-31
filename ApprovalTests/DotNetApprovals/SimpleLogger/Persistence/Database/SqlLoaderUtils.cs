@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using ApprovalUtilities.SimpleLogger;
+using ApprovalUtilities.Utilities;
 
 namespace ApprovalUtilities.Persistence.Database
 {
 	public class SqlLoaderUtils
 	{
 		public static string ExecuteQueryToDisplayString(string query, string connectionString,
-		                                                 Func<SqlCommand> commandCreator)
+														 Func<SqlCommand> commandCreator)
 		{
 			if (String.IsNullOrEmpty(query))
 			{
@@ -32,7 +33,7 @@ namespace ApprovalUtilities.Persistence.Database
 			}
 			catch (Exception ex)
 			{
-				return LoggerInstance.FormatExeption(ex);
+				return ExceptionUtilities.FormatExeption(ex);
 			}
 		}
 

@@ -70,6 +70,7 @@
     <Compile Include="SimpleLogger\Writers\NullWriter.cs" />
     <Compile Include="SimpleLogger\Writers\StringBuilderLogger.cs" />
     <Compile Include="Utilities\Clock.cs" />
+    <Compile Include="Utilities\ExceptionUtilities.cs" />
     <Compile Include="Utilities\StringUtils.cs" />
     <Compile Include="Utilities\PathUtilities.cs" />
     <Compile Include="WinForms\WinFormsUtils.cs" />

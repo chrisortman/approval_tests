@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 using ApprovalUtilities.Persistence;
 using ApprovalUtilities.SimpleLogger.Writers;
 using ApprovalUtilities.Utilities;
@@ -132,24 +133,7 @@ namespace ApprovalUtilities.SimpleLogger
 
 		public void Warning(Exception except, params string[] additional)
 		{
-			PrintWarning(GetExceptionLines(except, additional));
-		}
-
-		public static string FormatExeption(Exception exception, params string[] additional)
-		{
-			return string.Join("\r\n", GetExceptionLines(exception, additional));
-		}
-
-		private static string[] GetExceptionLines(Exception except, params string[] additional)
-		{
-			var lines = new List<string>
-			            	{
-			            		string.Format("Exception: '{0}' | '{1}'", except.TargetSite, except.Source),
-			            		except.Message,
-			            		except.StackTrace
-			            	};
-			lines.AddRange(additional);
-			return lines.ToArray();
+			Writer.AppendLine(except.FormatError(additional));
 		}
 
 		public void Warning(string format, params object[] data)
@@ -157,20 +141,10 @@ namespace ApprovalUtilities.SimpleLogger
 			PrintWarning(string.Format(format, data));
 		}
 
-		public void PrintWarning(params string[] lines)
+		private void PrintWarning(params string[] lines)
 		{
-			const string lineBreakOut = "**************************************************************************************";
-			const string lineBreakIn = "*                                                                                    *";
-			Writer.AppendLine(lineBreakOut);
-			Writer.AppendLine(lineBreakIn);
-			foreach (var line in lines)
-			{
-				Writer.AppendLine("* " + line.Replace(Environment.NewLine, "{0}* ".FormatWith(Environment.NewLine)));
-			}
-			Writer.AppendLine(lineBreakIn);
-			Writer.AppendLine(lineBreakOut);
+			Writer.AppendLine(ExceptionUtilities.FormatAsError(lines));
 		}
-
 
 		public void Show(bool markerIn = true, bool variables = true, bool events = true, bool sql = true,
 						 bool timestamp = true, bool timeDifference = true)
