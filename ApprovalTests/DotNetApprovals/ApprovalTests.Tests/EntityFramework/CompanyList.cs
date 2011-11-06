@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using ApprovalUtilities.Persistence;
 using ApprovalUtilities.Persistence.EntityFramework;
+using ApprovalUtilities.SimpleLogger;
 using ApprovalUtilities.Utilities;
 
 namespace ApprovalTests.Tests.EntityFramework
@@ -14,22 +15,14 @@ namespace ApprovalTests.Tests.EntityFramework
 	{
 		public static string GetCompanyRoster(string name)
 		{
-			return GetCompanyRoster(name, CompanyNameLoader(name));
+			return GetCompanyRoster(GetCompanyByName(name));
 		}
 
-		public static LamdaArrayLoader<Company, ModelContainer> CompanyNameLoader(string name)
+		public static string GetCompanyRoster(ILoader<IEnumerable<Company>> companyByName)
 		{
-			return LoaderUtils.Load((m) => (from c in m.Companies
-			                                where c.Name.StartsWith(name)
-			                                select c).Take(10));
-		}
-
-
-		public static string GetCompanyRoster(string name, ILoader<IEnumerable<Company>> loader)
-		{
-			var companies = loader.Load();
+			var companies = companyByName.Load();
 			StringBuilder b = new StringBuilder();
-			b.Append("<html><body> <h1> Companies starting with '{0}'</h1>".FormatWith(name));
+			b.Append("<html><body>");
 			foreach (var company in companies)
 			{
 				b.Append("<li>{0}</li>".FormatWith(company.Name));
@@ -37,5 +30,15 @@ namespace ApprovalTests.Tests.EntityFramework
 			b.Append("</body></html>");
 			return b.ToString();
 		}
+
+		public static LamdaArrayLoader<Company, ModelContainer> GetCompanyByName(string name)
+		{
+			Logger.MarkerIn();
+			return Loaders.Create(()=> new ModelContainer(), 
+				(m) => (from c in m.Companies
+			        where c.Name.StartsWith(name)
+							select c).Take(9) );
+		}
+
 	}
 }

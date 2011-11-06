@@ -11,17 +11,14 @@ namespace ApprovalTests.Tests.EntityFramework
 	public class CompanyListTest
 	{
 		[Test]
-		public void TestRoster()
-		{
-			var mockLoader = new MockLoader<IEnumerable<Company>>( new []{new Company(){Name = "Motorola"}});
-			var html = CompanyList.GetCompanyRoster("M", mockLoader);
-			ApprovalTests.Html.Approvals.ApproveHtml(html);
-		}
-
-		[Test]
 		public void TestLoader()
 		{
-			Approvals.Approve(CompanyList.CompanyNameLoader("Mi").Singleton());
+		Approvals.Approve(CompanyList.GetCompanyByName("m"));
+		}
+		[Test]
+		public void TestLoader2()
+		{
+		Approvals.Approve(CompanyList.GetCompanyByName("mi"));
 		}
 	}
 }
