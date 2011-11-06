@@ -45,11 +45,8 @@ namespace ApprovalTests.Reporters
 
 		public LaunchArgs GetLaunchArguments(string approved, string received)
 		{
-			if (!File.Exists(approved))
-			{
-				File.Create(approved).Dispose();
-			}
-
+			FileUtilities.EnsureFileExists(approved);
+			
 			var args = GetLaunchArgumentsForFile(approved);
 			return new LaunchArgs(args.Program, string.Format(args.Arguments, received, approved));
 		}

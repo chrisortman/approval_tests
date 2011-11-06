@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="FailedApprovalTests.cs" />
     <Compile Include="Html\HtmlTest.cs" />
+    <Compile Include="KDiffReporter.cs" />
     <Compile Include="LockDownTest.cs" />
     <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
