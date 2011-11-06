@@ -8,7 +8,7 @@ namespace ApprovalTests.Reporters
 {
 	public class NUnitReporter : IApprovalFailureReporter
 	{
-		public void Report(string approved, string received)
+		public virtual void Report(string approved, string received)
 		{
 			string assertClass = "NUnit.Framework.Assert, nunit.framework";
 			AssertFileContents(approved, received, assertClass);
