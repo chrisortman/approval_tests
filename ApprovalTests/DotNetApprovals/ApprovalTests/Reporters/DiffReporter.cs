@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using ApprovalTests.Core;
+using ApprovalUtilities.Utilities;
 
 namespace ApprovalTests.Reporters
 {
@@ -64,7 +66,15 @@ namespace ApprovalTests.Reporters
 
 		public void Launch(LaunchArgs launchArgs)
 		{
-			Process.Start(launchArgs.Program, launchArgs.Arguments);
+            try
+            {
+                Process.Start(launchArgs.Program, launchArgs.Arguments);
+            }
+            catch (System.ComponentModel.Win32Exception e)
+            {
+
+                throw new Exception("Unable to launch: {0} with arguments {1}\nError Message: {2}".FormatWith(launchArgs.Program, launchArgs.Arguments, e.Message), e);
+            }
 		}
 	}
 }

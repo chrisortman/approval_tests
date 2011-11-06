@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests.WinForms
 {
 	[TestFixture]
-  [UseReporter(typeof(BeyondCompareReporter))]
+  [UseReporter(typeof(DiffReporter))]
 	public class ApprovalsTest
 	{
 		[Test]
