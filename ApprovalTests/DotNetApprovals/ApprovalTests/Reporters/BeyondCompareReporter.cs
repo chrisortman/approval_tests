@@ -5,7 +5,7 @@ namespace ApprovalTests.Reporters
 {
 	public class BeyondCompareReporter:DiffReporter
 	{
-		public BeyondCompareReporter():base(new LaunchArgs(Environment.GetEnvironmentVariable("ProgramFiles") + @"\Beyond Compare 3\BCompare.exe", "\"{0}\" \"{1}\""))
+		public BeyondCompareReporter():base(new LaunchArgs(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86) + @"\Beyond Compare 3\BCompare.exe", "\"{0}\" \"{1}\""))
 		{
 			 
 		}
