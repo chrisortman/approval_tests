@@ -11,7 +11,7 @@ namespace ApprovalUtilities.Xml
 			{
 				return XElement.Parse(xml).ToString();
 			}
-			catch (Exception e)
+			catch
 			{
 				if (safe)
 				{
