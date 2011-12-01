@@ -58,9 +58,9 @@ namespace ApprovalUtilities.SimpleLogger
 			log.Warning(exception, additional);
 		}
 
-		public static void Warning(string format, params object[] data)
+		public static string Warning(string format, params object[] data)
 		{
-			log.Warning(format, data);
+			return log.Warning(format, data);
 		}
 
 		public static void Show(bool markerIn = true, bool variables = true, bool events = true, bool sql = true,

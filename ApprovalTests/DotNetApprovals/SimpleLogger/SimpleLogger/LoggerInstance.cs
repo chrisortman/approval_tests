@@ -136,9 +136,10 @@ namespace ApprovalUtilities.SimpleLogger
 			Writer.AppendLine(except.FormatError(additional));
 		}
 
-		public void Warning(string format, params object[] data)
+		public string Warning(string format, params object[] data)
 		{
 			PrintWarning(string.Format(format, data));
+			return format.FormatWith(data);
 		}
 
 		private void PrintWarning(params string[] lines)
