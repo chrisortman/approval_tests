@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Text;
 
 namespace ApprovalUtilities.Utilities
@@ -23,7 +24,24 @@ namespace ApprovalUtilities.Utilities
 
 		public static string FormatWith(this string mask, params object[] parameters)
 		{
-			return string.Format(mask, parameters);
+			return String.Format(mask, parameters);
+		}
+
+		public static string FormatFrame(char frameMarker, params string[] lines)
+		{
+			var sb = new StringBuilder();
+			const int totalWidth = 86;
+			string lineBreakOut = "".PadLeft(totalWidth, frameMarker);
+			string lineBreakIn = "{0}{1}{0}".FormatWith(frameMarker, "".PadLeft(totalWidth - 2, ' '));
+			sb.AppendLine(lineBreakOut);
+			sb.AppendLine(lineBreakIn);
+			foreach (var line in lines)
+			{
+				sb.AppendLine("* " + line.Replace(Environment.NewLine, "{0}* ".FormatWith(Environment.NewLine)));
+			}
+			sb.AppendLine(lineBreakIn);
+			sb.AppendLine(lineBreakOut);
+			return sb.ToString().Trim();
 		}
 	}
 }

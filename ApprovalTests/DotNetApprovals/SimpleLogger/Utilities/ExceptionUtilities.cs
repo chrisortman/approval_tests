@@ -25,18 +25,7 @@ namespace ApprovalUtilities.Utilities
 
 		public static string FormatAsError(params string[] lines)
 		{
-			var sb = new StringBuilder();
-			const string lineBreakOut = "**************************************************************************************";
-			const string lineBreakIn = "*                                                                                    *";
-			sb.AppendLine(lineBreakOut);
-			sb.AppendLine(lineBreakIn);
-			foreach (var line in lines)
-			{
-				sb.AppendLine("* " + line.Replace(Environment.NewLine, "{0}* ".FormatWith(Environment.NewLine)));
-			}
-			sb.AppendLine(lineBreakIn);
-			sb.AppendLine(lineBreakOut);
-			return sb.ToString().Trim();
+			return StringUtils.FormatFrame('*', lines);
 		}
 
 		public static string FormatError(this Exception except, params string[] additional)
