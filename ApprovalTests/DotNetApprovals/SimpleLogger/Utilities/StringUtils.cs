@@ -37,7 +37,7 @@ namespace ApprovalUtilities.Utilities
 			sb.AppendLine(lineBreakIn);
 			foreach (var line in lines)
 			{
-				sb.AppendLine("* " + line.Replace(Environment.NewLine, "{0}* ".FormatWith(Environment.NewLine)));
+				sb.AppendLine("{1} {0}".FormatWith(line.Replace(Environment.NewLine, "{0}{1} ".FormatWith(Environment.NewLine, frameMarker)), frameMarker));
 			}
 			sb.AppendLine(lineBreakIn);
 			sb.AppendLine(lineBreakOut);
