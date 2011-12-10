@@ -24,24 +24,25 @@ namespace ApprovalTests.Asp
 
 		public static void ApproveUrl(string url)
 		{
-			try
-			{
-				using (var client = new WebClient())
-				{
-					var baseUrl = url.Substring(0, url.LastIndexOf("/"));
-					var html = client.DownloadString(url);
-					if (!html.Contains("<base"))
-					{
-						html = html.Replace("<head>", "<head><base href=\"{0}\">".FormatWith(baseUrl));
-					}
-					Html.Approvals.ApproveHtml(html);
-				}
-			}
-			catch (Exception e)
-			{
-				throw new Exception(
-					"The following error occured while connecting to:\r\n{0}\r\nError:\r\n{1}".FormatWith(url, e.Message), e);
-			}
+            Html.Approvals.ApproveHtml(GetUrlContents(url));
 		}
+
+        public static string GetUrlContents(string url) {
+            try {
+                using (var client = new WebClient()) {
+                    var baseUrl = url.Substring(0, url.LastIndexOf("/"));
+                    var html = client.DownloadString(url);
+                    if (!html.Contains("<base")) {
+                        html = html.Replace("<head>", "<head><base href=\"{0}\">".FormatWith(baseUrl));
+                    }
+                    
+                    return html;
+                }
+            }
+            catch (Exception e) {
+                throw new Exception(
+                    "The following error occured while connecting to:\r\n{0}\r\nError:\r\n{1}".FormatWith(url, e.Message), e);
+            }
+        }
 	}
 }
