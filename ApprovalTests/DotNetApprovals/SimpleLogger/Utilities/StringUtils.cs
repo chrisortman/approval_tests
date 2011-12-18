@@ -14,7 +14,7 @@ namespace ApprovalUtilities.Utilities
 			{
 				sb.Append(l + ", ");
 			}
-			if (sb.Length > 0)
+			if (sb.Length > 1)
 			{
 				sb.Remove(sb.Length - 2, 2);
 			}
