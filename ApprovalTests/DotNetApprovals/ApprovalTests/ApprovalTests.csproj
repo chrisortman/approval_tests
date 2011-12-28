@@ -44,6 +44,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -96,6 +97,7 @@
     <Compile Include="Persistence\DataSets\ColumnDefaults.cs" />
     <Compile Include="Persistence\DataSets\DataSetTestingUtilities.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
+    <Compile Include="Reporters\ClipboardReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
     <Compile Include="Reporters\ImageReporter.cs" />

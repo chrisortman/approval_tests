@@ -1,12 +1,15 @@
 using System;
 using System.Data;
 using System.Reflection;
+using ApprovalTests.Namers;
 using ApprovalTests.Persistence.DataSets;
+using ApprovalTests.Reporters;
 using NUnit.Framework;
 using ReportingDemo;
 
 namespace ApprovalTests.Tests.Persistence.Datasets
 {
+	//[UseReporter(typeof(ClipboardReporter))]
 	[TestFixture]
 	public class DatasetTest
 	{
@@ -49,6 +52,7 @@ namespace ApprovalTests.Tests.Persistence.Datasets
 		[Test]
 		public void TestDataSourceNames()
 		{
+		    NamerFactory.Clear();
 			var message = "";
 			try
 			{
@@ -59,6 +63,12 @@ namespace ApprovalTests.Tests.Persistence.Datasets
 				message = e.Message;
 			}
 			Approvals.Approve(message);
+		}
+
+		[SetUp]
+		public void NamerSetUp()
+		{
+			NamerFactory.AsMachineSpecificTest();
 		}
 	}
 }

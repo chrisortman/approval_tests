@@ -14,9 +14,14 @@ namespace ApprovalTests.Reporters
 
 		public static void DisplayCommandLineApproval(string approved, string received)
 		{
-			string message = string.Format("move /Y \"{0}\" \"{1}\"", received, approved);
+			string message = GetCommandLineForApproval(approved, received);
 			Debug.WriteLine(message);
 			Console.WriteLine(message);
 		}
+
+	    public static string GetCommandLineForApproval(string approved, string received)
+	    {
+	        return string.Format("move /Y \"{0}\" \"{1}\"", received, approved);
+	    }
 	}
 }
