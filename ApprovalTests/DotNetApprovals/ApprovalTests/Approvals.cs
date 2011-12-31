@@ -93,7 +93,7 @@ namespace ApprovalTests
 			var frame = GetFirstFrameForAttribute(new StackTrace(true).GetFrames(), typeof (UseReporterAttribute));
 			if (frame != null)
 			{
-				return (IApprovalFailureReporter) Activator.CreateInstance((frame).Reporter);
+				return frame.Reporter;
 			}
 			return null;
 		}

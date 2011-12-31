@@ -104,6 +104,7 @@
     <Compile Include="Reporters\FileLauncherReporter.cs" />
     <Compile Include="Reporters\LaunchArgs.cs" />
     <Compile Include="Reporters\MsTestReporter.cs" />
+    <Compile Include="Reporters\MultiReporter.cs" />
     <Compile Include="Reporters\NotepadLauncher.cs" />
     <Compile Include="Reporters\NUnitReporter.cs" />
     <Compile Include="Reporters\WinMergeReporter.cs" />

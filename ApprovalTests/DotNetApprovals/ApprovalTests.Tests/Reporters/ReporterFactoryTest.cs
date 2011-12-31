@@ -1,3 +1,4 @@
+using System;
 using ApprovalTests.Core;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
@@ -20,6 +21,12 @@ namespace ApprovalTests.Tests.Reporters
 		{
 			Assert.AreEqual(typeof (MyReporter), Approvals.GetReporter().GetType());
 		}
+		[Test]
+		[UseReporter(typeof(MyReporter),typeof(MyReporter2))]
+		public void TestMultipleReporters()
+		{
+			Assert.AreEqual(typeof(MultiReporter), Approvals.GetReporter().GetType());
+		}
 	}
 
 
@@ -30,10 +37,6 @@ namespace ApprovalTests.Tests.Reporters
 		{
 		}
 
-		public bool ApprovedWhenReported()
-		{
-			return false;
-		}
 
 	}
 
@@ -44,10 +47,7 @@ namespace ApprovalTests.Tests.Reporters
 		{
 		}
 
-		public bool ApprovedWhenReported()
-		{
-			return false;
-		}
+	
 
 	}
 }

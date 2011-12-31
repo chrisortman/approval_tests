@@ -1,3 +1,5 @@
+using ApprovalTests.Reporters;
+
 namespace ApprovalTests.Html
 {
 	public class Approvals

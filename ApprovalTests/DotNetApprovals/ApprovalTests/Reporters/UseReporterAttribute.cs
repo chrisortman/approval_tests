@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using ApprovalTests.Core;
 
 namespace ApprovalTests.Reporters
 {
@@ -7,8 +9,14 @@ namespace ApprovalTests.Reporters
 	{
 		public UseReporterAttribute(Type reporter)
 		{
-			Reporter = reporter;
+			Reporter = (IApprovalFailureReporter) Activator.CreateInstance(reporter);
 		}
-		public Type Reporter { private set; get; }
+
+		public UseReporterAttribute(params Type[] reporters)
+		{
+			Reporter = new MultiReporter(reporters.Select(r => (IApprovalFailureReporter)Activator.CreateInstance(r)));
+		}
+
+		public IApprovalFailureReporter Reporter { get; set; }
 	}
 }

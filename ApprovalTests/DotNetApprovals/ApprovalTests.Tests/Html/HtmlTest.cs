@@ -1,9 +1,10 @@
+using ApprovalTests.Reporters;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.Html
 {
 	[TestFixture]
-
+	[UseReporter(typeof(DiffReporter), typeof(FileLauncherReporter))]
 	public class HtmlTest
 	{
 		[Test]

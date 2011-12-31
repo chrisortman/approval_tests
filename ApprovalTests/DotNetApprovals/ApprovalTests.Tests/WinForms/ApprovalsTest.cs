@@ -7,14 +7,14 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests.WinForms
 {
 	[TestFixture]
-	[UseReporter(typeof(ClipboardReporter))]
+	[UseReporter(typeof(DiffReporter))]
 	public class ApprovalsTest
 	{
 		[Test]
 		public void TestControlApproved()
 		{
 			NamerFactory.AsMachineSpecificTest();
-			ApprovalTests.WinForms.Approvals.Approve(new Button {BackColor = Color.Blue, Text = "Help"});
+			ApprovalTests.WinForms.Approvals.Approve(new Button {BackColor = Color.LightBlue, Text = "Help"});
 		}
 
 		[Test]
