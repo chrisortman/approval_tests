@@ -10,7 +10,7 @@ namespace ApprovalTests.Tests.Html
 		[Test]
 		public static void TestHtml()
 		{
-			Approvals.ApproveHtml("<html><body><div>hi</div></body></html>");
+			Approvals.ApproveHtml("<html><body><div style='font-family:Broadway;font-size:18'> Web Page from ApprovalTests</div></body></html>");
 		}
 	}
 }
