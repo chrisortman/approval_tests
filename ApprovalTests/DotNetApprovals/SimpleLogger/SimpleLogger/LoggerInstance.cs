@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using ApprovalUtilities.CallStack;
 using ApprovalUtilities.Persistence;
 using ApprovalUtilities.SimpleLogger.Writers;
 using ApprovalUtilities.Utilities;
+using System.Linq;
 
 namespace ApprovalUtilities.SimpleLogger
 {
@@ -53,19 +55,10 @@ namespace ApprovalUtilities.SimpleLogger
 			Write("<= " + method);
 		}
 
-		private string GetCallingMethod()
+		public string GetCallingMethod()
 		{
-			var stackTrace = new StackTrace(true);
-			StackFrame frame = null;
-			for (var i = 2; i < stackTrace.FrameCount; i++)
-			{
-				frame = stackTrace.GetFrame(i);
-				if (frame.GetMethod().DeclaringType.Namespace != this.GetType().Namespace)
-				{
-					break;
-				}
-			}
-			return frame.GetMethod().DeclaringType.Name + "." + frame.GetMethod().Name + "()";
+			var outsideCallingMethod = new Caller().Methods.First(m => m.DeclaringType.Namespace != this.GetType().Namespace);
+			return outsideCallingMethod.ToStandardString();
 		}
 
 		private void Write(string text)

@@ -47,6 +47,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallStack\Caller.cs" />
     <Compile Include="Persistence\Database\DatabaseUtils.cs" />
     <Compile Include="Persistence\Database\SqlLoader.cs" />
     <Compile Include="Persistence\Database\SqlLoaderUtils.cs" />

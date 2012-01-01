@@ -12,8 +12,13 @@ namespace ApprovalUtilities.Utilities
 
         public static string GetDirectoryForCaller(int callerStackDepth)
         {
-            var fileName = new StackTrace(true).GetFrame(callerStackDepth + 1).GetFileName();
-            return new FileInfo(fileName).Directory.FullName + "\\";
+        	var stackFrame = new StackTrace(true).GetFrame(callerStackDepth + 1);
+        	return GetDirectoryForStackFrame(stackFrame);
         }
+
+    	public static string GetDirectoryForStackFrame(StackFrame stackFrame)
+    	{
+    		return new FileInfo(stackFrame.GetFileName()).Directory.FullName + "\\";
+    	}
     }
 }
