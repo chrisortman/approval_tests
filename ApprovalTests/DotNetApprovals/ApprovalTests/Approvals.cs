@@ -7,8 +7,10 @@ using ApprovalTests.Core;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
+using ApprovalUtilities.CallStack;
 using ApprovalUtilities.Persistence;
 using BinaryWriter = ApprovalTests.Writers.BinaryWriter;
+using System.Linq;
 
 namespace ApprovalTests
 {
@@ -90,40 +92,34 @@ namespace ApprovalTests
 
 		private static IApprovalFailureReporter GetReporterFromAttribute()
 		{
-			var frame = GetFirstFrameForAttribute(new StackTrace(true).GetFrames(), typeof (UseReporterAttribute));
-			if (frame != null)
-			{
-				return frame.Reporter;
-			}
-			return null;
+			var useReporter = GetFirstFrameForAttribute(new Caller(), typeof (UseReporterAttribute));
+			return useReporter != null ? useReporter.Reporter : null;
 		}
 
-		public static UseReporterAttribute GetFirstFrameForAttribute(StackFrame[] frames, Type attribute)
+		public static UseReporterAttribute GetFirstFrameForAttribute(Caller caller, Type attribute)
 		{
-			if (frames == null)
-				return null;
-
-			for (var i = 0; i < frames.Length; i++)
+			//find the first attribute on a method
+			//if empty, then find the first attribute on a class
+			//if empty, then find the first attribute on an assembly
+			var useReporter = FindFirstFor(caller,attribute);
+			if (useReporter == null)
 			{
-				var attributes = frames[i].GetMethod().GetCustomAttributes(attribute, true);
-				if (attributes.Length != 0)
+				useReporter = (UseReporterAttribute)caller.Methods.SelectMany(m => m.DeclaringType.GetCustomAttributes(attribute, true)).FirstOrDefault();
+				if (useReporter == null)
 				{
-					return (UseReporterAttribute) attributes[0];
-				}
-
-				attributes = frames[i].GetMethod().DeclaringType.GetCustomAttributes(attribute, true);
-				if (attributes.Length != 0)
-				{
-					return (UseReporterAttribute) attributes[0];
-				}
-				attributes = frames[i].GetMethod().DeclaringType.Assembly.GetCustomAttributes(attribute, true);
-				if (attributes.Length != 0)
-				{
-					return (UseReporterAttribute) attributes[0];
+					useReporter = (UseReporterAttribute)caller.Methods.SelectMany(m => m.DeclaringType.Assembly.GetCustomAttributes(attribute, true)).FirstOrDefault();
+				
 				}
 			}
+			return useReporter;
 
-			return null;
+			
+		}
+
+		private static UseReporterAttribute FindFirstFor(Caller caller, Type attribute)
+		{
+			return (UseReporterAttribute)caller.Methods.SelectMany(m => m.GetCustomAttributes(attribute, true)).FirstOrDefault();
+		
 		}
 
 		public static void Approve(IExecutableQuery query)

@@ -27,6 +27,17 @@ namespace ApprovalTests.Tests.Reporters
 		{
 			Assert.AreEqual(typeof(MultiReporter), Approvals.GetReporter().GetType());
 		}
+		[Test]
+		[UseReporter(typeof(MyReporter))]
+		public void TestMethodOverrideWithSubMethod()
+		{
+			SubMethod();
+		}
+
+		private void SubMethod()
+		{
+			Assert.AreEqual(typeof(MyReporter), Approvals.GetReporter().GetType());
+		}
 	}
 
 
