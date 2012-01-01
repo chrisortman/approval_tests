@@ -6,29 +6,29 @@ using NUnit.Framework;
 namespace ApprovalTests.Tests.Reporters
 {
 	[TestFixture]
-	[UseReporter(typeof (MyReporter2))]
+	[UseReporter(typeof (ClassLevelReporter))]
 	public class ReporterFactoryTest
 	{
 		[Test]
 		public void TestClassLevel()
 		{
-			Assert.AreEqual(typeof (MyReporter2), Approvals.GetReporter().GetType());
+			Assert.AreEqual(typeof (ClassLevelReporter), Approvals.GetReporter().GetType());
 		}
 
 		[Test]
-		[UseReporter(typeof (MyReporter))]
+		[UseReporter(typeof (MethodLevelReporter))]
 		public void TestMethodOverride()
 		{
-			Assert.AreEqual(typeof (MyReporter), Approvals.GetReporter().GetType());
+			Assert.AreEqual(typeof (MethodLevelReporter), Approvals.GetReporter().GetType());
 		}
 		[Test]
-		[UseReporter(typeof(MyReporter),typeof(MyReporter2))]
+		[UseReporter(typeof(MethodLevelReporter),typeof(ClassLevelReporter))]
 		public void TestMultipleReporters()
 		{
 			Assert.AreEqual(typeof(MultiReporter), Approvals.GetReporter().GetType());
 		}
 		[Test]
-		[UseReporter(typeof(MyReporter))]
+		[UseReporter(typeof(MethodLevelReporter))]
 		public void TestMethodOverrideWithSubMethod()
 		{
 			SubMethod();
@@ -36,12 +36,12 @@ namespace ApprovalTests.Tests.Reporters
 
 		private void SubMethod()
 		{
-			Assert.AreEqual(typeof(MyReporter), Approvals.GetReporter().GetType());
+			Assert.AreEqual(typeof(MethodLevelReporter), Approvals.GetReporter().GetType());
 		}
 	}
 
 
-	public class MyReporter : IApprovalFailureReporter
+	public class MethodLevelReporter : IApprovalFailureReporter
 	{
 
 		public void Report(string approved, string received)
@@ -51,7 +51,7 @@ namespace ApprovalTests.Tests.Reporters
 
 	}
 
-	public class MyReporter2 : IApprovalFailureReporter
+	public class ClassLevelReporter : IApprovalFailureReporter
 	{
 
 		public void Report(string approved, string received)
