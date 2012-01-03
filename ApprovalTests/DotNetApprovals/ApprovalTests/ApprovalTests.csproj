@@ -109,6 +109,8 @@
     <Compile Include="Reporters\MultiReporter.cs" />
     <Compile Include="Reporters\NotepadLauncher.cs" />
     <Compile Include="Reporters\NUnitReporter.cs" />
+    <Compile Include="Reporters\TortoiseDiffReporter.cs" />
+    <Compile Include="Reporters\TortoiseImageDiffReporter.cs" />
     <Compile Include="Reporters\WinMergeReporter.cs" />
     <Compile Include="StackTraceParsers\AttributeStackTraceParser.cs" />
     <Compile Include="Namers\UnitTestFrameworks\MbUnitStackTraceParser.cs" />

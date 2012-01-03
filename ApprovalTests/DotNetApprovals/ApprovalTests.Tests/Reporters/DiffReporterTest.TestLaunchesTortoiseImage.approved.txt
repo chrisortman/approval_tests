@@ -1,1 +1,0 @@
-tortoiseidiff /left:"../../b.png" /right:"../../a.png"

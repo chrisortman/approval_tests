@@ -30,14 +30,20 @@ namespace ApprovalTests.Reporters
 				throw new Exception(diffProgramNotFoundMessage);
 			}
 			FileUtilities.EnsureFileExists(approved);
-			DiffReporter.Launch(new LaunchArgs(diffProgram,arguments.FormatWith(received,approved)));
+			DiffReporter.Launch(GetLaunchArguments(approved, received));
 		}
 
-		
+		public LaunchArgs GetLaunchArguments(string approved, string received)
+		{
+			return new LaunchArgs(diffProgram,arguments.FormatWith(received,approved));
+		}
+
 
 		public bool IsWorkingInThisEnvironment()
 		{
 			return File.Exists(diffProgram);
 		}
+		
+
 	}
 }
