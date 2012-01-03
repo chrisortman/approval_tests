@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Reporters\AssemblyLevelTest.cs" />
     <Compile Include="Reporters\DiffReporterTest.cs" />
+    <Compile Include="Reporters\GenericDiffReporterTest.cs" />
     <Compile Include="Reporters\MultiReporterTest.cs" />
     <Compile Include="Reporters\NUnitReporterTest.cs" />
     <Compile Include="Reporters\RecordingReporter.cs" />

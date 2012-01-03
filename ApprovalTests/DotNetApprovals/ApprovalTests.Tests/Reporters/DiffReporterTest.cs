@@ -17,7 +17,7 @@ namespace ApprovalTests.Tests.Reporters
 			}
 			catch
 			{
-				reporter.Launch(args);
+				DiffReporter.Launch(args);
 				throw;
 			}
 		}

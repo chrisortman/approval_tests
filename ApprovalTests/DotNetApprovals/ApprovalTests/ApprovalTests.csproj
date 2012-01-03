@@ -90,6 +90,7 @@
     <Compile Include="Core\Exceptions\ApprovalMismatchException.cs" />
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Combinations\Approvals.cs" />
+    <Compile Include="Core\IEnvironmentAwareReporter.cs" />
     <Compile Include="Html\Approvals.cs" />
     <Compile Include="Core\IReporterWithApprovalPower.cs" />
     <Compile Include="Namers\NamerFactory.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Reporters\ClipboardReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
+    <Compile Include="Reporters\GenericDiffReporter.cs" />
     <Compile Include="Reporters\ImageReporter.cs" />
     <Compile Include="Reporters\FileLauncherReporter.cs" />
     <Compile Include="Reporters\LaunchArgs.cs" />
