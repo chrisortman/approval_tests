@@ -23,7 +23,7 @@ namespace ApprovalTests.Reporters
 			this.diffProgramNotFoundMessage = diffProgramNotFoundMessage;
 		}
 
-		public void Report(string approved, string received)
+		public virtual void Report(string approved, string received)
 		{
 			if (!IsWorkingInThisEnvironment())
 			{
