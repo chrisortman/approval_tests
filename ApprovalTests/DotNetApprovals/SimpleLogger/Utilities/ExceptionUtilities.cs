@@ -20,6 +20,12 @@ namespace ApprovalUtilities.Utilities
 			            		except.StackTrace
 			            	};
 			lines.AddRange(additional);
+
+			if (except.InnerException != null)
+			{
+				lines.AddRange(GetExceptionLines(except.InnerException));
+			}
+
 			return lines.ToArray();
 		}
 
