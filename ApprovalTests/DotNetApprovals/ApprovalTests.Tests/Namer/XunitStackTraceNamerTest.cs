@@ -6,6 +6,7 @@ using Xunit;
 
 namespace ApprovalTests.Tests.Namer
 {
+
 	public class XunitStackTraceNamerTest
 	{
 		[Fact]

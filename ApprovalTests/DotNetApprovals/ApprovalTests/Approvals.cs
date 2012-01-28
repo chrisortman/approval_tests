@@ -82,7 +82,7 @@ namespace ApprovalTests
 
 		public static IApprovalFailureReporter GetReporter()
 		{
-			return GetReporter(new QuietReporter());
+			return GetReporter(new IntroductionReporter());
 		}
 
 		public static IApprovalFailureReporter GetReporter(IApprovalFailureReporter defaultIfNotFound)

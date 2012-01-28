@@ -105,6 +105,7 @@
     <Compile Include="Reporters\GenericDiffReporter.cs" />
     <Compile Include="Reporters\ImageReporter.cs" />
     <Compile Include="Reporters\FileLauncherReporter.cs" />
+    <Compile Include="Reporters\IntroductionReporter.cs" />
     <Compile Include="Reporters\LaunchArgs.cs" />
     <Compile Include="Reporters\MsTestReporter.cs" />
     <Compile Include="Reporters\MultiReporter.cs" />
