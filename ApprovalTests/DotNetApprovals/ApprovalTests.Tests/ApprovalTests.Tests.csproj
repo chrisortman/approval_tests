@@ -130,6 +130,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reporters\AppConfigReporterTest.cs" />
     <Compile Include="Reporters\AssemblyLevelTest.cs" />
     <Compile Include="Reporters\GenericDiffReporterTest.cs" />
     <Compile Include="Reporters\MultiReporterTest.cs" />

@@ -64,6 +64,7 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <HintPath>..\..\..\..\..\..\Program Files\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll</HintPath>
     </Reference>
@@ -98,6 +99,7 @@
     <Compile Include="RdlcReports\Approvals.cs" />
     <Compile Include="Persistence\DataSets\ColumnDefaults.cs" />
     <Compile Include="Persistence\DataSets\DataSetTestingUtilities.cs" />
+    <Compile Include="Reporters\AppConfigReporter.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
     <Compile Include="Reporters\ClipboardReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />

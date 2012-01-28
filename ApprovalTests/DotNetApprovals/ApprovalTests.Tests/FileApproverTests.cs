@@ -4,22 +4,15 @@ using NUnit.Framework;
 
 namespace ApprovalTests.Tests
 {
-	public interface IApprovals
-	{
-		
-	}
 
 	[TestFixture]
 	public class FileApproverTests
 	{
-
-		public IApprovals Approvals { get; set; }
 		
 		[Test]
 		public void TestFailureDueToMissingApproval()
 		{
 
-			Approvals.
 			AssertApprover("a.txt", "non_existing_file.txt", false);
 		}
 
