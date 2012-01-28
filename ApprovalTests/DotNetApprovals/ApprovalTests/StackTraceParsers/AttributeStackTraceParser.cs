@@ -47,6 +47,8 @@ namespace ApprovalTests.StackTraceParsers
 			get { return Path.GetDirectoryName(FindApprovalFrame().StackFrame.GetFileName()); }
 		}
 
+		public abstract string ForTestingFramework { get; }
+
 		public bool Parse(StackTrace trace)
 		{
 			caller = new Caller(trace, 0);

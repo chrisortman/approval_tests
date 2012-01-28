@@ -1,15 +1,15 @@
 namespace ApprovalTests.StackTraceParsers
 {
-	public class NUnitStackTraceParser : AttributeStackTraceParser
+	public class XUnitStackTraceParser : AttributeStackTraceParser
 	{
 		public override string ForTestingFramework
 		{
-			get { return "NUnit"; }
+			get { return "xUnit.net"; }
 		}
 
 		protected override string GetAttributeType()
 		{
-			return "NUnit.Framework.TestAttribute";
+			return "Xunit.FactAttribute";
 		}
 	}
 }

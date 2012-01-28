@@ -93,6 +93,9 @@
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.0.1566\lib\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApprovalsTest.cs" />
@@ -117,6 +120,7 @@
     <Compile Include="LockDownTest.cs" />
     <Compile Include="Namer\VsTestStackTraceNamerTests.cs" />
     <Compile Include="FileApproverTests.cs" />
+    <Compile Include="Namer\XunitStackTraceNamerTest.cs" />
     <Compile Include="Persistence\Datasets\DatasetTest.cs" />
     <Compile Include="Persistence\WeatherTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +154,7 @@
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Asp\Razor\Details.cshtml" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
