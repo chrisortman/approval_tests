@@ -1,5 +1,6 @@
 using System;
 using ApprovalUtilities.Persistence;
+using ApprovalUtilities.SimpleLogger.Writers;
 
 namespace ApprovalUtilities.SimpleLogger
 {

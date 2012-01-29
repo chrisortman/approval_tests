@@ -10,7 +10,10 @@ namespace ApprovalUtilities.SimpleLogger.Writers
         {
             sb.Append(text + "\r\n");
         }
-
+				public void Append(string text)
+				{
+					sb.Append(text);
+				}
         public override string ToString()
         {
             return sb.ToString();
