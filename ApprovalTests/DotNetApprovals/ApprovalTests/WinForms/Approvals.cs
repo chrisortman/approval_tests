@@ -9,12 +9,12 @@ namespace ApprovalTests.WinForms
 	{
 		public static void Approve(Form form)
 		{
-			ApprovalTests.Approvals.Approve(new ApprovalFormWriter(form));
+			WinFormsApprovals.Verify(form);
 		}
 
 		public static void Approve(Control control)
 		{
-			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control));
+			WinFormsApprovals.Verify(control);
 		}
 	}
 	public class WinFormsApprovals

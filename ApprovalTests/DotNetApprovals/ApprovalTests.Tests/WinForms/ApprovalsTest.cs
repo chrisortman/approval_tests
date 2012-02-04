@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
+using ApprovalTests.WinForms;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.WinForms
@@ -14,14 +15,14 @@ namespace ApprovalTests.Tests.WinForms
 		public void TestControlApproved()
 		{
 			NamerFactory.AsMachineSpecificTest();
-			ApprovalTests.WinForms.Approvals.Approve(new Button {BackColor = Color.LightBlue, Text = "Help"});
+			WinFormsApprovals.Verify(new Button {BackColor = Color.LightBlue, Text = "Help"});
 		}
 
 		[Test]
 		public void TestFormApproval()
 		{
 			NamerFactory.AsMachineSpecificTest();
-			ApprovalTests.WinForms.Approvals.Approve(new Form());
+			WinFormsApprovals.Verify(new Form());
 		}
 	}
 }
