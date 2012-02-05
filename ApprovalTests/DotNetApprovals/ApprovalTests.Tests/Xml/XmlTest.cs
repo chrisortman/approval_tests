@@ -1,3 +1,4 @@
+using ApprovalTests.Xml;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests.Xml
@@ -9,7 +10,7 @@ namespace ApprovalTests.Tests.Xml
 		[Test]
 		public static void TestXml()
 		{
-			ApprovalTests.Xml.Approvals.ApproveXml("<xml><hello/><start>hi</start></xml>");
+			XmlApprovals.VerifyXml("<xml><hello/><start>hi</start></xml>");
 		}
 	}
 }

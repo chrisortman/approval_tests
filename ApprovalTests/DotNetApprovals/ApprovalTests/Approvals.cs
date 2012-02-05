@@ -5,9 +5,11 @@ using System.Linq;
 using System.Reflection;
 using ApprovalTests.Approvers;
 using ApprovalTests.Core;
+using ApprovalTests.Html;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
+using ApprovalTests.Xml;
 using ApprovalUtilities.CallStack;
 using ApprovalUtilities.Persistence;
 using BinaryWriter = ApprovalTests.Writers.BinaryWriter;
@@ -16,11 +18,93 @@ namespace ApprovalTests
 {
 	public class Approvals
 	{
-		#region Text
-
+		#region Obsolete
+		[Obsolete("Use Verify instead")]
 		public static void Approve(string text)
 		{
-			Approve(new ApprovalTextWriter(text));
+			Verify(text);
+		}
+
+		[Obsolete("Use Verify instead")]
+		public static void Approve(object text)
+		{
+			Verify(text);
+		}
+
+		[Obsolete("Use VerifyAll instead")]
+		public static void Approve<T>(IEnumerable<T> enumerable, string label)
+		{
+			VerifyAll(enumerable, label);
+		}
+
+		[Obsolete("Use VerifyAll instead")]
+		public static void Approve<T>(IEnumerable<T> enumerable, string label,
+																	EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			VerifyAll(enumerable, label, formatter);
+		}
+
+		[Obsolete("Use VerifyAll instead")]
+		public static void Approve<T>(String header, IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			VerifyAll(header, enumerable, formatter);
+		}
+
+		[Obsolete("Use VerifyAll instead")]
+		public static void Approve<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		{
+			VerifyAll(enumerable, formatter);
+		}
+
+		[Obsolete("Use VerifyBinaryFile instead")]
+		public static void ApproveBinaryFile(byte[] bytes, string fileExtensionWithoutDot)
+		{
+			VerifyBinaryFile(bytes, fileExtensionWithoutDot);
+		}
+
+		[Obsolete("Use VerifyHtml instead")]
+		public static void ApproveHtml(string html)
+		{
+			VerifyHtml(html);
+		}
+
+		[Obsolete("Use VerifyXml instead")]
+		public static void ApproveXml(string xml)
+		{
+			VerifyXml(xml);
+		}
+
+		[Obsolete("Use Verify instead")]
+		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
+		{
+			Verify(writer, namer, reporter);
+		}
+
+		[Obsolete("Use Verify instead")]
+		public static void Approve(IExecutableQuery query)
+		{
+			Verify(query);
+		}
+		[Obsolete("Use Verify instead")]
+		public static void Approve(IApprovalWriter writer)
+		{
+			Verify(writer);
+		}
+		[Obsolete("Use VerifyFile instead")]
+		public static void ApproveFile(string file)
+		{
+			VerifyFile(file);
+		}
+		[Obsolete("Use Verify instead")]
+		public static void Approve(FileInfo file)
+		{
+			Verify(file);
+		}
+		#endregion
+		#region Text
+		public static void Verify(string text)
+		{
+			Verify(new ApprovalTextWriter(text));
 		}
 
 		public static IApprovalNamer GetDefaultNamer()
@@ -28,56 +112,57 @@ namespace ApprovalTests
 			return new UnitTestFrameworkNamer();
 		}
 
-		public static void Approve(object text)
+		public static void Verify(object text)
 		{
-			Approve(new ApprovalTextWriter("" + text));
+			Verify(new ApprovalTextWriter("" + text));
 		}
-
 		#endregion
-
 		#region Enumerable
-
-		public static void Approve<T>(IEnumerable<T> enumerable, string label)
+		public static void VerifyAll<T>(String header, IEnumerable<T> enumerable, string label)
 		{
-			Approve(EnumerableWriter.Write(enumerable, label));
+			Verify(header + "\r\n\r\n" + EnumerableWriter.Write(enumerable, label));
 		}
 
-		public static void Approve<T>(IEnumerable<T> enumerable, string label,
-		                              EnumerableWriter.CustomFormatter<T> formatter)
+		public static void VerifyAll<T>(IEnumerable<T> enumerable, string label)
 		{
-			Approve(EnumerableWriter.Write(enumerable, label, formatter));
+			Verify(EnumerableWriter.Write(enumerable, label));
 		}
 
-		public static void Approve<T>(String header, IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		public static void VerifyAll<T>(IEnumerable<T> enumerable, string label,
+																		EnumerableWriter.CustomFormatter<T> formatter)
 		{
-			Approve(header + "\r\n\r\n" + EnumerableWriter.Write(enumerable, formatter));
+			Verify(EnumerableWriter.Write(enumerable, label, formatter));
 		}
 
-		public static void Approve<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
+		public static void VerifyAll<T>(String header, IEnumerable<T> enumerable,
+																		EnumerableWriter.CustomFormatter<T> formatter)
 		{
-			Approve(EnumerableWriter.Write(enumerable, formatter));
+			Verify(header + "\r\n\r\n" + EnumerableWriter.Write(enumerable, formatter));
 		}
 
-		public static void ApproveBinaryFile(byte[] bytes, string fileExtensionWithoutDot)
+		public static void VerifyAll<T>(IEnumerable<T> enumerable, EnumerableWriter.CustomFormatter<T> formatter)
 		{
-			Approve(new BinaryWriter(bytes, fileExtensionWithoutDot));
+			Verify(EnumerableWriter.Write(enumerable, formatter));
 		}
 
-		public static void ApproveHtml(string html)
+		public static void VerifyBinaryFile(byte[] bytes, string fileExtensionWithoutDot)
 		{
-			Html.Approvals.ApproveHtml(html);
+			Verify(new BinaryWriter(bytes, fileExtensionWithoutDot));
 		}
 
-		public static void ApproveXml(string xml)
+		public static void VerifyHtml(string html)
 		{
-			Xml.Approvals.ApproveXml(xml);
+			HtmlApprovals.VerifyHtml(html);
 		}
 
+		public static void VerifyXml(string xml)
+		{
+			XmlApprovals.VerifyXml(xml);
+		}
 		#endregion
-
-		public static void Approve(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
+		public static void Verify(IApprovalWriter writer, IApprovalNamer namer, IApprovalFailureReporter reporter)
 		{
-			Core.Approvals.Approve(new FileApprover(writer, namer), reporter);
+			Core.Approvals.Verify(new FileApprover(writer, namer), reporter);
 		}
 
 		public static IApprovalFailureReporter GetReporter()
@@ -92,7 +177,7 @@ namespace ApprovalTests
 
 		private static IApprovalFailureReporter GetReporterFromAttribute()
 		{
-			var useReporter = GetFirstFrameForAttribute(new Caller(), typeof (UseReporterAttribute));
+			var useReporter = GetFirstFrameForAttribute(new Caller(), typeof(UseReporterAttribute));
 			return useReporter != null ? useReporter.Reporter : null;
 		}
 
@@ -118,25 +203,25 @@ namespace ApprovalTests
 			return null;
 		}
 
-		public static void Approve(IExecutableQuery query)
+		public static void Verify(IExecutableQuery query)
 		{
-			Approve(new ApprovalTextWriter(query.GetQuery()), GetDefaultNamer(),
-			        new ExecutableQueryFailure(query, GetReporter()));
+			Verify(new ApprovalTextWriter(query.GetQuery()), GetDefaultNamer(),
+						 new ExecutableQueryFailure(query, GetReporter()));
 		}
 
-		public static void Approve(IApprovalWriter writer)
+		public static void Verify(IApprovalWriter writer)
 		{
-			Approve(writer, GetDefaultNamer(), GetReporter());
+			Verify(writer, GetDefaultNamer(), GetReporter());
 		}
 
-		public static void ApproveFile(string file)
+		public static void VerifyFile(string file)
 		{
-			Approve(new ExistingFileWriter(file));
+			Verify(new ExistingFileWriter(file));
 		}
 
-		public static void Approve(FileInfo file)
+		public static void Verify(FileInfo file)
 		{
-			ApproveFile(file.FullName);
+			VerifyFile(file.FullName);
 		}
 	}
 }

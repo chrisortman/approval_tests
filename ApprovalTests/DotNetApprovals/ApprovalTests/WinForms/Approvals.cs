@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using ApprovalTests.Namers;
 
 namespace ApprovalTests.WinForms
 {
@@ -15,18 +14,6 @@ namespace ApprovalTests.WinForms
 		public static void Approve(Control control)
 		{
 			WinFormsApprovals.Verify(control);
-		}
-	}
-	public class WinFormsApprovals
-	{
-		public static void Verify(Form form)
-		{
-			ApprovalTests.Approvals.Approve(new ApprovalFormWriter(form));
-		}
-
-		public static void Verify(Control control)
-		{
-			ApprovalTests.Approvals.Approve(new ApprovalControlWriter(control));
 		}
 	}
 }

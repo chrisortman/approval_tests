@@ -82,7 +82,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asp\AspApprovals.cs" />
     <Compile Include="Asp\AspTestingUtils.cs" />
+    <Compile Include="Combinations\CombinationApprovals.cs" />
     <Compile Include="Core\IApprovalReporterWithCleanUp.cs" />
     <Compile Include="Asp\Approvals.cs" />
     <Compile Include="Core\Approvals.cs" />
@@ -94,11 +96,13 @@
     <Compile Include="Core\IEnvironmentAwareReporter.cs" />
     <Compile Include="Html\Approvals.cs" />
     <Compile Include="Core\IReporterWithApprovalPower.cs" />
+    <Compile Include="Html\HtmlApprovals.cs" />
     <Compile Include="Namers\NamerFactory.cs" />
     <Compile Include="Namers\UnitTestFrameworks\XUnitStackTraceParser.cs" />
     <Compile Include="RdlcReports\Approvals.cs" />
     <Compile Include="Persistence\DataSets\ColumnDefaults.cs" />
     <Compile Include="Persistence\DataSets\DataSetTestingUtilities.cs" />
+    <Compile Include="RdlcReports\RdlcApprovals.cs" />
     <Compile Include="Reporters\AppConfigReporter.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
     <Compile Include="Reporters\ClipboardReporter.cs" />
@@ -121,12 +125,14 @@
     <Compile Include="Namers\UnitTestFrameworks\VSStackTraceParser.cs" />
     <Compile Include="Reporters\UseReporterAttribute.cs" />
     <Compile Include="WinForms\Approvals.cs" />
+    <Compile Include="WinForms\WinFormsApprovals.cs" />
     <Compile Include="WinForms\WinFormsUtils.cs" />
     <Compile Include="Wpf\Approvals.cs" />
     <Compile Include="Wpf\ApprovalWpfWindowWriter.cs" />
     <Compile Include="Wpf\WindowWpfWriter.cs" />
     <Compile Include="WinForms\ApprovalControlWriter.cs" />
     <Compile Include="WinForms\ApprovalFormWriter.cs" />
+    <Compile Include="Wpf\WpfApprovals.cs" />
     <Compile Include="Writers\BinaryWriter.cs" />
     <Compile Include="Writers\EnumerableWriter.cs" />
     <Compile Include="Core\IApprovalWriter.cs" />
@@ -144,6 +150,7 @@
     <Compile Include="Writers\ExistingFileWriter.cs" />
     <Compile Include="Writers\WriterUtils.cs" />
     <Compile Include="Xml\Approvals.cs" />
+    <Compile Include="Xml\XmlApprovals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

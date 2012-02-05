@@ -38,7 +38,7 @@ namespace ApprovalTests.Tests.Reporters
 
 			try
 			{
-				Approvals.Approve(args.ToString());
+				Approvals.Verify(args.ToString());
 			}
 			catch
 			{

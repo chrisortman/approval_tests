@@ -1,10 +1,9 @@
-﻿using ApprovalTests.Core;
-
+﻿
 namespace ApprovalTests.Core
 {
 	public class Approvals
 	{
-		public static void Approve(IApprovalApprover approver, IApprovalFailureReporter reporter)
+		public static void Verify(IApprovalApprover approver, IApprovalFailureReporter reporter)
 		{
 			if (approver.Approve())
 				approver.CleanUpAfterSucess(reporter);

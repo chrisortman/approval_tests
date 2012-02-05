@@ -4,36 +4,36 @@ using NUnit.Framework;
 
 namespace ApprovalTests.Tests
 {
-    [TestFixture]
-    [UseReporter(typeof (CleanupReporter))]
-    internal class FailedApprovalTests
-    {
-        [Test]
-        [ExpectedException(typeof (ApprovalMismatchException))]
-        public void EnumerableDoesNotMatchApproval()
-        {
-            Approvals.Approve(new[]{"Does not match"}, "collection");
-        }
+	[TestFixture]
+	[UseReporter(typeof(CleanupReporter))]
+	internal class FailedApprovalTests
+	{
+		[Test]
+		[ExpectedException(typeof(ApprovalMismatchException))]
+		public void EnumerableDoesNotMatchApproval()
+		{
+			Approvals.VerifyAll(new[] { "Does not match" }, "collection");
+		}
 
-        [Test]
-        [ExpectedException(typeof (ApprovalMissingException))]
-        public void EnumerableNotApprovedYet()
-        {
-            Approvals.Approve(new[]{"Not approved"}, "collection");
-        }
+		[Test]
+		[ExpectedException(typeof(ApprovalMissingException))]
+		public void EnumerableNotApprovedYet()
+		{
+			Approvals.VerifyAll(new[] { "Not approved" }, "collection");
+		}
 
-        [Test]
-        [ExpectedException(typeof (ApprovalMismatchException))]
-        public void TextDoesNotMatchApproval()
-        {
-            Approvals.Approve("should fail with mismatch");
-        }
+		[Test]
+		[ExpectedException(typeof(ApprovalMismatchException))]
+		public void TextDoesNotMatchApproval()
+		{
+			Approvals.Verify("should fail with mismatch");
+		}
 
-        [Test]
-        [ExpectedException(typeof (ApprovalMissingException))]
-        public void TextNotApprovedYet()
-        {
-            Approvals.Approve("should fail with a missing exception");
-        }
-    }
+		[Test]
+		[ExpectedException(typeof(ApprovalMissingException))]
+		public void TextNotApprovedYet()
+		{
+			Approvals.Verify("should fail with a missing exception");
+		}
+	}
 }

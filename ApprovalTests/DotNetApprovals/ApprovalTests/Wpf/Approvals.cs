@@ -17,16 +17,4 @@ namespace ApprovalTests.Wpf
 
 		}
 	}
-	public class WpfApprovals
-	{
-		public static void Verify(Window window)
-		{
-			ApprovalTests.Approvals.Approve(new ApprovalWpfWindowWriter(window));
-		}
-
-		public static void Verify(Func<Window> action)
-		{
-			ApprovalTests.Approvals.Approve(new WindowWpfWriter(action));
-		}
-	}
 }

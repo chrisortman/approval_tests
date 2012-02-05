@@ -12,7 +12,7 @@ namespace ApprovalDemos.Data
 	{
 		private void Approve<T>(IAdoLoader<T> loader)
 		{
-			Approvals.Approve(new AdoLoaderWrapper<T>(loader));
+			Approvals.Verify(new AdoLoaderWrapper<T>(loader));
 		}
 
 		public string DoAuthorLookup()
@@ -41,7 +41,7 @@ namespace ApprovalDemos.Data
 		[Test]
 		public void TestAuthorNameLoader()
 		{
-			Approvals.Approve(new AuthorNameLoader());
+			Approvals.Verify(new AuthorNameLoader());
 		}
 
 		[Test]
@@ -56,8 +56,8 @@ namespace ApprovalDemos.Data
 			string tom = "ApprovalDemos.Data.Author[].Where(a => (a.FirstName = \"Tom\"))";
 			string mark = "ApprovalDemos.Data.Author[].Where(a => (a.FirstName = \"Mark\"))";
 
-			Assert.AreEqual( "author[0] = Tom Jones", new AuthorNameLoader().ExecuteQuery( tom ) );
-			Assert.AreEqual( "author[0] = Mark Twain", new AuthorNameLoader().ExecuteQuery( mark ) );
+			Assert.AreEqual("author[0] = Tom Jones", new AuthorNameLoader().ExecuteQuery(tom));
+			Assert.AreEqual("author[0] = Mark Twain", new AuthorNameLoader().ExecuteQuery(mark));
 		}
 	}
 
@@ -79,10 +79,10 @@ namespace ApprovalDemos.Data
 
 		private static Author[] GetAuthors()
 		{
-			var tom = new Author {FirstName = "Tom", LastName = "Jones"};
-			var mark = new Author {FirstName = "Mark", LastName = "Twian"};
+			var tom = new Author { FirstName = "Tom", LastName = "Jones" };
+			var mark = new Author { FirstName = "Mark", LastName = "Twian" };
 
-			return new[] {tom, mark};
+			return new[] { tom, mark };
 		}
 
 		private static IQueryable<Author> GetQueryExtracted()

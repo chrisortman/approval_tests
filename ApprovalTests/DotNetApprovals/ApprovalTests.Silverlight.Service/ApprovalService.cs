@@ -11,7 +11,7 @@ namespace ApprovalTests.Silverlight.Service
 			IApprovalNamer namer = new SimpleNamer(path, testName);
 			IApprovalWriter writer = new BinaryWriter(content, "png");
 			IApprovalFailureReporter reporter = new ImageReporter();
-			Approvals.Approve(writer, namer, reporter);
+			Approvals.Verify(writer, namer, reporter);
 		}
 	}
 }

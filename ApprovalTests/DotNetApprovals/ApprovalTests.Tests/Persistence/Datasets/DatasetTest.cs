@@ -3,7 +3,7 @@ using System.Data;
 using System.Reflection;
 using ApprovalTests.Namers;
 using ApprovalTests.Persistence.DataSets;
-using ApprovalTests.Reporters;
+using ApprovalTests.RdlcReports;
 using NUnit.Framework;
 using ReportingDemo;
 
@@ -21,48 +21,48 @@ namespace ApprovalTests.Tests.Persistence.Datasets
 		}
 		private static Assembly GetAssembly()
 		{
-			return typeof (InsultsDataSet).Assembly;
+			return typeof(InsultsDataSet).Assembly;
 		}
 
 		[Test]
 		public void TestSimpleReportWith1Dataset()
 		{
-			RdlcReports.Approvals.ApproveReport(ReportName, GetDefaultData());
+			RdlcApprovals.VerifyReport(ReportName, GetDefaultData());
 		}
 
 		[Test]
 		public void TestSimpleReportWithDatasetInAssembly()
 		{
-			RdlcReports.Approvals.ApproveReport(ReportName, "Model", GetDefaultData());
+			RdlcApprovals.VerifyReport(ReportName, "Model", GetDefaultData());
 		}
 
 		[Test]
 		public void TestReport()
 		{
-			RdlcReports.Approvals.ApproveReport(ReportName, GetAssembly(), Tuple.Create("Model", GetDefaultData()));
+			RdlcApprovals.VerifyReport(ReportName, GetAssembly(), Tuple.Create("Model", GetDefaultData()));
 		}
 
 
 		[Test]
 		public void TestSimpleReportExplict()
 		{
-			RdlcReports.Approvals.ApproveReport(ReportName, GetAssembly(), "Model", GetDefaultData());
+			RdlcApprovals.VerifyReport(ReportName, GetAssembly(), "Model", GetDefaultData());
 		}
 
 		[Test]
 		public void TestDataSourceNames()
 		{
-		    NamerFactory.Clear();
+			NamerFactory.Clear();
 			var message = "";
 			try
 			{
-				RdlcReports.Approvals.ApproveReport(ReportName, GetAssembly(), "purposelyMisspelt", GetDefaultData());
+				RdlcApprovals.VerifyReport(ReportName, GetAssembly(), "purposelyMisspelt", GetDefaultData());
 			}
 			catch (Exception e)
 			{
 				message = e.Message;
 			}
-			Approvals.Approve(message);
+			Approvals.Verify(message);
 		}
 
 		[SetUp]

@@ -23,7 +23,7 @@ namespace ApprovalTests.Tests.Namer
 
 			var exception = Assert.Throws<Exception>(() => parser.Parse(new StackTrace(6)));
 
-			Approvals.Approve(exception.Message);
+			Approvals.Verify(exception.Message);
 		}
 	}
 }

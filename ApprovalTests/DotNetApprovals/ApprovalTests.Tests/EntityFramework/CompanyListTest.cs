@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using ApprovalTests.Reporters;
-using ApprovalUtilities.Persistence;
-using NUnit.Framework;
-using ApprovalUtilities.Persistence.EntityFramework;
+﻿using NUnit.Framework;
 
 namespace ApprovalTests.Tests.EntityFramework
 {
@@ -13,12 +9,12 @@ namespace ApprovalTests.Tests.EntityFramework
 		[Test]
 		public void TestLoader()
 		{
-		Approvals.Approve(CompanyList.GetCompanyByName("m"));
+			Approvals.Verify(CompanyList.GetCompanyByName("m"));
 		}
 		[Test]
 		public void TestLoader2()
 		{
-		Approvals.Approve(CompanyList.GetCompanyByName("mi"));
+			Approvals.Verify(CompanyList.GetCompanyByName("mi"));
 		}
 	}
 }

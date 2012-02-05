@@ -8,13 +8,13 @@ namespace ApprovalTests.Tests
 		[Test, Parallelizable]
 		public void ApprovingText()
 		{
-			Approvals.Approve("A piece of text");
+			Approvals.Verify("A piece of text");
 		}
 
 		[Test, Parallelizable]
 		public void ApprovingAnEnumerble()
 		{
-			Approvals.Approve(new []{"item1", "item2", "item3"}, "items");
+			Approvals.VerifyAll(new[] { "item1", "item2", "item3" }, "items");
 		}
 
 		[Test, Parallelizable]

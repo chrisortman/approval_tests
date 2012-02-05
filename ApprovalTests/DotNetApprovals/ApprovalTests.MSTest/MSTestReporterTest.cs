@@ -1,5 +1,4 @@
-﻿using System;
-using ApprovalTests.Reporters;
+﻿using ApprovalTests.Reporters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ApprovalTests.MSTest
@@ -13,7 +12,7 @@ namespace ApprovalTests.MSTest
 		{
 			try
 			{
-				Approvals.Approve("Hello");
+				Approvals.Verify("Hello");
 			}
 			catch (AssertFailedException e)
 			{
