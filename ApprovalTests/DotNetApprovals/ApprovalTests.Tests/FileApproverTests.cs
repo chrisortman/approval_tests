@@ -1,5 +1,5 @@
-﻿using System;
-using ApprovalTests.Approvers;
+﻿using ApprovalTests.Approvers;
+using ApprovalUtilities.Utilities;
 using NUnit.Framework;
 
 namespace ApprovalTests.Tests
@@ -8,7 +8,7 @@ namespace ApprovalTests.Tests
 	[TestFixture]
 	public class FileApproverTests
 	{
-		
+
 		[Test]
 		public void TestFailureDueToMissingApproval()
 		{
@@ -30,7 +30,7 @@ namespace ApprovalTests.Tests
 
 		private static void AssertApprover(string receivedFile, string approvedFile, bool expected)
 		{
-			var basePath = Environment.CurrentDirectory + @"\..\..\";
+			var basePath = PathUtilities.GetDirectoryForCaller();
 			var exception = FileApprover.Approve(basePath + approvedFile, basePath + receivedFile);
 			Assert.AreEqual(expected, exception == null);
 		}

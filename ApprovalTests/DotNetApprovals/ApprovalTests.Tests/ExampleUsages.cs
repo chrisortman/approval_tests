@@ -17,19 +17,6 @@ namespace ApprovalTests.Tests
 			Approvals.VerifyAll(new[] { "item1", "item2", "item3" }, "items");
 		}
 
-		[Test, Parallelizable]
-		public void ApprovingAnImage()
-		{
-		}
 
-		[Test, Parallelizable]
-		public void ApprovingAForm()
-		{
-		}
-
-		[Test, Parallelizable]
-		public void ApprovingAnObject()
-		{
-		}
 	}
 }
