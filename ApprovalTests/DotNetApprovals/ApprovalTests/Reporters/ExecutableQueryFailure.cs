@@ -20,8 +20,9 @@ namespace ApprovalTests.Reporters
 		{
 			reporter.Report(approved, received);
 
-			var aResult = ExecuteQuery(approved);
 			var rResult = ExecuteQuery(received);
+			var aResult = ExecuteQuery(approved);
+
 			if (string.IsNullOrEmpty(aResult.Result) && string.IsNullOrEmpty(rResult.Result))
 			{
 				return;

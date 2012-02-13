@@ -34,7 +34,7 @@ namespace ApprovalTests.Tests.Excutable
 			try
 			{
 				NamerFactory.AdditionalInformation = "Inner";
-				Approvals.VerifyWithAdditionalFeedbackOnFailure("Sam", s => output.Add(s));
+				Approvals.VerifyWithCallback("Sam", s => output.Add(s));
 
 			}
 			catch (Exception)

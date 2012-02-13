@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using ApprovalTests.Reporters;
 using NUnit.Framework;
 
@@ -36,15 +37,15 @@ namespace ApprovalTests.Tests.Reporters
 		{
 			var args = reporter.GetLaunchArguments(approved, received);
 
-			try
-			{
-				Approvals.Verify(args.ToString());
-			}
-			catch
-			{
-				DiffReporter.Launch(args);
-				throw;
-			}
+			Approvals.VerifyWithCallback(args, s => StartProcess(s));
+		}
+
+		public static void StartProcess(string fullCommandLine)
+		{
+			var splitPosition = fullCommandLine.IndexOf('"', 1);
+			var fileName = fullCommandLine.Substring(1, splitPosition - 1);
+			var arguments = fullCommandLine.Substring(splitPosition + 1);
+			Process.Start(fileName, arguments);
 		}
 	}
 }

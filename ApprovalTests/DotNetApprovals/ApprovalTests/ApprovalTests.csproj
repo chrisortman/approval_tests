@@ -95,6 +95,7 @@
     <Compile Include="Core\Exceptions\ApprovalMissingException.cs" />
     <Compile Include="Combinations\Approvals.cs" />
     <Compile Include="Core\IEnvironmentAwareReporter.cs" />
+    <Compile Include="ExecutableLambda.cs" />
     <Compile Include="Html\Approvals.cs" />
     <Compile Include="Core\IReporterWithApprovalPower.cs" />
     <Compile Include="Html\HtmlApprovals.cs" />
