@@ -115,6 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Excutable\ExcutableTest.cs" />
     <Compile Include="FailedApprovalTests.cs" />
     <Compile Include="Html\HtmlTest.cs" />
     <Compile Include="KDiffReporter.cs" />
