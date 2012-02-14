@@ -1,13 +1,14 @@
-﻿using ApprovalTests.Core;
-
+﻿
 namespace ApprovalTests.Reporters
 {
-	public class MsTestReporter : IApprovalFailureReporter
+	public class MsTestReporter : AssertReporter
 	{
-		public void Report(string approved, string received)
+		public readonly static MsTestReporter INSTANCE = new MsTestReporter();
+		public MsTestReporter()
+			: base("Microsoft.VisualStudio.TestTools.UnitTesting.Assert, Microsoft.VisualStudio.QualityTools.UnitTestFramework", "AreEqual")
 		{
-			string assertClass = " Microsoft.VisualStudio.TestTools.UnitTesting.Assert, Microsoft.VisualStudio.QualityTools.UnitTestFramework";
-			NUnitReporter.AssertFileContents(approved, received, assertClass);
+
 		}
+
 	}
 }

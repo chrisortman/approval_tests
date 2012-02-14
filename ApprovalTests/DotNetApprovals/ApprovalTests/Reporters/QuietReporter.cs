@@ -4,8 +4,9 @@ using ApprovalTests.Core;
 
 namespace ApprovalTests.Reporters
 {
-	public class QuietReporter : IApprovalFailureReporter
+	public class QuietReporter : IEnvironmentAwareReporter
 	{
+		public static readonly QuietReporter INSTANCE = new QuietReporter();
 
 		public void Report(string approved, string received)
 		{
@@ -19,9 +20,14 @@ namespace ApprovalTests.Reporters
 			Console.WriteLine(message);
 		}
 
-	    public static string GetCommandLineForApproval(string approved, string received)
-	    {
-	        return string.Format("move /Y \"{0}\" \"{1}\"", received, approved);
-	    }
+		public static string GetCommandLineForApproval(string approved, string received)
+		{
+			return string.Format("move /Y \"{0}\" \"{1}\"", received, approved);
+		}
+
+		public bool IsWorkingInThisEnvironment()
+		{
+			return true;
+		}
 	}
 }

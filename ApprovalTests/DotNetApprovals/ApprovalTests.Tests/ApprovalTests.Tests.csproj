@@ -134,12 +134,14 @@
     </Compile>
     <Compile Include="Reporters\AppConfigReporterTest.cs" />
     <Compile Include="Reporters\AssemblyLevelTest.cs" />
+    <Compile Include="Reporters\FirstWorkingReporterTest.cs" />
     <Compile Include="Reporters\GenericDiffReporterTest.cs" />
     <Compile Include="Reporters\MultiReporterTest.cs" />
     <Compile Include="Reporters\NUnitReporterTest.cs" />
     <Compile Include="Reporters\RecordingReporter.cs" />
     <Compile Include="Reporters\ReporterFactoryTest.cs" />
     <Compile Include="ExampleUsages.cs" />
+    <Compile Include="Reporters\TortoiseImageDiffTest.cs" />
     <Compile Include="WinForms\ApprovalsTest.cs" />
     <Compile Include="Wpf\ApprovalsTest.cs" />
     <Compile Include="Writers\ExistingFileTest.cs" />

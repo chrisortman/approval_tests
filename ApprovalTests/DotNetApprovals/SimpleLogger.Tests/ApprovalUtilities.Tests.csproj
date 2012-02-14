@@ -48,6 +48,7 @@
     <Compile Include="CallStack\CallerTest.cs" />
     <Compile Include="LoggerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ExceptionUtilitiesTest.cs" />
     <Compile Include="Utilities\StringUtilitiesTest.cs" />
   </ItemGroup>
   <ItemGroup>

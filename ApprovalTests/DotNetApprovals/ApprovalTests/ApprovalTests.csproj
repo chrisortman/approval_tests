@@ -106,10 +106,13 @@
     <Compile Include="Persistence\DataSets\DataSetTestingUtilities.cs" />
     <Compile Include="RdlcReports\RdlcApprovals.cs" />
     <Compile Include="Reporters\AppConfigReporter.cs" />
+    <Compile Include="Reporters\AssertReporter.cs" />
     <Compile Include="Reporters\BeyondCompareReporter.cs" />
     <Compile Include="Reporters\ClipboardReporter.cs" />
     <Compile Include="Reporters\ExecutableQueryFailure.cs" />
     <Compile Include="Reporters\DiffReporter.cs" />
+    <Compile Include="Reporters\FirstWorkingReporter.cs" />
+    <Compile Include="Reporters\FrameworkAssertReporter.cs" />
     <Compile Include="Reporters\GenericDiffReporter.cs" />
     <Compile Include="Reporters\ImageReporter.cs" />
     <Compile Include="Reporters\FileLauncherReporter.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Reporters\NotepadLauncher.cs" />
     <Compile Include="Reporters\NUnitReporter.cs" />
     <Compile Include="Reporters\TortoiseDiffReporter.cs" />
+    <Compile Include="Reporters\TortoiseTextDiffReporter.cs" />
     <Compile Include="Reporters\TortoiseImageDiffReporter.cs" />
     <Compile Include="Reporters\WinMergeReporter.cs" />
     <Compile Include="StackTraceParsers\AttributeStackTraceParser.cs" />

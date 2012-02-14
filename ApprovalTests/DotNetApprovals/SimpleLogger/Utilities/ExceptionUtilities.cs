@@ -37,5 +37,18 @@ namespace ApprovalUtilities.Utilities
 		{
 			return FormatAsError(GetExceptionLines(except, additional));
 		}
+
+		public static Exception GetException(Action action)
+		{
+			try
+			{
+				action.Invoke();
+				return null;
+			}
+			catch (Exception ex)
+			{
+				return ex;
+			}
+		}
 	}
 }

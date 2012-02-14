@@ -25,7 +25,7 @@ namespace ApprovalTests.Tests.Reporters
 		[Test]
 		public void TestLaunchesTortoiseMerge()
 		{
-			AssertLauncher("../../a.txt", "../../b.txt", new TortoiseDiffReporter());
+			AssertLauncher("../../a.txt", "../../b.txt", new TortoiseTextDiffReporter());
 		}
 		[Test]
 		public void TestLaunchesTortoiseImage()

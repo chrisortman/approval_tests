@@ -1,17 +1,27 @@
-﻿using ApprovalUtilities.Utilities;
+﻿using ApprovalTests.Core;
 
 namespace ApprovalTests.Reporters
 {
-	public class TortoiseDiffReporter : GenericDiffReporter
+	public class TortoiseDiffReporter : IEnvironmentAwareReporter
 	{
-		private static string PATH = DotNet4Utilities.GetPathInProgramFilesX86(@"TortoiseSVN\bin\tortoisemerge.exe");
+		public static readonly TortoiseDiffReporter INSTANCE = new TortoiseDiffReporter();
 
-		public TortoiseDiffReporter()
-			: base(
-				PATH,
-				"Could not find TortoiseMerge at {0}, please install it (it's part of TortoiseSVN) http://tortoisesvn.net/ ".
-					FormatWith(PATH))
+		public bool IsWorkingInThisEnvironment()
 		{
+			return TortoiseTextDiffReporter.INSTANCE.IsWorkingInThisEnvironment() ||
+						 TortoiseImageDiffReporter.INSTANCE.IsWorkingInThisEnvironment();
+		}
+
+		public void Report(string approved, string received)
+		{
+			if (TortoiseImageDiffReporter.IsImage(approved))
+			{
+				TortoiseImageDiffReporter.INSTANCE.Report(approved, received);
+			}
+			else
+			{
+				TortoiseTextDiffReporter.INSTANCE.Report(approved, received);
+			}
 		}
 	}
 }
